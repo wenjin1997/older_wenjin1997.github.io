@@ -158,20 +158,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -209,7 +209,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/05/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B01-1.1%20Basic%20Programming%20Model/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.1%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-3.4%20%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -222,7 +222,94 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/05/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B01-1.1%20Basic%20Programming%20Model/" class="post-title-link" itemprop="url">《算法》笔记1-1.1 Basic Programming Model</a>
+          <a href="/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.1%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-3.4%20%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/" class="post-title-link" itemprop="url">【笔记】3.1一个简单的Java应用程序-3.4 变量与常量</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-04-16 12:05:00 / 修改时间：12:22:38" itemprop="dateCreated datePublished" datetime="2021-04-16T12:05:00+08:00">2021-04-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/" itemprop="url" rel="index"><span itemprop="name">《Java核心技术卷I 基础知识》</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="31-一个简单的java应用程序"><a class="markdownIt-Anchor" href="#31-一个简单的java应用程序"></a> 3.1 一个简单的Java应用程序</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstSample</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;We will not use &#x27;Hello, World!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Java是区分大小写的。</li>
+<li>public为访问修饰符，用于控制程序的其他部分对这段代码的访问级别。</li>
+<li>在Java中，应用程序中的全部内容都必须放置在类中。</li>
+<li><strong>类名的规则</strong>：名字必须以字母开头，后面可以跟字母和数字的任意组合，长度没有限制，但是不能使用Java保留字。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.1%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-3.4%20%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/05/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B01-1.1%20Basic%20Programming%20Model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="谢文进">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="文进的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/05/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B01-1.1%20Basic%20Programming%20Model/" class="post-title-link" itemprop="url">《算法》笔记1-1.1 Basic Programming Model</a>
         </h2>
 
         <div class="post-meta-container">
@@ -240,7 +327,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-06 18:26:06" itemprop="dateModified" datetime="2021-04-06T18:26:06+08:00">2021-04-06</time>
+        <time title="修改时间：2021-04-16 10:01:26" itemprop="dateModified" datetime="2021-04-16T10:01:26+08:00">2021-04-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -278,7 +365,7 @@
 </ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/04/05/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B01-1.1%20Basic%20Programming%20Model/#more" rel="contents">
+              <a class="btn" href="/2021/04/05/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B01-1.1%20Basic%20Programming%20Model/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -309,7 +396,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/11/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95%E3%80%81%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/11/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95%E3%80%81%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -322,7 +409,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/11/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95%E3%80%81%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">欧拉方法、隐式欧拉方法</a>
+          <a href="/2021/03/11/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95%E3%80%81%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">欧拉方法、隐式欧拉方法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -372,7 +459,7 @@
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.30744em;vertical-align:-0.90372em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4037200000000003em;"><span style="top:-3.4037200000000003em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mord">.</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.90372em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/03/11/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95%E3%80%81%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/#more" rel="contents">
+              <a class="btn" href="/2021/03/11/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95%E3%80%81%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

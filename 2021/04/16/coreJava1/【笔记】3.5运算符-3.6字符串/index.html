@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}">
+<meta name="description" content="3.5 运算符  3.5.1 算术运算符  算术运算符+、-、*、&#x2F;表示加、减、乘、除运算。 当参与&#x2F;运算的两个操作数都是整数时，表示整数除法，否则，表示浮点除法。 整数的求余操作%。 整数被0除将会产生一个异常，而浮点数被0除将会得到无穷大或NaN结果。   3.5.2 数学函数与常量  Math类中的sqrt方法并不处理任何对象，这样的方法被称为静态方法。 pow方法有两个double类型的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】3.5运算符-3.6字符串">
+<meta property="og:url" content="http://example.com/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.5%E8%BF%90%E7%AE%97%E7%AC%A6-3.6%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="文进的博客">
+<meta property="og:description" content="3.5 运算符  3.5.1 算术运算符  算术运算符+、-、*、&#x2F;表示加、减、乘、除运算。 当参与&#x2F;运算的两个操作数都是整数时，表示整数除法，否则，表示浮点除法。 整数的求余操作%。 整数被0除将会产生一个异常，而浮点数被0除将会得到无穷大或NaN结果。   3.5.2 数学函数与常量  Math类中的sqrt方法并不处理任何对象，这样的方法被称为静态方法。 pow方法有两个double类型的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-16T13:06:00.000Z">
+<meta property="article:modified_time" content="2021-04-16T13:18:56.003Z">
+<meta property="article:author" content="谢文进">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="《Java核心技术卷I 基础知识》">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.5%E8%BF%90%E7%AE%97%E7%AC%A6-3.6%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+
+
+
+<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;}">
+<meta name="hexo-config-calendar" content="">
+<title>【笔记】3.5运算符-3.6字符串 | 文进的博客</title><script data-pjax src="/js/load-config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="文进的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">文进的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Keep Learning Keep Thinking</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#35-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text"> 3.5 运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#351-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text"> 3.5.1 算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#352-%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="nav-number">1.2.</span> <span class="nav-text"> 3.5.2 数学函数与常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#353-%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text"> 3.5.3 数值类型之间的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#354-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.4.</span> <span class="nav-text"> 3.5.4 强制类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#355-%E7%BB%93%E5%90%88%E8%B5%8B%E5%80%BC%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.5.</span> <span class="nav-text"> 3.5.5 结合赋值和运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#356-%E8%87%AA%E5%A2%9E%E4%B8%8E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.6.</span> <span class="nav-text"> 3.5.6 自增与自减运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#357-%E5%85%B3%E7%B3%BB%E5%92%8Cboolean%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.7.</span> <span class="nav-text"> 3.5.7 关系和boolean运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#358-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.8.</span> <span class="nav-text"> 3.5.8 位运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#359-%E6%8B%AC%E5%8F%B7%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6%E7%BA%A7%E5%88%AB"><span class="nav-number">1.9.</span> <span class="nav-text"> 3.5.9 括号与运算符级别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#36-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.</span> <span class="nav-text"> 3.6 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#361-%E5%AD%90%E4%B8%B2"><span class="nav-number">2.1.</span> <span class="nav-text"> 3.6.1 子串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#362-%E6%8B%BC%E6%8E%A5"><span class="nav-number">2.2.</span> <span class="nav-text"> 3.6.2 拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#363-%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.3.</span> <span class="nav-text"> 3.6.3 不可变字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#364-%E6%A3%80%E6%B5%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89"><span class="nav-number">2.4.</span> <span class="nav-text"> 3.6.4 检测字符串是否相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#365-%E7%A9%BA%E4%B8%B2%E4%B8%8Enull%E4%B8%B2"><span class="nav-number">2.5.</span> <span class="nav-text"> 3.6.5 空串与Null串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#366-%E7%A0%81%E7%82%B9%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83"><span class="nav-number">2.6.</span> <span class="nav-text"> 3.6.6 码点与代码单元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#369-%E6%9E%84%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.7.</span> <span class="nav-text"> 3.6.9 构建字符串</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">谢文进</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.5%E8%BF%90%E7%AE%97%E7%AC%A6-3.6%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="谢文进">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="文进的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】3.5运算符-3.6字符串
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-04-16 21:06:00 / 修改时间：21:18:56" itemprop="dateCreated datePublished" datetime="2021-04-16T21:06:00+08:00">2021-04-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/" itemprop="url" rel="index"><span itemprop="name">《Java核心技术卷I 基础知识》</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="35-运算符"><a class="markdownIt-Anchor" href="#35-运算符"></a> 3.5 运算符</h2>
+<h3 id="351-算术运算符"><a class="markdownIt-Anchor" href="#351-算术运算符"></a> 3.5.1 算术运算符</h3>
+<ul>
+<li>算术运算符+、-、*、/表示加、减、乘、除运算。</li>
+<li>当参与/运算的两个操作数都是整数时，表示整数除法，否则，表示浮点除法。</li>
+<li>整数的求余操作%。</li>
+<li>整数被0除将会产生一个异常，而浮点数被0除将会得到无穷大或NaN结果。</li>
+</ul>
+<h3 id="352-数学函数与常量"><a class="markdownIt-Anchor" href="#352-数学函数与常量"></a> 3.5.2 数学函数与常量</h3>
+<ul>
+<li>Math类中的sqrt方法并不处理任何对象，这样的方法被称为静态方法。</li>
+<li>pow方法有两个double类型的参数，其返回结果也为double类型。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseMath</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">double</span> x = <span class="number">4</span>;</span><br><span class="line">		<span class="keyword">double</span> y = Math.sqrt(x);</span><br><span class="line">		<span class="keyword">double</span> z = Math.pow(x, <span class="number">2</span>);</span><br><span class="line">		System.out.println(y); <span class="comment">// prints 2.0</span></span><br><span class="line">		System.out.println(z); <span class="comment">// prints 16.0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>也可以在源文件的顶部加上<code>import static java.lang.Math.*;</code>。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  <span class="keyword">static</span> java.lang.Math.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseMath</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">double</span> x = <span class="number">4</span>;</span><br><span class="line">		<span class="keyword">double</span> y = sqrt(x);</span><br><span class="line">		<span class="keyword">double</span> z = pow(x, <span class="number">2</span>);</span><br><span class="line">		System.out.println(y); <span class="comment">// prints 2.0</span></span><br><span class="line">		System.out.println(z); <span class="comment">// prints 16.0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>floorMod方法的目的是解决一个长期存在的有关整数余数的问题。考虑表达式n%2，如果n为负且为奇数，这个表达式则为-1。实际上根据欧几里得规则，余数总是要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ge0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。<code>floorMod(position + adjustment, 12)</code>总会得到一个0~11之间的数。（遗憾的是，对于负除数，floorMod会得到负数结果，不过这种情况在实际中很少出现。）</li>
+<li>三角函数：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Math.sin</span><br><span class="line">Math.cos</span><br><span class="line">Math.tan</span><br><span class="line">Math.atan</span><br><span class="line">Math.atan2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指数函数及它的反函数</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Math.exp</span><br><span class="line">Math.log</span><br><span class="line">Math.log10</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Java提供两个用于表示<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span>常量的最接近的近似值：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Math.PI</span><br><span class="line">Math.E</span><br></pre></td></tr></table></figure>
+<h3 id="353-数值类型之间的转换"><a class="markdownIt-Anchor" href="#353-数值类型之间的转换"></a> 3.5.3 数值类型之间的转换</h3>
+<ul>
+<li>当用一个二元运算符连接两个值时，先要将两个操作数转换为同一种类型，然后再进行计算。</li>
+</ul>
+<h3 id="354-强制类型转换"><a class="markdownIt-Anchor" href="#354-强制类型转换"></a> 3.5.4 强制类型转换</h3>
+<ul>
+<li>强制类型转换的语法格式是在圆括号中给出想要转换的目标类型，后面紧跟待转换的变量名。</li>
+<li>强制类型转换是通过截断小数部分将浮点值转换为整型。</li>
+<li>对浮点数进行舍入运算时，需要使用Math.round方法。当调用round的时候，仍然需要使用强制类型转换(int)。原因是round方法返回的结果为long类型，由于存在信息丢失的可能性，所以只有使用显式的强制类型转换才能够将long类型转换成int类型。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> xx = <span class="number">9.997</span>;</span><br><span class="line"><span class="keyword">int</span> nxx = (<span class="keyword">int</span>) xx;</span><br><span class="line">System.out.println(nxx); <span class="comment">// prints 9</span></span><br><span class="line"><span class="keyword">int</span> nxx2 = (<span class="keyword">int</span>) Math.round(xx);</span><br><span class="line">System.out.println(nxx2); <span class="comment">// prints 10</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果试图将一个数值从一种类型强制转换为另一种类型，而又超出了目标类型的表示范围，结果就会截断成一个完全不同的值。如<code>(byte)300</code>的实际值为44。</li>
+</ul>
+<h3 id="355-结合赋值和运算符"><a class="markdownIt-Anchor" href="#355-结合赋值和运算符"></a> 3.5.5 结合赋值和运算符</h3>
+<ul>
+<li>可以在赋值中运用二元运算符，如<code>x += 4;</code>等价于<code>x = x + 4;</code>。</li>
+<li>如果运算符得到一个值，其类型与左侧操作数的类型不同，就会发生强制类型转换。如果x是一个int，则<code>x += 3.5;</code>等价于<code>x = (int)(x + 3.5);</code>。</li>
+</ul>
+<h3 id="356-自增与自减运算符"><a class="markdownIt-Anchor" href="#356-自增与自减运算符"></a> 3.5.6 自增与自减运算符</h3>
+<ul>
+<li>自增运算符：n++，自减运算符：n–。</li>
+<li>自增运算符还有一种“前缀”形式：++n。</li>
+<li>后缀和前缀形式都会使变量值加1或减1。但用在表达式中时，二者就有区别了。前缀形式会先完成加1；而后缀形式会使用变量原来的值。</li>
+<li>建议不要在表达式中使用++，因为这样的代码很容易让人困惑，而且会带来烦人的bug。</li>
+</ul>
+<h3 id="357-关系和boolean运算符"><a class="markdownIt-Anchor" href="#357-关系和boolean运算符"></a> 3.5.7 关系和boolean运算符</h3>
+<ul>
+<li>&amp;&amp;和||运算符是按照“短路”方式来求值的。</li>
+<li><code>x != 0 &amp;&amp; 1 / x &gt; x + y // no division by 0</code>，如果x等于0，那么第二部分就不会计算，除以0的错误就不会出现。</li>
+<li>Java支持三元操作符?:，例如<code>x &lt; y ? x : y</code>返回x和y中较小的一个。</li>
+</ul>
+<h3 id="358-位运算符"><a class="markdownIt-Anchor" href="#358-位运算符"></a> 3.5.8 位运算符</h3>
+<ul>
+<li>如果n是一个整数变量，而且用二进制表示的n从右边数第4位为1，则<code>int fourthBitFromRight = (n &amp; 0b1000) / 0b1000;</code>会返回1，否则返回0.</li>
+<li>利用&amp;并结合适当的2的幂，可以把其他位掩掉，而只留下其中的某一位。</li>
+<li>&amp;和|运算符不采用“短路”方式求值。</li>
+<li>需要建立位模式来完成掩码时，&gt;&gt;和&lt;&lt;运算符会很方便，<code>int fourthBitFromRight = (n &amp; (1 &lt;&lt; 3)) &gt;&gt; 3;</code>。</li>
+<li>&gt;&gt;&gt;运算符会用0填充高位，这与&gt;&gt;不同，它会用符号位填充高位。</li>
+</ul>
+<h3 id="359-括号与运算符级别"><a class="markdownIt-Anchor" href="#359-括号与运算符级别"></a> 3.5.9 括号与运算符级别</h3>
+<ul>
+<li>注意+=是右结合运算符。</li>
+</ul>
+<h2 id="36-字符串"><a class="markdownIt-Anchor" href="#36-字符串"></a> 3.6 字符串</h2>
+<ul>
+<li>从概念上讲，Java字符串就是Unicode字符序列。</li>
+<li>每个双引号括起来的字符串都是String类的一个实例。</li>
+</ul>
+<h3 id="361-子串"><a class="markdownIt-Anchor" href="#361-子串"></a> 3.6.1 子串</h3>
+<ul>
+<li>String类的substring方法可以从一个较大的字符串中提取出一个子串。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubString</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		String greeting = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">		String s = greeting.substring(<span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">		System.out.println(s); <span class="comment">// prints Hel</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>substring方法的第二个参数是不想复制的第一个位置。这样的工作方式有一个优点，容易计算子串的长度。字符串s.substring(a,b)的长度为b-a。</li>
+</ul>
+<h3 id="362-拼接"><a class="markdownIt-Anchor" href="#362-拼接"></a> 3.6.2 拼接</h3>
+<ul>
+<li>Java语言允许使用+号连接两个字符串。</li>
+<li>当一个字符串与一个非字符串的值进行拼接时，后者会转换成字符串。</li>
+<li>如果需要把多个字符串放在一起，用一个界定符分隔，可以使用静态join方法。</li>
+<li>在Java11中，提供了一个repeat方法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(String.join(<span class="string">&quot;/&quot;</span>, <span class="string">&quot;S&quot;</span>, <span class="string">&quot;M&quot;</span>, <span class="string">&quot;L&quot;</span>)); <span class="comment">// prints S/M/L</span></span><br><span class="line">System.out.println(<span class="string">&quot;Java&quot;</span>.repeat(<span class="number">3</span>)); <span class="comment">// prints JavaJavaJava</span></span><br></pre></td></tr></table></figure>
+<h3 id="363-不可变字符串"><a class="markdownIt-Anchor" href="#363-不可变字符串"></a> 3.6.3 不可变字符串</h3>
+<ul>
+<li>如何修改字符串？可以提取想要保留的子串，再与希望替换的字符拼接,<code>greeting = greeting.substring(0, 3) + &quot;p!&quot;;</code>。</li>
+<li>由于不能修改Java字符串中的单个字符，所以在Java文档中将String类对象称为是不可变的，但是，可以修改字符串变量。</li>
+<li>不可变字符串有一个优点：编译器可以让字符串共享。</li>
+</ul>
+<h3 id="364-检测字符串是否相等"><a class="markdownIt-Anchor" href="#364-检测字符串是否相等"></a> 3.6.4 检测字符串是否相等</h3>
+<ul>
+<li><code>s.equals(t)</code>检测两个字符串是否相等，s与t可以是字符串变量，也可以是字符串字面量，例如<code>&quot;Hello&quot;.equals(greeting)</code>。</li>
+<li>检测两个字符串是否相等，而不区分大小写</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Hello&quot;</span>.equalsIgnoreCase(<span class="string">&quot;hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一定不要使用==运算检测两个字符串是否相等！这个运算符只能够确定两个字符串是否存放在同一个位置上。</li>
+</ul>
+<h3 id="365-空串与null串"><a class="markdownIt-Anchor" href="#365-空串与null串"></a> 3.6.5 空串与Null串</h3>
+<ul>
+<li>空串&quot;&quot;是长度为0的字符串，有自己的串长度（0）和内容（空）。检查一个字符串是否为空：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(str.length() &#x3D;&#x3D; 0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(str.equals(&quot;&quot;))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>null，表示目前没有任何对象与该变量关联。检查一个字符串是否为null：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(str &#x3D;&#x3D; null)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>检查一个字符串既不是null也不是空串，需要首先检查str不为null。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(str !&#x3D; null &amp;&amp; str.length() !&#x3D; 0)</span><br></pre></td></tr></table></figure>
+<h3 id="366-码点与代码单元"><a class="markdownIt-Anchor" href="#366-码点与代码单元"></a> 3.6.6 码点与代码单元</h3>
+<ul>
+<li>要想得到实际的长度，即码点数量，可以调用：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int cpCount &#x3D; greeting.codePointCount(0, greeting.length());</span><br></pre></td></tr></table></figure>
+<h3 id="369-构建字符串"><a class="markdownIt-Anchor" href="#369-构建字符串"></a> 3.6.9 构建字符串</h3>
+<ul>
+<li>如果需要许多小段的字符串来构建一个字符串，按照下列步骤进行。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder builder &#x3D; new StringBuilder();</span><br><span class="line">builder.append(ch); &#x2F;&#x2F; appends a single character</span><br><span class="line">builder.append(str); &#x2F;&#x2F; appends a string</span><br><span class="line">String completedString &#x3D; builder.toString();</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/" rel="tag"># 《Java核心技术卷I 基础知识》</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/15/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.1%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-3.4%20%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/" rel="prev" title="【笔记】3.1一个简单的Java应用程序-3.4 变量与常量">
+                  <i class="fa fa-chevron-left"></i> 【笔记】3.1一个简单的Java应用程序-3.4 变量与常量
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谢文进</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>

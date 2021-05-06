@@ -20,17 +20,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <meta name="hexo-config" content="{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}">
-<meta name="description" content="官方链接 题目描述 官方题解  题目描述 给定一个非负整数 c ，你要判断是否存在两个整数 a 和 b，使得 a2 + b2 &#x3D; c 。 示例 1： 123输入：c &#x3D; 5输出：true解释：1 * 1 + 2 * 2 &#x3D; 5 示例 2： 12输入：c &#x3D; 3输出：false 示例 3： 12输入：c &#x3D; 4输出：true 示例 4： 12输入：c &amp;#x">
+<meta name="description" content="官方链接 题目描述 官方题解  题目描述 给定一个非负整数 c ，你要判断是否存在两个整数 a 和 b，使得 a2+b2&#x3D;ca^2 + b^2 &#x3D; ca2+b2&#x3D;c。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="633.平方数之和">
 <meta property="og:url" content="http://example.com/2021/04/28/LeetCode/633.%E5%B9%B3%E6%96%B9%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
 <meta property="og:site_name" content="文进的博客">
-<meta property="og:description" content="官方链接 题目描述 官方题解  题目描述 给定一个非负整数 c ，你要判断是否存在两个整数 a 和 b，使得 a2 + b2 &#x3D; c 。 示例 1： 123输入：c &#x3D; 5输出：true解释：1 * 1 + 2 * 2 &#x3D; 5 示例 2： 12输入：c &#x3D; 3输出：false 示例 3： 12输入：c &#x3D; 4输出：true 示例 4： 12输入：c &amp;#x">
+<meta property="og:description" content="官方链接 题目描述 官方题解  题目描述 给定一个非负整数 c ，你要判断是否存在两个整数 a 和 b，使得 a2+b2&#x3D;ca^2 + b^2 &#x3D; ca2+b2&#x3D;c。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-28T11:56:09.000Z">
-<meta property="article:modified_time" content="2021-04-28T12:11:54.100Z">
+<meta property="article:modified_time" content="2021-05-06T03:14:35.839Z">
 <meta property="article:author" content="谢文进">
 <meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="LeetCode中等">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 
@@ -165,7 +166,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -178,7 +179,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -240,10 +241,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-04-28 19:56:09 / 修改时间：20:11:54" itemprop="dateCreated datePublished" datetime="2021-04-28T19:56:09+08:00">2021-04-28</time>
+      <time title="创建时间：2021-04-28 19:56:09" itemprop="dateCreated datePublished" datetime="2021-04-28T19:56:09+08:00">2021-04-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-06 11:14:35" itemprop="dateModified" datetime="2021-05-06T11:14:35+08:00">2021-05-06</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -268,7 +275,8 @@
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sum-of-square-numbers/">题目描述</a><br />
 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sum-of-square-numbers/solution/ping-fang-shu-zhi-he-by-leetcode-solutio-8ydl/">官方题解</a></p>
 <h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>给定一个非负整数 c ，你要判断是否存在两个整数 a 和 b，使得 a2 + b2 = c 。</p>
+<p>给定一个非负整数 c ，你要判断是否存在两个整数 a 和 b，使得 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a^2 + b^2 = c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>。</p>
+<a id="more"></a>
 <p>示例 1：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：c &#x3D; 5</span><br><span class="line">输出：true</span><br><span class="line">解释：1 * 1 + 2 * 2 &#x3D; 5</span><br></pre></td></tr></table></figure>
 <p>示例 2：</p>
@@ -280,7 +288,7 @@
 <p>示例 5：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：c &#x3D; 1</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
 <p>提示：</p>
-<p><code>0 &lt;= c &lt;= 231 - 1</code></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mo>≤</mo><mi>c</mi><mo>≤</mo><msup><mn>2</mn><mn>31</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \le c \le 2^{31} - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
 <h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
 <p>所给的非负整数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>，那么要找的两个数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>的范围肯定为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><msqrt><mi>c</mi></msqrt><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,\sqrt{c}]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05028em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">c</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
 -10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
@@ -320,6 +328,7 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+              <a href="/tags/LeetCode%E4%B8%AD%E7%AD%89/" rel="tag"># LeetCode中等</a>
               <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
           </div>
 
@@ -332,6 +341,9 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/05/06/LeetCode/1720.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%95%B0%E7%BB%84/" rel="next" title="1720.解码异或后的数组">
+                  1720.解码异或后的数组 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

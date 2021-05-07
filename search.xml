@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>1101.在D天内送达包裹的能力</title>
+    <url>/2021/04/28/LeetCode/1101.%E5%9C%A8D%E5%A4%A9%E5%86%85%E9%80%81%E8%BE%BE%E5%8C%85%E8%A3%B9%E7%9A%84%E8%83%BD%E5%8A%9B/</url>
+    <content><![CDATA[<h2 id="官网链接"><a class="markdownIt-Anchor" href="#官网链接"></a> 官网链接</h2>
+<p><a href="https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days">题目</a><br />
+<a href="https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days/solution/zai-d-tian-nei-song-da-bao-guo-de-neng-l-ntml/">官方解答</a></p>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>传送带上的包裹必须在 D 天内从一个港口运送到另一个港口。</p>
+<p>传送带上的第 i 个包裹的重量为 weights[i]。每一天，我们都会按给出重量的顺序往传送带上装载包裹。我们装载的重量不会超过船的最大运载重量。</p>
+<p>返回能在 D 天内将传送带上的所有包裹送达的船的最低运载能力。</p>
+<p><a id="more"></a></p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：weights &#x3D; [1,2,3,4,5,6,7,8,9,10], D &#x3D; 5</span><br><span class="line">输出：15</span><br><span class="line">解释：</span><br><span class="line">船舶最低载重 15 就能够在 5 天内送达所有包裹，如下所示：</span><br><span class="line">第 1 天：1, 2, 3, 4, 5</span><br><span class="line">第 2 天：6, 7</span><br><span class="line">第 3 天：8</span><br><span class="line">第 4 天：9</span><br><span class="line">第 5 天：10</span><br><span class="line"></span><br><span class="line">请注意，货物必须按照给定的顺序装运，因此使用载重能力为 14 的船舶并将包装分成 (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) 是不允许的。 </span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：weights &#x3D; [3,2,2,4,1,4], D &#x3D; 3</span><br><span class="line">输出：6</span><br><span class="line">解释：</span><br><span class="line">船舶最低载重 6 就能够在 3 天内送达所有包裹，如下所示：</span><br><span class="line">第 1 天：3, 2</span><br><span class="line">第 2 天：2, 4</span><br><span class="line">第 3 天：1, 4</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：weights &#x3D; [1,2,3,1,1], D &#x3D; 4</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">第 1 天：1</span><br><span class="line">第 2 天：2</span><br><span class="line">第 3 天：3</span><br><span class="line">第 4 天：1, 1</span><br></pre></td></tr></table></figure>
+<p></p>
+<p>提示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 &lt;&#x3D; D &lt;&#x3D; weights.length &lt;&#x3D; 50000</span><br><span class="line">1 &lt;&#x3D; weights[i] &lt;&#x3D; 500</span><br></pre></td></tr></table></figure>
+<h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
+<p>二分查找的思想，根据题目的描述，可以确定合适的船运载量应该在区间[weights中最大元素，weights所有元素之和]，设二分区间为[left,right]。现在需要计算对于船运载量为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>时，所需的天数是多少，用needDay表示。不断二分区间[left,right]，计算needDay，与所要求的天数D进行比较。<br />
+如果needDay &gt; D，说明当前运载量小了，合适的运载量在区间[mid + 1, right],需要让left = mid + 1。<br />
+如果needDay &lt;= D,说明当前运载量大了或者合适，合适的运载量在区间[left, mid],需要让right = mid。</p>
+<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> leetcode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CapacityToShipPackagesWithinDDays</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> D = in.nextInt();</span><br><span class="line">		<span class="keyword">int</span> n = in.nextInt();</span><br><span class="line">		<span class="keyword">int</span>[] weights = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			weights[i] = in.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		Solution s = <span class="keyword">new</span> Solution ();</span><br><span class="line">		System.out.println(s.shipWithinDays(weights, D));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">shipWithinDays</span><span class="params">(<span class="keyword">int</span>[] weights, <span class="keyword">int</span> D)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">// 确定二分查找左右边界</span></span><br><span class="line">    	<span class="keyword">int</span> left = Arrays.stream(weights).max().getAsInt(), right = Arrays.stream(weights).sum();</span><br><span class="line">    	<span class="keyword">while</span>(left &lt; right) &#123;</span><br><span class="line">    		<span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    		<span class="comment">// need 为需要运送的天数</span></span><br><span class="line">    		<span class="comment">// cur 为当前这一天已经运算的包裹重量之和</span></span><br><span class="line">    		<span class="keyword">int</span> need = <span class="number">1</span>, cur = <span class="number">0</span>;</span><br><span class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> weight : weights) &#123;</span><br><span class="line">    			<span class="keyword">if</span>(cur + weight &gt; mid) &#123;</span><br><span class="line">    				++need;</span><br><span class="line">    				cur = <span class="number">0</span>;</span><br><span class="line">    			&#125;</span><br><span class="line">    			cur += weight;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">if</span>(need &lt;= D) &#123;</span><br><span class="line">    			right = mid;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">else</span> &#123;</span><br><span class="line">    			left = mid + <span class="number">1</span>;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>二分查找</tag>
+        <tag>LeetCode中等</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1720.解码异或后的数组</title>
     <url>/2021/05/06/LeetCode/1720.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
@@ -43,42 +79,6 @@ encoded.length == n - 1<br />
         <tag>LeetCode</tag>
         <tag>位运算</tag>
         <tag>LeetCode简单</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>1101.在D天内送达包裹的能力</title>
-    <url>/2021/04/28/LeetCode/1101.%E5%9C%A8D%E5%A4%A9%E5%86%85%E9%80%81%E8%BE%BE%E5%8C%85%E8%A3%B9%E7%9A%84%E8%83%BD%E5%8A%9B/</url>
-    <content><![CDATA[<h2 id="官网链接"><a class="markdownIt-Anchor" href="#官网链接"></a> 官网链接</h2>
-<p><a href="https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days">题目</a><br />
-<a href="https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days/solution/zai-d-tian-nei-song-da-bao-guo-de-neng-l-ntml/">官方解答</a></p>
-<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>传送带上的包裹必须在 D 天内从一个港口运送到另一个港口。</p>
-<p>传送带上的第 i 个包裹的重量为 weights[i]。每一天，我们都会按给出重量的顺序往传送带上装载包裹。我们装载的重量不会超过船的最大运载重量。</p>
-<p>返回能在 D 天内将传送带上的所有包裹送达的船的最低运载能力。</p>
-<p><a id="more"></a></p>
-<p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：weights &#x3D; [1,2,3,4,5,6,7,8,9,10], D &#x3D; 5</span><br><span class="line">输出：15</span><br><span class="line">解释：</span><br><span class="line">船舶最低载重 15 就能够在 5 天内送达所有包裹，如下所示：</span><br><span class="line">第 1 天：1, 2, 3, 4, 5</span><br><span class="line">第 2 天：6, 7</span><br><span class="line">第 3 天：8</span><br><span class="line">第 4 天：9</span><br><span class="line">第 5 天：10</span><br><span class="line"></span><br><span class="line">请注意，货物必须按照给定的顺序装运，因此使用载重能力为 14 的船舶并将包装分成 (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) 是不允许的。 </span><br></pre></td></tr></table></figure>
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：weights &#x3D; [3,2,2,4,1,4], D &#x3D; 3</span><br><span class="line">输出：6</span><br><span class="line">解释：</span><br><span class="line">船舶最低载重 6 就能够在 3 天内送达所有包裹，如下所示：</span><br><span class="line">第 1 天：3, 2</span><br><span class="line">第 2 天：2, 4</span><br><span class="line">第 3 天：1, 4</span><br></pre></td></tr></table></figure>
-<p>示例 3：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：weights &#x3D; [1,2,3,1,1], D &#x3D; 4</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">第 1 天：1</span><br><span class="line">第 2 天：2</span><br><span class="line">第 3 天：3</span><br><span class="line">第 4 天：1, 1</span><br></pre></td></tr></table></figure>
-<p></p>
-<p>提示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 &lt;&#x3D; D &lt;&#x3D; weights.length &lt;&#x3D; 50000</span><br><span class="line">1 &lt;&#x3D; weights[i] &lt;&#x3D; 500</span><br></pre></td></tr></table></figure>
-<h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
-<p>二分查找的思想，根据题目的描述，可以确定合适的船运载量应该在区间[weights中最大元素，weights所有元素之和]，设二分区间为[left,right]。现在需要计算对于船运载量为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>时，所需的天数是多少，用needDay表示。不断二分区间[left,right]，计算needDay，与所要求的天数D进行比较。<br />
-如果needDay &gt; D，说明当前运载量小了，合适的运载量在区间[mid + 1, right],需要让left = mid + 1。<br />
-如果needDay &lt;= D,说明当前运载量大了或者合适，合适的运载量在区间[left, mid],需要让right = mid。</p>
-<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> leetcode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CapacityToShipPackagesWithinDDays</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> D = in.nextInt();</span><br><span class="line">		<span class="keyword">int</span> n = in.nextInt();</span><br><span class="line">		<span class="keyword">int</span>[] weights = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			weights[i] = in.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		Solution s = <span class="keyword">new</span> Solution ();</span><br><span class="line">		System.out.println(s.shipWithinDays(weights, D));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">shipWithinDays</span><span class="params">(<span class="keyword">int</span>[] weights, <span class="keyword">int</span> D)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">// 确定二分查找左右边界</span></span><br><span class="line">    	<span class="keyword">int</span> left = Arrays.stream(weights).max().getAsInt(), right = Arrays.stream(weights).sum();</span><br><span class="line">    	<span class="keyword">while</span>(left &lt; right) &#123;</span><br><span class="line">    		<span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    		<span class="comment">// need 为需要运送的天数</span></span><br><span class="line">    		<span class="comment">// cur 为当前这一天已经运算的包裹重量之和</span></span><br><span class="line">    		<span class="keyword">int</span> need = <span class="number">1</span>, cur = <span class="number">0</span>;</span><br><span class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> weight : weights) &#123;</span><br><span class="line">    			<span class="keyword">if</span>(cur + weight &gt; mid) &#123;</span><br><span class="line">    				++need;</span><br><span class="line">    				cur = <span class="number">0</span>;</span><br><span class="line">    			&#125;</span><br><span class="line">    			cur += weight;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">if</span>(need &lt;= D) &#123;</span><br><span class="line">    			right = mid;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">else</span> &#123;</span><br><span class="line">    			left = mid + <span class="number">1</span>;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>二分查找</tag>
-        <tag>LeetCode中等</tag>
       </tags>
   </entry>
   <entry>
@@ -144,9 +144,10 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
   <entry>
     <title>LeetCode题目汇总</title>
     <url>/2021/04/28/LeetCode/LeetCode%E9%A2%98%E7%9B%AE%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<p><a href="https://wenjin1997.github.io/2021/04/28/LeetCode/633.%E5%B9%B3%E6%96%B9%E6%95%B0%E4%B9%8B%E5%92%8C/">633.平方数之和</a> #数学 #中等<br />
-<a href="https://wenjin1997.github.io/2021/04/28/LeetCode/1101.%E5%9C%A8D%E5%A4%A9%E5%86%85%E9%80%81%E8%BE%BE%E5%8C%85%E8%A3%B9%E7%9A%84%E8%83%BD%E5%8A%9B/">1101.在D天内送达包裹的能力</a> #二分查找 #中等<br />
-<a href="">1720.解码异或后的数组</a> #位运算 #简单</p>
+    <content><![CDATA[<p><a href="https://wenjin1997.github.io/2021/04/28/LeetCode/633.%E5%B9%B3%E6%96%B9%E6%95%B0%E4%B9%8B%E5%92%8C/">633.平方数之和</a> #中等 #数学<br />
+<a href="https://wenjin1997.github.io/2021/04/28/LeetCode/1101.%E5%9C%A8D%E5%A4%A9%E5%86%85%E9%80%81%E8%BE%BE%E5%8C%85%E8%A3%B9%E7%9A%84%E8%83%BD%E5%8A%9B/">1101.在D天内送达包裹的能力</a> #中等 #二分查找<br />
+<a href="">1468.数组异或操作</a> #简单 #位运算 #数组<br />
+<a href="https://wenjin1997.github.io/2021/05/06/LeetCode/1720.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%95%B0%E7%BB%84/">1720.解码异或后的数组</a> #简单 #位运算</p>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -157,324 +158,133 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
       </tags>
   </entry>
   <entry>
-    <title>【笔记】3.1一个简单的Java应用程序-3.4 变量与常量</title>
-    <url>/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.1%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-3.4%20%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/</url>
-    <content><![CDATA[<h2 id="31-一个简单的java应用程序"><a class="markdownIt-Anchor" href="#31-一个简单的java应用程序"></a> 3.1 一个简单的Java应用程序</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstSample</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;We will not use &#x27;Hello, World!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Java是区分大小写的。</li>
-<li>public为访问修饰符，用于控制程序的其他部分对这段代码的访问级别。</li>
-<li>在Java中，应用程序中的全部内容都必须放置在类中。</li>
-<li><strong>类名的规则</strong>：名字必须以字母开头，后面可以跟字母和数字的任意组合，长度没有限制，但是不能使用Java保留字。<a id="more"></a></li>
-<li>类名的命名方法，可采用<strong>骆驼命名法</strong>，类名以大写字母开头，如果名字由多个单词组成，每个单词的第一个字母应该大写，如CameClass。</li>
-<li>Java虚拟机总是从指定类中的main方法的代码开始执行的。</li>
-<li><strong>每个Java应用程序都必须有一个main方法</strong>，声明格式如下</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		program statements</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在Java中一对大括号表示方法体的开始与结束，每个句子必须使用分号结束。</li>
-<li><code>System.out.print(&quot;Hello&quot;)</code>输出之后不增加换行符。</li>
-</ul>
-<h2 id="32-注释"><a class="markdownIt-Anchor" href="#32-注释"></a> 3.2 注释</h2>
-<p>Java中有三种注释方法：</p>
-<ul>
-<li>使用//，注释内容从//开始到本行结尾。</li>
-<li>使用/*和*/，这之间均为注释内容，可以注释更长的内容。</li>
-<li>文档注释，以/**开始，以*/结束。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This is the first sample program in Core Java CHapter 3</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.01 1997-03-22</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Gary Cornell </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> firstsample;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstSample</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;We will not use &#x27;Hello, World!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="33-数据类型"><a class="markdownIt-Anchor" href="#33-数据类型"></a> 3.3 数据类型</h2>
-<p>Java是一种强类型语言。在Java中，有8种基本数据类型，其中有4种整型、2种浮点类型、1种字符类型和1种用于表示真值的boolean类型。</p>
-<h3 id="331-整型"><a class="markdownIt-Anchor" href="#331-整型"></a> 3.3.1 整型</h3>
-<p>整型有4种类型。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>存储需求</th>
-<th>取值范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>int</td>
-<td>4字节</td>
-<td>-2 147 483 648 ~ 2 147 483 647（刚刚超过20亿）</td>
-</tr>
-<tr>
-<td>short</td>
-<td>2字节</td>
-<td>-32 768 ~ 32 767</td>
-</tr>
-<tr>
-<td>long</td>
-<td>8字节</td>
-<td>-9 223 372 036 854 775 808~9 223 372 036 854 775 807</td>
-</tr>
-<tr>
-<td>byte</td>
-<td>1字节</td>
-<td>-128~127</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>byte和short类型主要用于特定的应用场合。</li>
-<li>长整型数值有一个后缀L或l。例如如果直接运行<code>System.out.println(4000000000000);</code>会出现错误，提示<code>The literal 4000000000000 of type int is out of range</code>，这时要用到长整型数<code>System.out.println(4000000000000L);</code>。</li>
-<li>十六进制数值有一个前缀0X或0x。</li>
-<li>八进制有一个前缀0。</li>
-<li>从Java7开始，加上前缀0b或0B可以写二进制。</li>
-</ul>
-<h3 id="332-浮点类型"><a class="markdownIt-Anchor" href="#332-浮点类型"></a> 3.3.2 浮点类型</h3>
-<p>Java中有两种浮点类型。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>存储需求</th>
-<th>取值范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>float</td>
-<td>4字节</td>
-<td>大约 $\pm$3.402 823 47E+38F(有效位数为6~7位)</td>
-</tr>
-<tr>
-<td>double</td>
-<td>8字节</td>
-<td>大约 $\pm$1.797 693 134 862 315 70E+308(有效位数为15位)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>实际上，只有很少的情况适合使用float类型，例如，需要单精度数的库，或者需要大量存储数据时。</li>
-<li>float类型的数值有一个后缀F或f。没有后缀F的浮点数总是默认为double类型。</li>
-<li>用于表示溢出和出错情况的三个特殊的浮点数值：正无穷大Double.POSITIVE_INFINITY、负无穷大Double.NEGATIVE_INFINITY、NaN（不是一个数字，常量表示为Double.NaN）。</li>
-<li>检测一个特定值是否等于Double.NaN:<code>if(Double.isNaN(x)) // check whether x is &quot;not a number&quot;</code>。</li>
-<li>特别注意：浮点数值不适用与无法接受舍入误差的金融计算，原因是浮点数值采用二进制系统表示，而在二进制系统中无法精确地表示分数1/10。</li>
-</ul>
-<h3 id="333-char类型"><a class="markdownIt-Anchor" href="#333-char类型"></a> 3.3.3 char类型</h3>
-<ul>
-<li>char类型原本用于表示单个字符，如今，有些Unicode字符可以用一个或两个char值描述。</li>
-<li>char类型的字面量值要用单引号括起来，例如‘A’是编码值为65的字符常量。</li>
-<li>转义序列\u还可以出现在加引号的字符常量和字符串之外（而其他所有的转义序列不可以）。</li>
-<li>Unicode转义序列会在解析代码之前得到处理，因此一定要当心注释中的\u。如<code>// \u000A is a newline</code>会报错。</li>
-</ul>
-<h3 id="334-unicode和char类型"><a class="markdownIt-Anchor" href="#334-unicode和char类型"></a> 3.3.4 Unicode和char类型</h3>
-<ul>
-<li>不同编码机制产生了两个问题：一是对于任意给定的代码值，在不同的编码方案下有可能对应不同的字母；而是采用大字符集的语言其编码长度有可能不同。</li>
-<li>在Java中，char类型描述了UTF-16编码中的一个代码单元。</li>
-<li>强烈建议不要在程序中使用char类型，除非确实需要处理UTF-16代码单元。最好将字符串作为抽象数据类型处理。</li>
-</ul>
-<h3 id="335-boolean类型"><a class="markdownIt-Anchor" href="#335-boolean类型"></a> 3.3.5 boolean类型</h3>
-<ul>
-<li>boolean类型有两个值：false和true，用来判定逻辑条件。</li>
-<li>整型值和布尔值之间不能进行转换。</li>
-</ul>
-<h2 id="34-变量与常量"><a class="markdownIt-Anchor" href="#34-变量与常量"></a> 3.4 变量与常量</h2>
-<h3 id="341-声明变量"><a class="markdownIt-Anchor" href="#341-声明变量"></a> 3.4.1 声明变量</h3>
-<ul>
-<li>在Java中，每个变量都有一个类型。</li>
-<li>声明变量的例子：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> salary;</span><br><span class="line"><span class="keyword">int</span> vacationDays;</span><br><span class="line"><span class="keyword">long</span> earthPopulation;</span><br><span class="line"><span class="keyword">boolean</span> done;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>变量名必须是一个以字母开头并由字母和数字构成的序列。</li>
-<li>在Java中，“字母”和“数字”的范围更大。字母包括‘A’~‘Z’、‘a’~‘z’、‘_’、‘$’或在某种语言中表示字母的任何Unicode字符。数字包括‘0’~‘9’和在某种语言中表示数字的任何Unicode字符。</li>
-<li>变量中所有字符都是有意义的，并且大小写敏感。</li>
-<li>如果想知道哪些Unicode字符属于Java中的“字母”，可以使用Character类的isJavaIdentifierStart和isJavaIdentifierPart方法来检查。</li>
-<li>不能使用Java保留字作为变量名。</li>
-<li>在Java9中，单下划线不能作为变量名。</li>
-<li>逐一声明每一个变量可以提高程序的可读性。</li>
-</ul>
-<h3 id="342-变量初始化"><a class="markdownIt-Anchor" href="#342-变量初始化"></a> 3.4.2 变量初始化</h3>
-<ul>
-<li>声明一个变量之后，必须用赋值语句对变量进行显式初始化，千万不要使用未初始化的变量的值。</li>
-<li>有两种方式进行变量初始化：</li>
-</ul>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> vacationDays;</span><br><span class="line">vacationDays = <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> vacationDays = <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在Java中可以将声明放在代码中的任何地方。</li>
-<li>在Java中，变量的声明尽可能地靠近变量第一次使用的地方，这是一种良好的程序编程风格。</li>
-<li>从Java10开始，对于局部变量，如果可以从变量的初始值推断出它的类型，就不再需要声明类型。只需要使用关键字var而无须指定类型。</li>
-</ul>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> vacationDays = <span class="number">12</span>; <span class="comment">// vacationDays is an int</span></span><br></pre></td></tr></table></figure>
-<h3 id="343-常量"><a class="markdownIt-Anchor" href="#343-常量"></a> 3.4.3 常量</h3>
-<ul>
-<li>关键字final表示这个变量只能被赋值一次。一旦赋值之后，就不能够再更改了。习惯上，常量名使用全大写。</li>
-</ul>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constants</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">double</span> CM_PER_INCH = <span class="number">2.54</span>;</span><br><span class="line">		<span class="keyword">double</span> paperWidth = <span class="number">8.5</span>;</span><br><span class="line">		<span class="keyword">double</span> paperHeight = <span class="number">11</span>;</span><br><span class="line">		System.out.println(<span class="string">&quot;Paper size in centimeters: &quot;</span></span><br><span class="line">				+ paperWidth * CM_PER_INCH + <span class="string">&quot; by &quot;</span> + paperHeight * CM_PER_INCH);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>类常量，可以在一个类的多个方法中使用，使用关键字static final设置一个类常量。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constants2</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> CM_PER_INCH = <span class="number">2.54</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">double</span> paperWidth = <span class="number">8.5</span>;</span><br><span class="line">		<span class="keyword">double</span> paperHeight = <span class="number">11</span>;</span><br><span class="line">		System.out.println(<span class="string">&quot;Paper size in centimeters: &quot;</span></span><br><span class="line">				+ paperWidth * CM_PER_INCH + <span class="string">&quot; by &quot;</span> + paperHeight * CM_PER_INCH);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>类常量的定义位于main方法的外部。如果一个类常量被声明为public，那么其他类的方法也可以使用这个常量。</li>
-</ul>
-<h3 id="344-枚举类型"><a class="markdownIt-Anchor" href="#344-枚举类型"></a> 3.4.4 枚举类型</h3>
-<ul>
-<li>枚举类型包括有限个命名的值。例如<code>enum Size &#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;;</code>。</li>
-<li>Size类型的变量只能存储这个类型声明中给定的某个枚举值，或者特殊值null，null表示这个变量没有设置任何值。</li>
-</ul>
-<h2 id="书籍信息"><a class="markdownIt-Anchor" href="#书籍信息"></a> 书籍信息</h2>
-<p><a href="https://book.douban.com/subject/34898994/">《Java核心技术卷I 基础知识》</a></p>
-]]></content>
+    <title>1468.数组异或操作</title>
+    <url>/2021/05/06/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
+<p><a href="https://leetcode-cn.com/problems/xor-operation-in-an-array/">1468.数组异或操作</a></p>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>给你两个整数，n 和 start 。</p>
+<p>数组 nums 定义为：nums[i] = start + 2*i（下标从 0 开始）且 n == nums.length 。</p>
+<p>请返回 nums 中所有元素按位异或（XOR）后得到的结果。<a id="more"></a></p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 5, start &#x3D; 0</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [0, 2, 4, 6, 8]，其中 (0 ^ 2 ^ 4 ^ 6 ^ 8) &#x3D; 8 。</span><br><span class="line">     &quot;^&quot; 为按位异或 XOR 运算符。</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 4, start &#x3D; 3</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [3, 5, 7, 9]，其中 (3 ^ 5 ^ 7 ^ 9) &#x3D; 8.</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 1, start &#x3D; 7</span><br><span class="line">输出：7</span><br></pre></td></tr></table></figure>
+<p>示例 4：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 10, start &#x3D; 5</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+<p>提示：</p>
+<p>1 &lt;= n &lt;= 1000<br />
+0 &lt;= start &lt;= 1000<br />
+n == nums.length</p>
+<h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
+<p>异或运算规则为相同为0，相异为1.<br />
+可以遍历每一个元素，依次做异或运算。</p>
+<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">xorOperation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = start;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result = result ^ (start + <span class="number">2</span> * i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>《Java核心技术卷I 基础知识》</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>《Java核心技术卷I 基础知识》</tag>
-        <tag>笔记</tag>
+        <tag>LeetCode</tag>
+        <tag>位运算</tag>
+        <tag>LeetCode简单</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
-    <title>【笔记】3.5运算符-3.6字符串</title>
-    <url>/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.5%E8%BF%90%E7%AE%97%E7%AC%A6-3.6%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-    <content><![CDATA[<h2 id="35-运算符"><a class="markdownIt-Anchor" href="#35-运算符"></a> 3.5 运算符</h2>
-<h3 id="351-算术运算符"><a class="markdownIt-Anchor" href="#351-算术运算符"></a> 3.5.1 算术运算符</h3>
-<ul>
-<li>算术运算符+、-、*、/表示加、减、乘、除运算。</li>
-<li>当参与/运算的两个操作数都是整数时，表示整数除法，否则，表示浮点除法。</li>
-<li>整数的求余操作%。</li>
-<li>整数被0除将会产生一个异常，而浮点数被0除将会得到无穷大或NaN结果。</li>
-</ul>
-<h3 id="352-数学函数与常量"><a class="markdownIt-Anchor" href="#352-数学函数与常量"></a> 3.5.2 数学函数与常量</h3>
-<ul>
-<li>Math类中的sqrt方法并不处理任何对象，这样的方法被称为静态方法。</li>
-<li>pow方法有两个double类型的参数，其返回结果也为double类型。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseMath</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">double</span> x = <span class="number">4</span>;</span><br><span class="line">		<span class="keyword">double</span> y = Math.sqrt(x);</span><br><span class="line">		<span class="keyword">double</span> z = Math.pow(x, <span class="number">2</span>);</span><br><span class="line">		System.out.println(y); <span class="comment">// prints 2.0</span></span><br><span class="line">		System.out.println(z); <span class="comment">// prints 16.0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>欧拉方法、隐式欧拉方法</title>
+    <url>/2021/03/11/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95%E3%80%81%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>求解如下常微分方程：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mfrac><mrow><mi>d</mi><mi>u</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo>−</mo><mfrac><mi>u</mi><mi>t</mi></mfrac><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>2</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>u</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow></mstyle></mtd></mtr></mtable></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+    \begin{cases}
+        \frac{du}{dt}=-\frac{u}{t},1\leq t\leq 2\\
+        u(1)=1
+    \end{cases}	
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.30003em;vertical-align:-1.400015em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.900015em;"><span style="top:-3.9000150000000002em;"><span class="pstrut" style="height:3.75em;"></span><span class="mord"><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">t</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">u</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">u</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">2</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.400015em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h2 id="精确解"><a class="markdownIt-Anchor" href="#精确解"></a> 精确解</h2>
+<p>将原方程化为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>d</mi><mi>u</mi><mo>+</mo><mi>u</mi><mi>d</mi><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">tdu+udt=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">d</span><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mord mathdefault">d</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，则有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo stretchy="false">(</mo><mi>u</mi><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d(ut)=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，解得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mi>t</mi><mo>=</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">ut=C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>为常数)，代入初始条件得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">C=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，从而该方程的精确解为：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>u</mi><mo>=</mo><mfrac><mn>1</mn><mi>t</mi></mfrac><mo separator="true">,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>2</mn><mo stretchy="false">)</mo><mi mathvariant="normal">.</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+    u=\frac{1}{t},(1\leq t \leq2).
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.30744em;vertical-align:-0.90372em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4037200000000003em;"><span style="top:-3.4037200000000003em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mord">.</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.90372em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
 <a id="more"></a>
-<ul>
-<li>也可以在源文件的顶部加上<code>import static java.lang.Math.*;</code>。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span>  <span class="keyword">static</span> java.lang.Math.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseMath</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">double</span> x = <span class="number">4</span>;</span><br><span class="line">		<span class="keyword">double</span> y = sqrt(x);</span><br><span class="line">		<span class="keyword">double</span> z = pow(x, <span class="number">2</span>);</span><br><span class="line">		System.out.println(y); <span class="comment">// prints 2.0</span></span><br><span class="line">		System.out.println(z); <span class="comment">// prints 16.0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>floorMod方法的目的是解决一个长期存在的有关整数余数的问题。考虑表达式n%2，如果n为负且为奇数，这个表达式则为-1。实际上根据欧几里得规则，余数总是要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ge0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。<code>floorMod(position + adjustment, 12)</code>总会得到一个0~11之间的数。（遗憾的是，对于负除数，floorMod会得到负数结果，不过这种情况在实际中很少出现。）</li>
-<li>三角函数：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Math.sin</span><br><span class="line">Math.cos</span><br><span class="line">Math.tan</span><br><span class="line">Math.atan</span><br><span class="line">Math.atan2</span><br></pre></td></tr></table></figure>
-<ul>
-<li>指数函数及它的反函数</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Math.exp</span><br><span class="line">Math.log</span><br><span class="line">Math.log10</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Java提供两个用于表示<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span>常量的最接近的近似值：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Math.PI</span><br><span class="line">Math.E</span><br></pre></td></tr></table></figure>
-<h3 id="353-数值类型之间的转换"><a class="markdownIt-Anchor" href="#353-数值类型之间的转换"></a> 3.5.3 数值类型之间的转换</h3>
-<ul>
-<li>当用一个二元运算符连接两个值时，先要将两个操作数转换为同一种类型，然后再进行计算。</li>
-</ul>
-<h3 id="354-强制类型转换"><a class="markdownIt-Anchor" href="#354-强制类型转换"></a> 3.5.4 强制类型转换</h3>
-<ul>
-<li>强制类型转换的语法格式是在圆括号中给出想要转换的目标类型，后面紧跟待转换的变量名。</li>
-<li>强制类型转换是通过截断小数部分将浮点值转换为整型。</li>
-<li>对浮点数进行舍入运算时，需要使用Math.round方法。当调用round的时候，仍然需要使用强制类型转换(int)。原因是round方法返回的结果为long类型，由于存在信息丢失的可能性，所以只有使用显式的强制类型转换才能够将long类型转换成int类型。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> xx = <span class="number">9.997</span>;</span><br><span class="line"><span class="keyword">int</span> nxx = (<span class="keyword">int</span>) xx;</span><br><span class="line">System.out.println(nxx); <span class="comment">// prints 9</span></span><br><span class="line"><span class="keyword">int</span> nxx2 = (<span class="keyword">int</span>) Math.round(xx);</span><br><span class="line">System.out.println(nxx2); <span class="comment">// prints 10</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果试图将一个数值从一种类型强制转换为另一种类型，而又超出了目标类型的表示范围，结果就会截断成一个完全不同的值。如<code>(byte)300</code>的实际值为44。</li>
-</ul>
-<h3 id="355-结合赋值和运算符"><a class="markdownIt-Anchor" href="#355-结合赋值和运算符"></a> 3.5.5 结合赋值和运算符</h3>
-<ul>
-<li>可以在赋值中运用二元运算符，如<code>x += 4;</code>等价于<code>x = x + 4;</code>。</li>
-<li>如果运算符得到一个值，其类型与左侧操作数的类型不同，就会发生强制类型转换。如果x是一个int，则<code>x += 3.5;</code>等价于<code>x = (int)(x + 3.5);</code>。</li>
-</ul>
-<h3 id="356-自增与自减运算符"><a class="markdownIt-Anchor" href="#356-自增与自减运算符"></a> 3.5.6 自增与自减运算符</h3>
-<ul>
-<li>自增运算符：n++，自减运算符：n–。</li>
-<li>自增运算符还有一种“前缀”形式：++n。</li>
-<li>后缀和前缀形式都会使变量值加1或减1。但用在表达式中时，二者就有区别了。前缀形式会先完成加1；而后缀形式会使用变量原来的值。</li>
-<li>建议不要在表达式中使用++，因为这样的代码很容易让人困惑，而且会带来烦人的bug。</li>
-</ul>
-<h3 id="357-关系和boolean运算符"><a class="markdownIt-Anchor" href="#357-关系和boolean运算符"></a> 3.5.7 关系和boolean运算符</h3>
-<ul>
-<li>&amp;&amp;和||运算符是按照“短路”方式来求值的。</li>
-<li><code>x != 0 &amp;&amp; 1 / x &gt; x + y // no division by 0</code>，如果x等于0，那么第二部分就不会计算，除以0的错误就不会出现。</li>
-<li>Java支持三元操作符?:，例如<code>x &lt; y ? x : y</code>返回x和y中较小的一个。</li>
-</ul>
-<h3 id="358-位运算符"><a class="markdownIt-Anchor" href="#358-位运算符"></a> 3.5.8 位运算符</h3>
-<ul>
-<li>如果n是一个整数变量，而且用二进制表示的n从右边数第4位为1，则<code>int fourthBitFromRight = (n &amp; 0b1000) / 0b1000;</code>会返回1，否则返回0.</li>
-<li>利用&amp;并结合适当的2的幂，可以把其他位掩掉，而只留下其中的某一位。</li>
-<li>&amp;和|运算符不采用“短路”方式求值。</li>
-<li>需要建立位模式来完成掩码时，&gt;&gt;和&lt;&lt;运算符会很方便，<code>int fourthBitFromRight = (n &amp; (1 &lt;&lt; 3)) &gt;&gt; 3;</code>。</li>
-<li>&gt;&gt;&gt;运算符会用0填充高位，这与&gt;&gt;不同，它会用符号位填充高位。</li>
-</ul>
-<h3 id="359-括号与运算符级别"><a class="markdownIt-Anchor" href="#359-括号与运算符级别"></a> 3.5.9 括号与运算符级别</h3>
-<ul>
-<li>注意+=是右结合运算符。</li>
-</ul>
-<h2 id="36-字符串"><a class="markdownIt-Anchor" href="#36-字符串"></a> 3.6 字符串</h2>
-<ul>
-<li>从概念上讲，Java字符串就是Unicode字符序列。</li>
-<li>每个双引号括起来的字符串都是String类的一个实例。</li>
-</ul>
-<h3 id="361-子串"><a class="markdownIt-Anchor" href="#361-子串"></a> 3.6.1 子串</h3>
-<ul>
-<li>String类的substring方法可以从一个较大的字符串中提取出一个子串。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubString</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		String greeting = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">		String s = greeting.substring(<span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">		System.out.println(s); <span class="comment">// prints Hel</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>substring方法的第二个参数是不想复制的第一个位置。这样的工作方式有一个优点，容易计算子串的长度。字符串s.substring(a,b)的长度为b-a。</li>
-</ul>
-<h3 id="362-拼接"><a class="markdownIt-Anchor" href="#362-拼接"></a> 3.6.2 拼接</h3>
-<ul>
-<li>Java语言允许使用+号连接两个字符串。</li>
-<li>当一个字符串与一个非字符串的值进行拼接时，后者会转换成字符串。</li>
-<li>如果需要把多个字符串放在一起，用一个界定符分隔，可以使用静态join方法。</li>
-<li>在Java11中，提供了一个repeat方法。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(String.join(<span class="string">&quot;/&quot;</span>, <span class="string">&quot;S&quot;</span>, <span class="string">&quot;M&quot;</span>, <span class="string">&quot;L&quot;</span>)); <span class="comment">// prints S/M/L</span></span><br><span class="line">System.out.println(<span class="string">&quot;Java&quot;</span>.repeat(<span class="number">3</span>)); <span class="comment">// prints JavaJavaJava</span></span><br></pre></td></tr></table></figure>
-<h3 id="363-不可变字符串"><a class="markdownIt-Anchor" href="#363-不可变字符串"></a> 3.6.3 不可变字符串</h3>
-<ul>
-<li>如何修改字符串？可以提取想要保留的子串，再与希望替换的字符拼接,<code>greeting = greeting.substring(0, 3) + &quot;p!&quot;;</code>。</li>
-<li>由于不能修改Java字符串中的单个字符，所以在Java文档中将String类对象称为是不可变的，但是，可以修改字符串变量。</li>
-<li>不可变字符串有一个优点：编译器可以让字符串共享。</li>
-</ul>
-<h3 id="364-检测字符串是否相等"><a class="markdownIt-Anchor" href="#364-检测字符串是否相等"></a> 3.6.4 检测字符串是否相等</h3>
-<ul>
-<li><code>s.equals(t)</code>检测两个字符串是否相等，s与t可以是字符串变量，也可以是字符串字面量，例如<code>&quot;Hello&quot;.equals(greeting)</code>。</li>
-<li>检测两个字符串是否相等，而不区分大小写</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Hello&quot;</span>.equalsIgnoreCase(<span class="string">&quot;hello&quot;</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>一定不要使用==运算检测两个字符串是否相等！这个运算符只能够确定两个字符串是否存放在同一个位置上。</li>
-</ul>
-<h3 id="365-空串与null串"><a class="markdownIt-Anchor" href="#365-空串与null串"></a> 3.6.5 空串与Null串</h3>
-<ul>
-<li>空串&quot;&quot;是长度为0的字符串，有自己的串长度（0）和内容（空）。检查一个字符串是否为空：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(str.length() &#x3D;&#x3D; 0)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(str.equals(&quot;&quot;))</span><br></pre></td></tr></table></figure>
-<ul>
-<li>null，表示目前没有任何对象与该变量关联。检查一个字符串是否为null：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(str &#x3D;&#x3D; null)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>检查一个字符串既不是null也不是空串，需要首先检查str不为null。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(str !&#x3D; null &amp;&amp; str.length() !&#x3D; 0)</span><br></pre></td></tr></table></figure>
-<h3 id="366-码点与代码单元"><a class="markdownIt-Anchor" href="#366-码点与代码单元"></a> 3.6.6 码点与代码单元</h3>
-<ul>
-<li>要想得到实际的长度，即码点数量，可以调用：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int cpCount &#x3D; greeting.codePointCount(0, greeting.length());</span><br></pre></td></tr></table></figure>
-<h3 id="369-构建字符串"><a class="markdownIt-Anchor" href="#369-构建字符串"></a> 3.6.9 构建字符串</h3>
-<ul>
-<li>如果需要许多小段的字符串来构建一个字符串，按照下列步骤进行。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">StringBuilder builder &#x3D; new StringBuilder();</span><br><span class="line">builder.append(ch); &#x2F;&#x2F; appends a single character</span><br><span class="line">builder.append(str); &#x2F;&#x2F; appends a string</span><br><span class="line">String completedString &#x3D; builder.toString();</span><br></pre></td></tr></table></figure>]]></content>
+<h2 id="欧拉方法"><a class="markdownIt-Anchor" href="#欧拉方法"></a> 欧拉方法</h2>
+<p>代入欧拉格式得：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>u</mi><mi>i</mi></msub><mo>+</mo><mi>h</mi><mi>f</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>u</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><msub><mi>u</mi><mi>i</mi></msub><mo>+</mo><mi>h</mi><mo stretchy="false">(</mo><mo>−</mo><mfrac><msub><mi>u</mi><mi>i</mi></msub><msub><mi>t</mi><mi>i</mi></msub></mfrac><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+    u_{i+1}=u_{i}+hf(t_i,u_i)=u_i+h(-\frac{u_i}{t_i})
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.24356em;vertical-align:-0.87178em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37178em;"><span style="top:-3.37178em;"><span class="pstrut" style="height:3.10756em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1075599999999999em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.87178em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h2 id="隐式欧拉方法"><a class="markdownIt-Anchor" href="#隐式欧拉方法"></a> 隐式欧拉方法</h2>
+<p>由隐式欧拉格式得：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>u</mi><mi>i</mi></msub><mo>+</mo><mi>h</mi><mi>f</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><mo>=</mo><msub><mi>u</mi><mi>i</mi></msub><mo>+</mo><mi>h</mi><mo stretchy="false">(</mo><mo>−</mo><mfrac><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mfrac><mo stretchy="false">)</mo><mi mathvariant="normal">，</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+    u_{i+1}=u_{i}+hf(t_{i+1},u_{i+1})=u_i+h(-\frac{u_{i+1}}{t_{i+1}})，
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.301891em;vertical-align:-0.9009455em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4009455em;"><span style="top:-3.4009454999999997em;"><span class="pstrut" style="height:3.10756em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1075599999999999em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.894331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mord cjk_fallback">，</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9009455em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>移项化简可得：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mfrac><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>u</mi><mi>i</mi></msub></mrow><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>+</mo><mi>h</mi></mrow></mfrac></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+    u_{i+1}=\frac{t_{i+1}u_i}{t_{i+1}+h}
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.486411em;vertical-align:-0.9932055em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4932055em;"><span style="top:-3.4932055em;"><span class="pstrut" style="height:3.29208em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.29208em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.894331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9932055em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h2 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h2>
+<p>根据上述推导，用python编写程序，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># implict euler method</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># the right term of the ODE</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">t, u</span>):</span></span><br><span class="line">    f = -u/t</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line"></span><br><span class="line"><span class="comment"># the exact solution of ODE </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fexact</span>(<span class="params">t</span>):</span></span><br><span class="line">    fexact = <span class="number">1</span>/t</span><br><span class="line">    <span class="keyword">return</span> fexact</span><br><span class="line"></span><br><span class="line">N = <span class="number">100</span></span><br><span class="line">t_n = <span class="number">2.0</span></span><br><span class="line">dt = (t_n - <span class="number">1.0</span>) / N</span><br><span class="line">t = np.arange(<span class="number">1.0</span>, t_n + dt, dt)</span><br><span class="line">u_euler = np.arange(<span class="number">1.0</span>, t_n + dt, dt)</span><br><span class="line">u = np.arange(<span class="number">1.0</span>, t_n + dt, dt)</span><br><span class="line">u_true = np.arange(<span class="number">1.0</span>, t_n + dt, dt)</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; N:</span><br><span class="line">    t[i+<span class="number">1</span>] = t[i] + dt</span><br><span class="line">    u_euler[i+<span class="number">1</span>] = u_euler[i] + dt * f(t[i], u_euler[i])</span><br><span class="line">    u[i+<span class="number">1</span>] = (u[i] * t[i+<span class="number">1</span>])/(t[i+<span class="number">1</span>] + dt)</span><br><span class="line">    u_true[i+<span class="number">1</span>] = fexact(t[i+<span class="number">1</span>])</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">err_euler = <span class="built_in">max</span>(<span class="built_in">abs</span>(u_euler - u_true))</span><br><span class="line">err_implict_euler = <span class="built_in">max</span>(<span class="built_in">abs</span>(u - u_true))</span><br><span class="line">print(<span class="string">&quot;The error of euler method: &quot;</span>,err_euler)</span><br><span class="line">print(<span class="string">&quot;The error of implict euler method: &quot;</span>,err_implict_euler)</span><br><span class="line"></span><br><span class="line"><span class="comment"># begin drawing</span></span><br><span class="line">plt.title(<span class="string">&#x27;Result&#x27;</span>)</span><br><span class="line">plt.plot(t, u_euler, color=<span class="string">&#x27;green&#x27;</span>, label=<span class="string">&#x27;euler&#x27;</span>)</span><br><span class="line">plt.plot(t, u, color=<span class="string">&#x27;blue&#x27;</span>, label=<span class="string">&#x27;implict euler&#x27;</span>)</span><br><span class="line">plt.plot(t, u_true, color=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;exact&#x27;</span>)</span><br><span class="line">plt.legend() <span class="comment"># show the legend</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&#x27;t&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;u&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="结果分析"><a class="markdownIt-Anchor" href="#结果分析"></a> 结果分析</h2>
+<p>当取<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>=</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">h=0.01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">1</span></span></span></span>时，此时欧拉方法的误差为0.02631578947368396，隐式欧拉方法的误差为0.023809523809523836，结果如下图所示：<br />
+<img src="https://i.loli.net/2021/03/11/pBG2osfcJ3tlvWZ.png" alt="result.png" /><br />
+当取不同<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span></span></span></span>，得到的误差如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span></span></span></span></th>
+<th>欧拉方法</th>
+<th>隐式欧拉方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td>0.16666666666666663</td>
+<td>0.09999999999999998</td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{4}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td>0.0714285714285714</td>
+<td>0.05555555555555558</td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{8}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td>0.033333333333333215</td>
+<td>0.02941176470588236</td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>16</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">6</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td>0.01612903225806467</td>
+<td>0.015151515151515138</td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>32</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td>0.00793650793650813</td>
+<td>0.007692307692307665</td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>64</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{64}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span><span class="mord mtight">4</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td>0.0039370078740155193</td>
+<td>0.003875968992248069</td>
+</tr>
+</tbody>
+</table>
+]]></content>
       <categories>
-        <category>《Java核心技术卷I 基础知识》</category>
+        <category>微分方程数值解</category>
       </categories>
       <tags>
-        <tag>《Java核心技术卷I 基础知识》</tag>
-        <tag>笔记</tag>
+        <tag>欧拉方法</tag>
+        <tag>隐式欧拉方法</tag>
+        <tag>数值分析</tag>
+        <tag>微分方程数值解</tag>
       </tags>
   </entry>
   <entry>
@@ -1056,102 +866,329 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
         <category>《算法》</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>Algorithms</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
-    <title>欧拉方法、隐式欧拉方法</title>
-    <url>/2021/03/11/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95%E3%80%81%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>求解如下常微分方程：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mfrac><mrow><mi>d</mi><mi>u</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo>−</mo><mfrac><mi>u</mi><mi>t</mi></mfrac><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>2</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>u</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow></mstyle></mtd></mtr></mtable></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-    \begin{cases}
-        \frac{du}{dt}=-\frac{u}{t},1\leq t\leq 2\\
-        u(1)=1
-    \end{cases}	
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.30003em;vertical-align:-1.400015em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.900015em;"><span style="top:-3.9000150000000002em;"><span class="pstrut" style="height:3.75em;"></span><span class="mord"><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">t</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">u</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">u</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">2</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.400015em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h2 id="精确解"><a class="markdownIt-Anchor" href="#精确解"></a> 精确解</h2>
-<p>将原方程化为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>d</mi><mi>u</mi><mo>+</mo><mi>u</mi><mi>d</mi><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">tdu+udt=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">d</span><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mord mathdefault">d</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，则有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo stretchy="false">(</mo><mi>u</mi><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d(ut)=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，解得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mi>t</mi><mo>=</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">ut=C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>为常数)，代入初始条件得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">C=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，从而该方程的精确解为：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>u</mi><mo>=</mo><mfrac><mn>1</mn><mi>t</mi></mfrac><mo separator="true">,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>2</mn><mo stretchy="false">)</mo><mi mathvariant="normal">.</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-    u=\frac{1}{t},(1\leq t \leq2).
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.30744em;vertical-align:-0.90372em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4037200000000003em;"><span style="top:-3.4037200000000003em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mord">.</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.90372em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<a id="more"></a>
-<h2 id="欧拉方法"><a class="markdownIt-Anchor" href="#欧拉方法"></a> 欧拉方法</h2>
-<p>代入欧拉格式得：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>u</mi><mi>i</mi></msub><mo>+</mo><mi>h</mi><mi>f</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>u</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><msub><mi>u</mi><mi>i</mi></msub><mo>+</mo><mi>h</mi><mo stretchy="false">(</mo><mo>−</mo><mfrac><msub><mi>u</mi><mi>i</mi></msub><msub><mi>t</mi><mi>i</mi></msub></mfrac><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-    u_{i+1}=u_{i}+hf(t_i,u_i)=u_i+h(-\frac{u_i}{t_i})
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.24356em;vertical-align:-0.87178em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37178em;"><span style="top:-3.37178em;"><span class="pstrut" style="height:3.10756em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1075599999999999em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.87178em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h2 id="隐式欧拉方法"><a class="markdownIt-Anchor" href="#隐式欧拉方法"></a> 隐式欧拉方法</h2>
-<p>由隐式欧拉格式得：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>u</mi><mi>i</mi></msub><mo>+</mo><mi>h</mi><mi>f</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><mo>=</mo><msub><mi>u</mi><mi>i</mi></msub><mo>+</mo><mi>h</mi><mo stretchy="false">(</mo><mo>−</mo><mfrac><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mfrac><mo stretchy="false">)</mo><mi mathvariant="normal">，</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-    u_{i+1}=u_{i}+hf(t_{i+1},u_{i+1})=u_i+h(-\frac{u_{i+1}}{t_{i+1}})，
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.301891em;vertical-align:-0.9009455em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4009455em;"><span style="top:-3.4009454999999997em;"><span class="pstrut" style="height:3.10756em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1075599999999999em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.894331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mord cjk_fallback">，</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9009455em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<p>移项化简可得：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mi>u</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mfrac><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>u</mi><mi>i</mi></msub></mrow><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>+</mo><mi>h</mi></mrow></mfrac></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-    u_{i+1}=\frac{t_{i+1}u_i}{t_{i+1}+h}
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.486411em;vertical-align:-0.9932055em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4932055em;"><span style="top:-3.4932055em;"><span class="pstrut" style="height:3.29208em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.29208em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">h</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.894331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9932055em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h2 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h2>
-<p>根据上述推导，用python编写程序，代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># implict euler method</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># the right term of the ODE</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">t, u</span>):</span></span><br><span class="line">    f = -u/t</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line"></span><br><span class="line"><span class="comment"># the exact solution of ODE </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fexact</span>(<span class="params">t</span>):</span></span><br><span class="line">    fexact = <span class="number">1</span>/t</span><br><span class="line">    <span class="keyword">return</span> fexact</span><br><span class="line"></span><br><span class="line">N = <span class="number">100</span></span><br><span class="line">t_n = <span class="number">2.0</span></span><br><span class="line">dt = (t_n - <span class="number">1.0</span>) / N</span><br><span class="line">t = np.arange(<span class="number">1.0</span>, t_n + dt, dt)</span><br><span class="line">u_euler = np.arange(<span class="number">1.0</span>, t_n + dt, dt)</span><br><span class="line">u = np.arange(<span class="number">1.0</span>, t_n + dt, dt)</span><br><span class="line">u_true = np.arange(<span class="number">1.0</span>, t_n + dt, dt)</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; N:</span><br><span class="line">    t[i+<span class="number">1</span>] = t[i] + dt</span><br><span class="line">    u_euler[i+<span class="number">1</span>] = u_euler[i] + dt * f(t[i], u_euler[i])</span><br><span class="line">    u[i+<span class="number">1</span>] = (u[i] * t[i+<span class="number">1</span>])/(t[i+<span class="number">1</span>] + dt)</span><br><span class="line">    u_true[i+<span class="number">1</span>] = fexact(t[i+<span class="number">1</span>])</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">err_euler = <span class="built_in">max</span>(<span class="built_in">abs</span>(u_euler - u_true))</span><br><span class="line">err_implict_euler = <span class="built_in">max</span>(<span class="built_in">abs</span>(u - u_true))</span><br><span class="line">print(<span class="string">&quot;The error of euler method: &quot;</span>,err_euler)</span><br><span class="line">print(<span class="string">&quot;The error of implict euler method: &quot;</span>,err_implict_euler)</span><br><span class="line"></span><br><span class="line"><span class="comment"># begin drawing</span></span><br><span class="line">plt.title(<span class="string">&#x27;Result&#x27;</span>)</span><br><span class="line">plt.plot(t, u_euler, color=<span class="string">&#x27;green&#x27;</span>, label=<span class="string">&#x27;euler&#x27;</span>)</span><br><span class="line">plt.plot(t, u, color=<span class="string">&#x27;blue&#x27;</span>, label=<span class="string">&#x27;implict euler&#x27;</span>)</span><br><span class="line">plt.plot(t, u_true, color=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;exact&#x27;</span>)</span><br><span class="line">plt.legend() <span class="comment"># show the legend</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&#x27;t&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;u&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h2 id="结果分析"><a class="markdownIt-Anchor" href="#结果分析"></a> 结果分析</h2>
-<p>当取<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>=</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">h=0.01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">1</span></span></span></span>时，此时欧拉方法的误差为0.02631578947368396，隐式欧拉方法的误差为0.023809523809523836，结果如下图所示：<br />
-<img src="https://i.loli.net/2021/03/11/pBG2osfcJ3tlvWZ.png" alt="result.png" /><br />
-当取不同<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span></span></span></span>，得到的误差如下表所示：</p>
+    <title>【笔记】3.1一个简单的Java应用程序-3.4 变量与常量</title>
+    <url>/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.1%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-3.4%20%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/</url>
+    <content><![CDATA[<h2 id="31-一个简单的java应用程序"><a class="markdownIt-Anchor" href="#31-一个简单的java应用程序"></a> 3.1 一个简单的Java应用程序</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstSample</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;We will not use &#x27;Hello, World!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Java是区分大小写的。</li>
+<li>public为访问修饰符，用于控制程序的其他部分对这段代码的访问级别。</li>
+<li>在Java中，应用程序中的全部内容都必须放置在类中。</li>
+<li><strong>类名的规则</strong>：名字必须以字母开头，后面可以跟字母和数字的任意组合，长度没有限制，但是不能使用Java保留字。<a id="more"></a></li>
+<li>类名的命名方法，可采用<strong>骆驼命名法</strong>，类名以大写字母开头，如果名字由多个单词组成，每个单词的第一个字母应该大写，如CameClass。</li>
+<li>Java虚拟机总是从指定类中的main方法的代码开始执行的。</li>
+<li><strong>每个Java应用程序都必须有一个main方法</strong>，声明格式如下</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		program statements</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在Java中一对大括号表示方法体的开始与结束，每个句子必须使用分号结束。</li>
+<li><code>System.out.print(&quot;Hello&quot;)</code>输出之后不增加换行符。</li>
+</ul>
+<h2 id="32-注释"><a class="markdownIt-Anchor" href="#32-注释"></a> 3.2 注释</h2>
+<p>Java中有三种注释方法：</p>
+<ul>
+<li>使用//，注释内容从//开始到本行结尾。</li>
+<li>使用/*和*/，这之间均为注释内容，可以注释更长的内容。</li>
+<li>文档注释，以/**开始，以*/结束。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This is the first sample program in Core Java CHapter 3</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.01 1997-03-22</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Gary Cornell </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> firstsample;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstSample</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;We will not use &#x27;Hello, World!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="33-数据类型"><a class="markdownIt-Anchor" href="#33-数据类型"></a> 3.3 数据类型</h2>
+<p>Java是一种强类型语言。在Java中，有8种基本数据类型，其中有4种整型、2种浮点类型、1种字符类型和1种用于表示真值的boolean类型。</p>
+<h3 id="331-整型"><a class="markdownIt-Anchor" href="#331-整型"></a> 3.3.1 整型</h3>
+<p>整型有4种类型。</p>
 <table>
 <thead>
 <tr>
-<th><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span></span></span></span></th>
-<th>欧拉方法</th>
-<th>隐式欧拉方法</th>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td>0.16666666666666663</td>
-<td>0.09999999999999998</td>
+<td>int</td>
+<td>4字节</td>
+<td>-2 147 483 648 ~ 2 147 483 647（刚刚超过20亿）</td>
 </tr>
 <tr>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{4}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td>0.0714285714285714</td>
-<td>0.05555555555555558</td>
+<td>short</td>
+<td>2字节</td>
+<td>-32 768 ~ 32 767</td>
 </tr>
 <tr>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{8}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td>0.033333333333333215</td>
-<td>0.02941176470588236</td>
+<td>long</td>
+<td>8字节</td>
+<td>-9 223 372 036 854 775 808~9 223 372 036 854 775 807</td>
 </tr>
 <tr>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>16</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">6</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td>0.01612903225806467</td>
-<td>0.015151515151515138</td>
-</tr>
-<tr>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>32</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td>0.00793650793650813</td>
-<td>0.007692307692307665</td>
-</tr>
-<tr>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>64</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{64}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span><span class="mord mtight">4</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td>0.0039370078740155193</td>
-<td>0.003875968992248069</td>
+<td>byte</td>
+<td>1字节</td>
+<td>-128~127</td>
 </tr>
 </tbody>
 </table>
+<ul>
+<li>byte和short类型主要用于特定的应用场合。</li>
+<li>长整型数值有一个后缀L或l。例如如果直接运行<code>System.out.println(4000000000000);</code>会出现错误，提示<code>The literal 4000000000000 of type int is out of range</code>，这时要用到长整型数<code>System.out.println(4000000000000L);</code>。</li>
+<li>十六进制数值有一个前缀0X或0x。</li>
+<li>八进制有一个前缀0。</li>
+<li>从Java7开始，加上前缀0b或0B可以写二进制。</li>
+</ul>
+<h3 id="332-浮点类型"><a class="markdownIt-Anchor" href="#332-浮点类型"></a> 3.3.2 浮点类型</h3>
+<p>Java中有两种浮点类型。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>4字节</td>
+<td>大约 $\pm$3.402 823 47E+38F(有效位数为6~7位)</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>大约 $\pm$1.797 693 134 862 315 70E+308(有效位数为15位)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>实际上，只有很少的情况适合使用float类型，例如，需要单精度数的库，或者需要大量存储数据时。</li>
+<li>float类型的数值有一个后缀F或f。没有后缀F的浮点数总是默认为double类型。</li>
+<li>用于表示溢出和出错情况的三个特殊的浮点数值：正无穷大Double.POSITIVE_INFINITY、负无穷大Double.NEGATIVE_INFINITY、NaN（不是一个数字，常量表示为Double.NaN）。</li>
+<li>检测一个特定值是否等于Double.NaN:<code>if(Double.isNaN(x)) // check whether x is &quot;not a number&quot;</code>。</li>
+<li>特别注意：浮点数值不适用与无法接受舍入误差的金融计算，原因是浮点数值采用二进制系统表示，而在二进制系统中无法精确地表示分数1/10。</li>
+</ul>
+<h3 id="333-char类型"><a class="markdownIt-Anchor" href="#333-char类型"></a> 3.3.3 char类型</h3>
+<ul>
+<li>char类型原本用于表示单个字符，如今，有些Unicode字符可以用一个或两个char值描述。</li>
+<li>char类型的字面量值要用单引号括起来，例如‘A’是编码值为65的字符常量。</li>
+<li>转义序列\u还可以出现在加引号的字符常量和字符串之外（而其他所有的转义序列不可以）。</li>
+<li>Unicode转义序列会在解析代码之前得到处理，因此一定要当心注释中的\u。如<code>// \u000A is a newline</code>会报错。</li>
+</ul>
+<h3 id="334-unicode和char类型"><a class="markdownIt-Anchor" href="#334-unicode和char类型"></a> 3.3.4 Unicode和char类型</h3>
+<ul>
+<li>不同编码机制产生了两个问题：一是对于任意给定的代码值，在不同的编码方案下有可能对应不同的字母；而是采用大字符集的语言其编码长度有可能不同。</li>
+<li>在Java中，char类型描述了UTF-16编码中的一个代码单元。</li>
+<li>强烈建议不要在程序中使用char类型，除非确实需要处理UTF-16代码单元。最好将字符串作为抽象数据类型处理。</li>
+</ul>
+<h3 id="335-boolean类型"><a class="markdownIt-Anchor" href="#335-boolean类型"></a> 3.3.5 boolean类型</h3>
+<ul>
+<li>boolean类型有两个值：false和true，用来判定逻辑条件。</li>
+<li>整型值和布尔值之间不能进行转换。</li>
+</ul>
+<h2 id="34-变量与常量"><a class="markdownIt-Anchor" href="#34-变量与常量"></a> 3.4 变量与常量</h2>
+<h3 id="341-声明变量"><a class="markdownIt-Anchor" href="#341-声明变量"></a> 3.4.1 声明变量</h3>
+<ul>
+<li>在Java中，每个变量都有一个类型。</li>
+<li>声明变量的例子：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> salary;</span><br><span class="line"><span class="keyword">int</span> vacationDays;</span><br><span class="line"><span class="keyword">long</span> earthPopulation;</span><br><span class="line"><span class="keyword">boolean</span> done;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>变量名必须是一个以字母开头并由字母和数字构成的序列。</li>
+<li>在Java中，“字母”和“数字”的范围更大。字母包括‘A’~‘Z’、‘a’~‘z’、‘_’、‘$’或在某种语言中表示字母的任何Unicode字符。数字包括‘0’~‘9’和在某种语言中表示数字的任何Unicode字符。</li>
+<li>变量中所有字符都是有意义的，并且大小写敏感。</li>
+<li>如果想知道哪些Unicode字符属于Java中的“字母”，可以使用Character类的isJavaIdentifierStart和isJavaIdentifierPart方法来检查。</li>
+<li>不能使用Java保留字作为变量名。</li>
+<li>在Java9中，单下划线不能作为变量名。</li>
+<li>逐一声明每一个变量可以提高程序的可读性。</li>
+</ul>
+<h3 id="342-变量初始化"><a class="markdownIt-Anchor" href="#342-变量初始化"></a> 3.4.2 变量初始化</h3>
+<ul>
+<li>声明一个变量之后，必须用赋值语句对变量进行显式初始化，千万不要使用未初始化的变量的值。</li>
+<li>有两种方式进行变量初始化：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> vacationDays;</span><br><span class="line">vacationDays = <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> vacationDays = <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在Java中可以将声明放在代码中的任何地方。</li>
+<li>在Java中，变量的声明尽可能地靠近变量第一次使用的地方，这是一种良好的程序编程风格。</li>
+<li>从Java10开始，对于局部变量，如果可以从变量的初始值推断出它的类型，就不再需要声明类型。只需要使用关键字var而无须指定类型。</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> vacationDays = <span class="number">12</span>; <span class="comment">// vacationDays is an int</span></span><br></pre></td></tr></table></figure>
+<h3 id="343-常量"><a class="markdownIt-Anchor" href="#343-常量"></a> 3.4.3 常量</h3>
+<ul>
+<li>关键字final表示这个变量只能被赋值一次。一旦赋值之后，就不能够再更改了。习惯上，常量名使用全大写。</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constants</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">double</span> CM_PER_INCH = <span class="number">2.54</span>;</span><br><span class="line">		<span class="keyword">double</span> paperWidth = <span class="number">8.5</span>;</span><br><span class="line">		<span class="keyword">double</span> paperHeight = <span class="number">11</span>;</span><br><span class="line">		System.out.println(<span class="string">&quot;Paper size in centimeters: &quot;</span></span><br><span class="line">				+ paperWidth * CM_PER_INCH + <span class="string">&quot; by &quot;</span> + paperHeight * CM_PER_INCH);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类常量，可以在一个类的多个方法中使用，使用关键字static final设置一个类常量。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constants2</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> CM_PER_INCH = <span class="number">2.54</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">double</span> paperWidth = <span class="number">8.5</span>;</span><br><span class="line">		<span class="keyword">double</span> paperHeight = <span class="number">11</span>;</span><br><span class="line">		System.out.println(<span class="string">&quot;Paper size in centimeters: &quot;</span></span><br><span class="line">				+ paperWidth * CM_PER_INCH + <span class="string">&quot; by &quot;</span> + paperHeight * CM_PER_INCH);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类常量的定义位于main方法的外部。如果一个类常量被声明为public，那么其他类的方法也可以使用这个常量。</li>
+</ul>
+<h3 id="344-枚举类型"><a class="markdownIt-Anchor" href="#344-枚举类型"></a> 3.4.4 枚举类型</h3>
+<ul>
+<li>枚举类型包括有限个命名的值。例如<code>enum Size &#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;;</code>。</li>
+<li>Size类型的变量只能存储这个类型声明中给定的某个枚举值，或者特殊值null，null表示这个变量没有设置任何值。</li>
+</ul>
+<h2 id="书籍信息"><a class="markdownIt-Anchor" href="#书籍信息"></a> 书籍信息</h2>
+<p><a href="https://book.douban.com/subject/34898994/">《Java核心技术卷I 基础知识》</a></p>
 ]]></content>
       <categories>
-        <category>微分方程数值解</category>
+        <category>《Java核心技术卷I 基础知识》</category>
       </categories>
       <tags>
-        <tag>欧拉方法</tag>
-        <tag>隐式欧拉方法</tag>
-        <tag>数值分析</tag>
-        <tag>微分方程数值解</tag>
+        <tag>笔记</tag>
+        <tag>《Java核心技术卷I 基础知识》</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【笔记】3.5运算符-3.6字符串</title>
+    <url>/2021/04/16/coreJava1/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%913.5%E8%BF%90%E7%AE%97%E7%AC%A6-3.6%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h2 id="35-运算符"><a class="markdownIt-Anchor" href="#35-运算符"></a> 3.5 运算符</h2>
+<h3 id="351-算术运算符"><a class="markdownIt-Anchor" href="#351-算术运算符"></a> 3.5.1 算术运算符</h3>
+<ul>
+<li>算术运算符+、-、*、/表示加、减、乘、除运算。</li>
+<li>当参与/运算的两个操作数都是整数时，表示整数除法，否则，表示浮点除法。</li>
+<li>整数的求余操作%。</li>
+<li>整数被0除将会产生一个异常，而浮点数被0除将会得到无穷大或NaN结果。</li>
+</ul>
+<h3 id="352-数学函数与常量"><a class="markdownIt-Anchor" href="#352-数学函数与常量"></a> 3.5.2 数学函数与常量</h3>
+<ul>
+<li>Math类中的sqrt方法并不处理任何对象，这样的方法被称为静态方法。</li>
+<li>pow方法有两个double类型的参数，其返回结果也为double类型。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseMath</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">double</span> x = <span class="number">4</span>;</span><br><span class="line">		<span class="keyword">double</span> y = Math.sqrt(x);</span><br><span class="line">		<span class="keyword">double</span> z = Math.pow(x, <span class="number">2</span>);</span><br><span class="line">		System.out.println(y); <span class="comment">// prints 2.0</span></span><br><span class="line">		System.out.println(z); <span class="comment">// prints 16.0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>也可以在源文件的顶部加上<code>import static java.lang.Math.*;</code>。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span>  <span class="keyword">static</span> java.lang.Math.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseMath</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">double</span> x = <span class="number">4</span>;</span><br><span class="line">		<span class="keyword">double</span> y = sqrt(x);</span><br><span class="line">		<span class="keyword">double</span> z = pow(x, <span class="number">2</span>);</span><br><span class="line">		System.out.println(y); <span class="comment">// prints 2.0</span></span><br><span class="line">		System.out.println(z); <span class="comment">// prints 16.0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>floorMod方法的目的是解决一个长期存在的有关整数余数的问题。考虑表达式n%2，如果n为负且为奇数，这个表达式则为-1。实际上根据欧几里得规则，余数总是要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ge0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。<code>floorMod(position + adjustment, 12)</code>总会得到一个0~11之间的数。（遗憾的是，对于负除数，floorMod会得到负数结果，不过这种情况在实际中很少出现。）</li>
+<li>三角函数：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Math.sin</span><br><span class="line">Math.cos</span><br><span class="line">Math.tan</span><br><span class="line">Math.atan</span><br><span class="line">Math.atan2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指数函数及它的反函数</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Math.exp</span><br><span class="line">Math.log</span><br><span class="line">Math.log10</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Java提供两个用于表示<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span>常量的最接近的近似值：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Math.PI</span><br><span class="line">Math.E</span><br></pre></td></tr></table></figure>
+<h3 id="353-数值类型之间的转换"><a class="markdownIt-Anchor" href="#353-数值类型之间的转换"></a> 3.5.3 数值类型之间的转换</h3>
+<ul>
+<li>当用一个二元运算符连接两个值时，先要将两个操作数转换为同一种类型，然后再进行计算。</li>
+</ul>
+<h3 id="354-强制类型转换"><a class="markdownIt-Anchor" href="#354-强制类型转换"></a> 3.5.4 强制类型转换</h3>
+<ul>
+<li>强制类型转换的语法格式是在圆括号中给出想要转换的目标类型，后面紧跟待转换的变量名。</li>
+<li>强制类型转换是通过截断小数部分将浮点值转换为整型。</li>
+<li>对浮点数进行舍入运算时，需要使用Math.round方法。当调用round的时候，仍然需要使用强制类型转换(int)。原因是round方法返回的结果为long类型，由于存在信息丢失的可能性，所以只有使用显式的强制类型转换才能够将long类型转换成int类型。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> xx = <span class="number">9.997</span>;</span><br><span class="line"><span class="keyword">int</span> nxx = (<span class="keyword">int</span>) xx;</span><br><span class="line">System.out.println(nxx); <span class="comment">// prints 9</span></span><br><span class="line"><span class="keyword">int</span> nxx2 = (<span class="keyword">int</span>) Math.round(xx);</span><br><span class="line">System.out.println(nxx2); <span class="comment">// prints 10</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果试图将一个数值从一种类型强制转换为另一种类型，而又超出了目标类型的表示范围，结果就会截断成一个完全不同的值。如<code>(byte)300</code>的实际值为44。</li>
+</ul>
+<h3 id="355-结合赋值和运算符"><a class="markdownIt-Anchor" href="#355-结合赋值和运算符"></a> 3.5.5 结合赋值和运算符</h3>
+<ul>
+<li>可以在赋值中运用二元运算符，如<code>x += 4;</code>等价于<code>x = x + 4;</code>。</li>
+<li>如果运算符得到一个值，其类型与左侧操作数的类型不同，就会发生强制类型转换。如果x是一个int，则<code>x += 3.5;</code>等价于<code>x = (int)(x + 3.5);</code>。</li>
+</ul>
+<h3 id="356-自增与自减运算符"><a class="markdownIt-Anchor" href="#356-自增与自减运算符"></a> 3.5.6 自增与自减运算符</h3>
+<ul>
+<li>自增运算符：n++，自减运算符：n–。</li>
+<li>自增运算符还有一种“前缀”形式：++n。</li>
+<li>后缀和前缀形式都会使变量值加1或减1。但用在表达式中时，二者就有区别了。前缀形式会先完成加1；而后缀形式会使用变量原来的值。</li>
+<li>建议不要在表达式中使用++，因为这样的代码很容易让人困惑，而且会带来烦人的bug。</li>
+</ul>
+<h3 id="357-关系和boolean运算符"><a class="markdownIt-Anchor" href="#357-关系和boolean运算符"></a> 3.5.7 关系和boolean运算符</h3>
+<ul>
+<li>&amp;&amp;和||运算符是按照“短路”方式来求值的。</li>
+<li><code>x != 0 &amp;&amp; 1 / x &gt; x + y // no division by 0</code>，如果x等于0，那么第二部分就不会计算，除以0的错误就不会出现。</li>
+<li>Java支持三元操作符?:，例如<code>x &lt; y ? x : y</code>返回x和y中较小的一个。</li>
+</ul>
+<h3 id="358-位运算符"><a class="markdownIt-Anchor" href="#358-位运算符"></a> 3.5.8 位运算符</h3>
+<ul>
+<li>如果n是一个整数变量，而且用二进制表示的n从右边数第4位为1，则<code>int fourthBitFromRight = (n &amp; 0b1000) / 0b1000;</code>会返回1，否则返回0.</li>
+<li>利用&amp;并结合适当的2的幂，可以把其他位掩掉，而只留下其中的某一位。</li>
+<li>&amp;和|运算符不采用“短路”方式求值。</li>
+<li>需要建立位模式来完成掩码时，&gt;&gt;和&lt;&lt;运算符会很方便，<code>int fourthBitFromRight = (n &amp; (1 &lt;&lt; 3)) &gt;&gt; 3;</code>。</li>
+<li>&gt;&gt;&gt;运算符会用0填充高位，这与&gt;&gt;不同，它会用符号位填充高位。</li>
+</ul>
+<h3 id="359-括号与运算符级别"><a class="markdownIt-Anchor" href="#359-括号与运算符级别"></a> 3.5.9 括号与运算符级别</h3>
+<ul>
+<li>注意+=是右结合运算符。</li>
+</ul>
+<h2 id="36-字符串"><a class="markdownIt-Anchor" href="#36-字符串"></a> 3.6 字符串</h2>
+<ul>
+<li>从概念上讲，Java字符串就是Unicode字符序列。</li>
+<li>每个双引号括起来的字符串都是String类的一个实例。</li>
+</ul>
+<h3 id="361-子串"><a class="markdownIt-Anchor" href="#361-子串"></a> 3.6.1 子串</h3>
+<ul>
+<li>String类的substring方法可以从一个较大的字符串中提取出一个子串。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubString</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		String greeting = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">		String s = greeting.substring(<span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">		System.out.println(s); <span class="comment">// prints Hel</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>substring方法的第二个参数是不想复制的第一个位置。这样的工作方式有一个优点，容易计算子串的长度。字符串s.substring(a,b)的长度为b-a。</li>
+</ul>
+<h3 id="362-拼接"><a class="markdownIt-Anchor" href="#362-拼接"></a> 3.6.2 拼接</h3>
+<ul>
+<li>Java语言允许使用+号连接两个字符串。</li>
+<li>当一个字符串与一个非字符串的值进行拼接时，后者会转换成字符串。</li>
+<li>如果需要把多个字符串放在一起，用一个界定符分隔，可以使用静态join方法。</li>
+<li>在Java11中，提供了一个repeat方法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(String.join(<span class="string">&quot;/&quot;</span>, <span class="string">&quot;S&quot;</span>, <span class="string">&quot;M&quot;</span>, <span class="string">&quot;L&quot;</span>)); <span class="comment">// prints S/M/L</span></span><br><span class="line">System.out.println(<span class="string">&quot;Java&quot;</span>.repeat(<span class="number">3</span>)); <span class="comment">// prints JavaJavaJava</span></span><br></pre></td></tr></table></figure>
+<h3 id="363-不可变字符串"><a class="markdownIt-Anchor" href="#363-不可变字符串"></a> 3.6.3 不可变字符串</h3>
+<ul>
+<li>如何修改字符串？可以提取想要保留的子串，再与希望替换的字符拼接,<code>greeting = greeting.substring(0, 3) + &quot;p!&quot;;</code>。</li>
+<li>由于不能修改Java字符串中的单个字符，所以在Java文档中将String类对象称为是不可变的，但是，可以修改字符串变量。</li>
+<li>不可变字符串有一个优点：编译器可以让字符串共享。</li>
+</ul>
+<h3 id="364-检测字符串是否相等"><a class="markdownIt-Anchor" href="#364-检测字符串是否相等"></a> 3.6.4 检测字符串是否相等</h3>
+<ul>
+<li><code>s.equals(t)</code>检测两个字符串是否相等，s与t可以是字符串变量，也可以是字符串字面量，例如<code>&quot;Hello&quot;.equals(greeting)</code>。</li>
+<li>检测两个字符串是否相等，而不区分大小写</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Hello&quot;</span>.equalsIgnoreCase(<span class="string">&quot;hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一定不要使用==运算检测两个字符串是否相等！这个运算符只能够确定两个字符串是否存放在同一个位置上。</li>
+</ul>
+<h3 id="365-空串与null串"><a class="markdownIt-Anchor" href="#365-空串与null串"></a> 3.6.5 空串与Null串</h3>
+<ul>
+<li>空串&quot;&quot;是长度为0的字符串，有自己的串长度（0）和内容（空）。检查一个字符串是否为空：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(str.length() &#x3D;&#x3D; 0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(str.equals(&quot;&quot;))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>null，表示目前没有任何对象与该变量关联。检查一个字符串是否为null：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(str &#x3D;&#x3D; null)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>检查一个字符串既不是null也不是空串，需要首先检查str不为null。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(str !&#x3D; null &amp;&amp; str.length() !&#x3D; 0)</span><br></pre></td></tr></table></figure>
+<h3 id="366-码点与代码单元"><a class="markdownIt-Anchor" href="#366-码点与代码单元"></a> 3.6.6 码点与代码单元</h3>
+<ul>
+<li>要想得到实际的长度，即码点数量，可以调用：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int cpCount &#x3D; greeting.codePointCount(0, greeting.length());</span><br></pre></td></tr></table></figure>
+<h3 id="369-构建字符串"><a class="markdownIt-Anchor" href="#369-构建字符串"></a> 3.6.9 构建字符串</h3>
+<ul>
+<li>如果需要许多小段的字符串来构建一个字符串，按照下列步骤进行。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">StringBuilder builder &#x3D; new StringBuilder();</span><br><span class="line">builder.append(ch); &#x2F;&#x2F; appends a single character</span><br><span class="line">builder.append(str); &#x2F;&#x2F; appends a string</span><br><span class="line">String completedString &#x3D; builder.toString();</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>《Java核心技术卷I 基础知识》</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>《Java核心技术卷I 基础知识》</tag>
       </tags>
   </entry>
 </search>

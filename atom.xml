@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-05-06T03:32:08.275Z</updated>
+  <updated>2021-05-07T02:49:45.621Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>1468.数组异或操作</title>
+    <link href="http://example.com/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/"/>
+    <id>http://example.com/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/</id>
+    <published>2021-05-07T02:49:09.000Z</published>
+    <updated>2021-05-07T02:49:45.621Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2><p><a href="https://leetcode-cn.com/problems/xor-operation-in-an-array/">1468.数组异或操作</a></p><h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2><p>给你两个整数，n 和 start 。</p><p>数组 nums 定义为：nums[i] = start + 2*i（下标从 0 开始）且 n == nums.length 。</p><p>请返回 nums 中所有元素按位异或（XOR）后得到的结果。<a id="more"></a></p><p>示例 1：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 5, start &#x3D; 0</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [0, 2, 4, 6, 8]，其中 (0 ^ 2 ^ 4 ^ 6 ^ 8) &#x3D; 8 。</span><br><span class="line">     &quot;^&quot; 为按位异或 XOR 运算符。</span><br></pre></td></tr></table></figure><p>示例 2：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 4, start &#x3D; 3</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [3, 5, 7, 9]，其中 (3 ^ 5 ^ 7 ^ 9) &#x3D; 8.</span><br></pre></td></tr></table></figure><p>示例 3：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 1, start &#x3D; 7</span><br><span class="line">输出：7</span><br></pre></td></tr></table></figure><p>示例 4：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 10, start &#x3D; 5</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure><p>提示：</p><p>1 &lt;= n &lt;= 1000<br />0 &lt;= start &lt;= 1000<br />n == nums.length</p><h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2><p>异或运算规则为相同为0，相异为1.<br />可以遍历每一个元素，依次做异或运算。</p><h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">xorOperation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = start;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result = result ^ (start + <span class="number">2</span> * i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;官方链接&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#官方链接&quot;&gt;&lt;/a&gt; 官方链接&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/xor-operation-in-an-array/&quot;&gt;1468.数组异或操作&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#题目描述&quot;&gt;&lt;/a&gt; 题目描述&lt;/h2&gt;
+&lt;p&gt;给你两个整数，n 和 start 。&lt;/p&gt;
+&lt;p&gt;数组 nums 定义为：nums[i] = start + 2*i（下标从 0 开始）且 n == nums.length 。&lt;/p&gt;
+&lt;p&gt;请返回 nums 中所有元素按位异或（XOR）后得到的结果。</summary>
+    
+    
+    
+    <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
+    
+    
+    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    
+    <category term="位运算" scheme="http://example.com/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
+    
+  </entry>
   
   <entry>
     <title>1720.解码异或后的数组</title>
@@ -44,38 +76,6 @@
     <category term="位运算" scheme="http://example.com/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>1468.数组异或操作</title>
-    <link href="http://example.com/2021/05/06/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/"/>
-    <id>http://example.com/2021/05/06/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/</id>
-    <published>2021-05-06T03:08:09.000Z</published>
-    <updated>2021-05-07T02:43:07.968Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2><p><a href="https://leetcode-cn.com/problems/xor-operation-in-an-array/">1468.数组异或操作</a></p><h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2><p>给你两个整数，n 和 start 。</p><p>数组 nums 定义为：nums[i] = start + 2*i（下标从 0 开始）且 n == nums.length 。</p><p>请返回 nums 中所有元素按位异或（XOR）后得到的结果。<a id="more"></a></p><p>示例 1：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 5, start &#x3D; 0</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [0, 2, 4, 6, 8]，其中 (0 ^ 2 ^ 4 ^ 6 ^ 8) &#x3D; 8 。</span><br><span class="line">     &quot;^&quot; 为按位异或 XOR 运算符。</span><br></pre></td></tr></table></figure><p>示例 2：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 4, start &#x3D; 3</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [3, 5, 7, 9]，其中 (3 ^ 5 ^ 7 ^ 9) &#x3D; 8.</span><br></pre></td></tr></table></figure><p>示例 3：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 1, start &#x3D; 7</span><br><span class="line">输出：7</span><br></pre></td></tr></table></figure><p>示例 4：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 10, start &#x3D; 5</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure><p>提示：</p><p>1 &lt;= n &lt;= 1000<br />0 &lt;= start &lt;= 1000<br />n == nums.length</p><h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2><p>异或运算规则为相同为0，相异为1.<br />可以遍历每一个元素，依次做异或运算。</p><h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">xorOperation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = start;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result = result ^ (start + <span class="number">2</span> * i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;官方链接&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#官方链接&quot;&gt;&lt;/a&gt; 官方链接&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/xor-operation-in-an-array/&quot;&gt;1468.数组异或操作&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#题目描述&quot;&gt;&lt;/a&gt; 题目描述&lt;/h2&gt;
-&lt;p&gt;给你两个整数，n 和 start 。&lt;/p&gt;
-&lt;p&gt;数组 nums 定义为：nums[i] = start + 2*i（下标从 0 开始）且 n == nums.length 。&lt;/p&gt;
-&lt;p&gt;请返回 nums 中所有元素按位异或（XOR）后得到的结果。</summary>
-    
-    
-    
-    <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
-    
-    
-    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
-    
-    <category term="位运算" scheme="http://example.com/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
-    <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
-    
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   

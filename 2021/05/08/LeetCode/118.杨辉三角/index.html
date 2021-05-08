@@ -20,30 +20,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <meta name="hexo-config" content="{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}">
-<meta name="description" content="官方链接 1468.数组异或操作  题目描述 给你两个整数，n 和 start 。 数组 nums 定义为：nums[i] &#x3D; start + 2*i（下标从 0 开始）且 n &#x3D;&#x3D; nums.length 。 请返回 nums 中所有元素按位异或（XOR）后得到的结果。">
+<meta name="description" content="官方链接 题目描述 官方解答  题目描述 给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。 在杨辉三角中，每个数是它左上方和右上方的数的和。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1468.数组异或操作">
-<meta property="og:url" content="http://example.com/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:title" content="118.杨辉三角">
+<meta property="og:url" content="http://example.com/2021/05/08/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/index.html">
 <meta property="og:site_name" content="文进的博客">
-<meta property="og:description" content="官方链接 1468.数组异或操作  题目描述 给你两个整数，n 和 start 。 数组 nums 定义为：nums[i] &#x3D; start + 2*i（下标从 0 开始）且 n &#x3D;&#x3D; nums.length 。 请返回 nums 中所有元素按位异或（XOR）后得到的结果。">
+<meta property="og:description" content="官方链接 题目描述 官方解答  题目描述 给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。 在杨辉三角中，每个数是它左上方和右上方的数的和。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-07T02:49:09.000Z">
-<meta property="article:modified_time" content="2021-05-07T02:49:45.621Z">
+<meta property="article:published_time" content="2021-05-08T11:25:09.000Z">
+<meta property="article:modified_time" content="2021-05-08T11:33:49.997Z">
 <meta property="article:author" content="谢文进">
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="数组">
 <meta property="article:tag" content="LeetCode简单">
-<meta property="article:tag" content="位运算">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/">
+<link rel="canonical" href="http://example.com/2021/05/08/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/">
 
 
 
 <meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;}">
 <meta name="hexo-config-calendar" content="">
-<title>1468.数组异或操作 | 文进的博客</title><script data-pjax src="/js/load-config.js"></script>
+<title>118.杨辉三角 | 文进的博客</title><script data-pjax src="/js/load-config.js"></script>
   
 
 
@@ -219,7 +218,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/08/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -232,7 +231,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          1468.数组异或操作
+          118.杨辉三角
         </h1>
 
         <div class="post-meta-container">
@@ -244,7 +243,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-05-07 10:49:09 / 修改时间：10:49:45" itemprop="dateCreated datePublished" datetime="2021-05-07T10:49:09+08:00">2021-05-07</time>
+      <time title="创建时间：2021-05-08 19:25:09 / 修改时间：19:33:49" itemprop="dateCreated datePublished" datetime="2021-05-08T19:25:09+08:00">2021-05-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -267,28 +266,17 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xor-operation-in-an-array/">1468.数组异或操作</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/pascals-triangle/">题目描述</a><br />
+<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/pascals-triangle/solution/yang-hui-san-jiao-by-leetcode-solution-lew9/">官方解答</a></p>
 <h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>给你两个整数，n 和 start 。</p>
-<p>数组 nums 定义为：nums[i] = start + 2*i（下标从 0 开始）且 n == nums.length 。</p>
-<p>请返回 nums 中所有元素按位异或（XOR）后得到的结果。<a id="more"></a></p>
-<p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 5, start &#x3D; 0</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [0, 2, 4, 6, 8]，其中 (0 ^ 2 ^ 4 ^ 6 ^ 8) &#x3D; 8 。</span><br><span class="line">     &quot;^&quot; 为按位异或 XOR 运算符。</span><br></pre></td></tr></table></figure>
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 4, start &#x3D; 3</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [3, 5, 7, 9]，其中 (3 ^ 5 ^ 7 ^ 9) &#x3D; 8.</span><br></pre></td></tr></table></figure>
-<p>示例 3：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 1, start &#x3D; 7</span><br><span class="line">输出：7</span><br></pre></td></tr></table></figure>
-<p>示例 4：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 10, start &#x3D; 5</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
-<p>提示：</p>
-<p>1 &lt;= n &lt;= 1000<br />
-0 &lt;= start &lt;= 1000<br />
-n == nums.length</p>
+<p>给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。<br />
+在杨辉三角中，每个数是它左上方和右上方的数的和。<a id="more"></a><br />
+示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
-<p>异或运算规则为相同为0，相异为1.<br />
-可以遍历每一个元素，依次做异或运算。</p>
+<p>在杨辉三角中，每个数是它左上方和右上方的数的和，根据这一点，可以先生成第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>行的元素，再生成第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>行的元素。</p>
 <h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">xorOperation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = start;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result = result ^ (start + <span class="number">2</span> * i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; ret = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++)&#123;</span><br><span class="line">            List&lt;Integer&gt; row = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j == <span class="number">0</span> || j == i)&#123;</span><br><span class="line">                    row.add(<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    row.add(ret.get(i - <span class="number">1</span>).get(j - <span class="number">1</span>) + ret.get(i - <span class="number">1</span>).get(j));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ret.add(row);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -300,21 +288,17 @@ n == nums.length</p>
               <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
               <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
               <a href="/tags/LeetCode%E7%AE%80%E5%8D%95/" rel="tag"># LeetCode简单</a>
-              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag"># 位运算</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/05/06/LeetCode/1720.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%95%B0%E7%BB%84/" rel="prev" title="1720.解码异或后的数组">
-                  <i class="fa fa-chevron-left"></i> 1720.解码异或后的数组
+                <a href="/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/" rel="prev" title="1468.数组异或操作">
+                  <i class="fa fa-chevron-left"></i> 1468.数组异或操作
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/05/08/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/" rel="next" title="118.杨辉三角">
-                  118.杨辉三角 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

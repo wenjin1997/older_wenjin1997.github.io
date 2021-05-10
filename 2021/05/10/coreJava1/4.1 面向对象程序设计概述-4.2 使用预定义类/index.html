@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<meta name="hexo-config" content="{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}">
+<meta name="description" content="4.1 面向对象程序设计概述  面向对象程序设计：object-oriented programming, OOP 面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。 OOP将数据放在第一位，然后再考虑操作数据的算法。 面向对象更加适合解决规模较大的问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4.1 面向对象程序设计概述-4.2 使用预定义类">
+<meta property="og:url" content="http://example.com/2021/05/10/coreJava1/4.1%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0-4.2%20%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB/index.html">
+<meta property="og:site_name" content="文进的博客">
+<meta property="og:description" content="4.1 面向对象程序设计概述  面向对象程序设计：object-oriented programming, OOP 面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。 OOP将数据放在第一位，然后再考虑操作数据的算法。 面向对象更加适合解决规模较大的问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-10T06:16:00.000Z">
+<meta property="article:modified_time" content="2021-05-10T06:17:03.352Z">
+<meta property="article:author" content="谢文进">
+<meta property="article:tag" content="《Java核心技术卷I 基础知识》">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/05/10/coreJava1/4.1%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0-4.2%20%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB/">
+
+
+
+<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;}">
+<meta name="hexo-config-calendar" content="">
+<title>4.1 面向对象程序设计概述-4.2 使用预定义类 | 文进的博客</title><script data-pjax src="/js/load-config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="文进的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">文进的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Keep Learning Keep Thinking</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#41-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text"> 4.1 面向对象程序设计概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#411-%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text"> 4.1.1 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#412-%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text"> 4.1.2 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#413-%E8%AF%86%E5%88%AB%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text"> 4.1.3 识别类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#414-%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.4.</span> <span class="nav-text"> 4.1.4 类之间的关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#42-%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text"> 4.2 使用预定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#421-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%AF%B9%E8%B1%A1%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text"> 4.2.1 对象与对象变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#422-java%E7%B1%BB%E5%BA%93%E4%B8%AD%E7%9A%84localdate%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text"> 4.2.2 Java类库中的LocalDate类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#423-%E6%9B%B4%E6%94%B9%E5%99%A8%E6%96%B9%E6%B3%95%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%99%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text"> 4.2.3 更改器方法与访问器方法</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">谢文进</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/10/coreJava1/4.1%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0-4.2%20%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="谢文进">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="文进的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          4.1 面向对象程序设计概述-4.2 使用预定义类
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-05-10 14:16:00 / 修改时间：14:17:03" itemprop="dateCreated datePublished" datetime="2021-05-10T14:16:00+08:00">2021-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/" itemprop="url" rel="index"><span itemprop="name">《Java核心技术卷I 基础知识》</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="41-面向对象程序设计概述"><a class="markdownIt-Anchor" href="#41-面向对象程序设计概述"></a> 4.1 面向对象程序设计概述</h1>
+<ul>
+<li>面向对象程序设计：object-oriented programming, OOP</li>
+<li>面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。</li>
+<li>OOP将数据放在第一位，然后再考虑操作数据的算法。</li>
+<li>面向对象更加适合解决规模较大的问题。<a id="more"></a></li>
+</ul>
+<h2 id="411-类"><a class="markdownIt-Anchor" href="#411-类"></a> 4.1.1 类</h2>
+<ul>
+<li><strong>类</strong>是构造对象的模板和蓝图。</li>
+<li>由类构造对象的过程称为创建类的<strong>实例</strong>。</li>
+<li><strong>封装</strong>就是将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。</li>
+<li>对象中的数据称为<strong>实例字段</strong>，操作数据的过程称为<strong>方法</strong>。</li>
+<li>作为一个类的实例，特定对象都有一组特定的实例字段值。这些值的集合就是这个对象的<strong>当前状态</strong>。</li>
+<li>在Java中，所有类都源自一个“神通广大的超类”，就是Object。</li>
+<li>通过扩展一个类来建立另外一个类的过程为<strong>继承</strong>。</li>
+</ul>
+<h2 id="412-对象"><a class="markdownIt-Anchor" href="#412-对象"></a> 4.1.2 对象</h2>
+<ul>
+<li>对象的三个主要特性：行为、状态、标识。</li>
+<li>对象的行为是用可调用的方法来定义的。</li>
+<li>每个对象都保存着描述当前状况的信息，这就是对象的<strong>状态</strong>。</li>
+<li>对象状态的改变必须通过调用方法实现，否则破坏了封装性。</li>
+<li>每个对象都有一个唯一的标识。</li>
+<li>作为同一个类的实例，每个对象的标识总是不同的，状态也往往存在着差异。</li>
+</ul>
+<h2 id="413-识别类"><a class="markdownIt-Anchor" href="#413-识别类"></a> 4.1.3 识别类</h2>
+<ul>
+<li>OOP学习中，首先从识别类开始，然后再为各个类添加方法。</li>
+<li>经验：类——名词，方法——动词。</li>
+</ul>
+<h2 id="414-类之间的关系"><a class="markdownIt-Anchor" href="#414-类之间的关系"></a> 4.1.4 类之间的关系</h2>
+<ul>
+<li>在类之间，常见的关系：依赖、聚合、继承。</li>
+<li>如果一个类的方法使用或操纵另一个类的对象，我们就说一个类<strong>依赖</strong>于另一个类。</li>
+<li>应该尽可能地将相互依赖的类减至最少，减少类之间的耦合。</li>
+<li><strong>包容</strong>关系意味着类A的对象包含类B的对象。</li>
+</ul>
+<h1 id="42-使用预定义类"><a class="markdownIt-Anchor" href="#42-使用预定义类"></a> 4.2 使用预定义类</h1>
+<h2 id="421-对象与对象变量"><a class="markdownIt-Anchor" href="#421-对象与对象变量"></a> 4.2.1 对象与对象变量</h2>
+<ul>
+<li>要想使用对象，首先必须构造对象，并制定其初始状态。然后对对象应用方法。</li>
+<li>构造器的名字应该与类名相同。</li>
+<li>对象变量并没有实际包含一个对象，它只是<strong>引用</strong>一个对象。</li>
+<li>在Java中，任何对象变量的值都是对存储在另外一个地方的某个对象的应用。new操作符的返回值也是一个引用。</li>
+<li>可以显示地将对象变量设置为null，指示这个对象变量目前没有引用任何对象。</li>
+</ul>
+<h2 id="422-java类库中的localdate类"><a class="markdownIt-Anchor" href="#422-java类库中的localdate类"></a> 4.2.2 Java类库中的LocalDate类</h2>
+<ul>
+<li>用来表示时间点：Data类。</li>
+<li>用大家熟悉的日历表示日期：LocalDate类。</li>
+<li>不要使用构造器来构造LocalDate类的对象，实际上，应当使用静态工厂方法，它会代表你调用构造器。<code>LocalDate.now()</code>会构造一个新对象。</li>
+<li>LocalDate类封装了实例字段来维护所设置的日期。</li>
+</ul>
+<h2 id="423-更改器方法与访问器方法"><a class="markdownIt-Anchor" href="#423-更改器方法与访问器方法"></a> 4.2.3 更改器方法与访问器方法</h2>
+<ul>
+<li>只访问对象而不修改对象的方法有时称为<strong>访问器方法</strong>。</li>
+</ul>
+<p><strong>CalendarTest.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.DayOfWeek;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.5 2021-05-09</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jinjin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalendarTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        LocalDate date = LocalDate.now();</span><br><span class="line">        <span class="keyword">int</span> month = date.getMonthValue();</span><br><span class="line">        <span class="keyword">int</span> today = date.getDayOfMonth();</span><br><span class="line"></span><br><span class="line">        date = date.minusDays(today - <span class="number">1</span>); <span class="comment">// set to start of month</span></span><br><span class="line">        DayOfWeek weekday = date.getDayOfWeek();</span><br><span class="line">        <span class="keyword">int</span> value = weekday.getValue(); <span class="comment">// 1 = Monday, . . . , 7 = Sunday</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Mon Tue Wed Thu Fir Sat Sun&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; value; i++)</span><br><span class="line">            System.out.print(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (date.getMonthValue() == month)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%3d&quot;</span>, date.getDayOfMonth());</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfMonth() == today)</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                System.out.print(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            date = date.plusDays(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfWeek().getValue() == <span class="number">1</span>) System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (date.getDayOfWeek().getValue() !=  <span class="number">1</span>) System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/" rel="tag"># 《Java核心技术卷I 基础知识》</a>
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/05/10/LeetCode/198.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/" rel="prev" title="198.大家劫舍">
+                  <i class="fa fa-chevron-left"></i> 198.大家劫舍
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谢文进</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>

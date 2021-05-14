@@ -72,13 +72,13 @@
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
     
-    <category term="哈希表" scheme="http://example.com/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
     
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
+    
+    <category term="哈希表" scheme="http://example.com/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
     
   </entry>
   
@@ -199,11 +199,11 @@
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
@@ -327,9 +327,9 @@
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
     
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
     
@@ -357,9 +357,9 @@
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
     
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
     

@@ -227,54 +227,6 @@
       </tags>
   </entry>
   <entry>
-    <title>3.7 输入与输出</title>
-    <url>/2021/05/08/coreJava1/3.7.1%20%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5/</url>
-    <content><![CDATA[<h2 id="371-读取输入"><a class="markdownIt-Anchor" href="#371-读取输入"></a> 3.7.1 读取输入</h2>
-<p>通过控制台进行输入的步骤：</p>
-<ul>
-<li>首先构造一个与“标准输入流”System.in关联的Scanner对象：<br />
-<code>Scanner in = new Scanner();</code></li>
-<li>使用Scanner类的各种方法读取输入：<br />
-<code>String name = in.nextLine();</code></li>
-<li>Scanner类定义在java.util包中，使用时要用import导入。</li>
-</ul>
-<h3 id="scanner类的常用方法"><a class="markdownIt-Anchor" href="#scanner类的常用方法"></a> <strong>Scanner类的常用方法</strong></h3>
-<ul>
-<li>String nextLine():将读取一行输入 。</li>
-<li>String next():读取输入的下一个单词（以空格作为分隔符）。</li>
-<li>int nextInt() <a id="more"></a></li>
-</ul>
-<h3 id="consle类"><a class="markdownIt-Anchor" href="#consle类"></a> <strong>Consle类</strong></h3>
-<ul>
-<li>Scanner类不适用于从控制台读取密码，此时可以用Consle类。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Consle cons = System.console();</span><br><span class="line">String username = cons.readLine(<span class="string">&quot;User name: &quot;</span>);</span><br><span class="line"><span class="keyword">char</span>[] passwd = cons.readPassword(<span class="string">&quot;Password: &quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> <strong>代码</strong></h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This program demonstrates console input</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.10 2021-05-08 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 文进</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InputTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// get first input</span></span><br><span class="line">		System.out.print(<span class="string">&quot;What is your name? &quot;</span>);</span><br><span class="line">		String name = in.nextLine();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// get second input</span></span><br><span class="line">		System.out.print(<span class="string">&quot;How old are you? &quot;</span>);</span><br><span class="line">		<span class="keyword">int</span> age = in.nextInt();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// display output on console</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Hello, &quot;</span> + name + <span class="string">&quot;.Next year, you&#x27;ll be &quot;</span> + (age + <span class="number">1</span>));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="372-格式化输出"><a class="markdownIt-Anchor" href="#372-格式化输出"></a> 3.7.2 格式化输出</h2>
-<ul>
-<li><code>System.out.print(x);</code>将以x的类型所允许的最大非0数位个数打印输出x。</li>
-<li><code>System.out.print(&quot;%8.2f&quot;, x);</code>字段宽度为8，包括8个字符，另外精度为小数点后2个字符，注意这里前导的空格也算一个字符。</li>
-<li>每一个以%字符开始的格式说明符都用相应的参数替换。如：<code>System.out.printf(&quot;Hello, %s. Next year, you'll be %d.&quot;,name, age + 1);</code>,f表示浮点数，s表示字符串，d表示十进制整数。</li>
-<li>还可以指定控制格式化输出外观的各种标志，如：<code>System.out.printf(&quot;%,.2f&quot;, 10000.0 / 3.0); //prints 3,333.33</code></li>
-<li>使用静态的String.format方法创建一个格式化的字符串，而不打印输出：<code>String message = String.format(&quot;Hello, %s. Next year, you'll be %d.&quot;, name, age + 1);</code></li>
-<li>printf方法中有日期与时间格式化选项，如<code>System.out.printf(&quot;%tc&quot;, new Date()); // prints 周六 5月 08 20:44:49 CST 2021</code></li>
-</ul>
-<h2 id="373-文件输入与输出"><a class="markdownIt-Anchor" href="#373-文件输入与输出"></a> 3.7.3 文件输入与输出</h2>
-<ul>
-<li>读取文件：<code>Scanner in = new Scanner(Path.of(&quot;myfile.txt&quot;), StandardCharsets.UTF-8);</code></li>
-<li>写入文件：<code>PrintWriter out = new PrintWriter(&quot;myfile.txt&quot;, StandardCharsets.UTF_8);</code></li>
-</ul>
-]]></content>
-      <categories>
-        <category>《Java核心技术卷I 基础知识》</category>
-      </categories>
-      <tags>
-        <tag>《Java核心技术卷I 基础知识》</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>3.5运算符-3.6字符串</title>
     <url>/2021/04/16/coreJava1/3.5%E8%BF%90%E7%AE%97%E7%AC%A6-3.6%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     <content><![CDATA[<h2 id="35-运算符"><a class="markdownIt-Anchor" href="#35-运算符"></a> 3.5 运算符</h2>
@@ -422,6 +374,54 @@
       </tags>
   </entry>
   <entry>
+    <title>3.7 输入与输出</title>
+    <url>/2021/05/08/coreJava1/3.7.1%20%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5/</url>
+    <content><![CDATA[<h2 id="371-读取输入"><a class="markdownIt-Anchor" href="#371-读取输入"></a> 3.7.1 读取输入</h2>
+<p>通过控制台进行输入的步骤：</p>
+<ul>
+<li>首先构造一个与“标准输入流”System.in关联的Scanner对象：<br />
+<code>Scanner in = new Scanner();</code></li>
+<li>使用Scanner类的各种方法读取输入：<br />
+<code>String name = in.nextLine();</code></li>
+<li>Scanner类定义在java.util包中，使用时要用import导入。</li>
+</ul>
+<h3 id="scanner类的常用方法"><a class="markdownIt-Anchor" href="#scanner类的常用方法"></a> <strong>Scanner类的常用方法</strong></h3>
+<ul>
+<li>String nextLine():将读取一行输入 。</li>
+<li>String next():读取输入的下一个单词（以空格作为分隔符）。</li>
+<li>int nextInt() <a id="more"></a></li>
+</ul>
+<h3 id="consle类"><a class="markdownIt-Anchor" href="#consle类"></a> <strong>Consle类</strong></h3>
+<ul>
+<li>Scanner类不适用于从控制台读取密码，此时可以用Consle类。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Consle cons = System.console();</span><br><span class="line">String username = cons.readLine(<span class="string">&quot;User name: &quot;</span>);</span><br><span class="line"><span class="keyword">char</span>[] passwd = cons.readPassword(<span class="string">&quot;Password: &quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> <strong>代码</strong></h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This program demonstrates console input</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.10 2021-05-08 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 文进</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InputTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// get first input</span></span><br><span class="line">		System.out.print(<span class="string">&quot;What is your name? &quot;</span>);</span><br><span class="line">		String name = in.nextLine();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// get second input</span></span><br><span class="line">		System.out.print(<span class="string">&quot;How old are you? &quot;</span>);</span><br><span class="line">		<span class="keyword">int</span> age = in.nextInt();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// display output on console</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Hello, &quot;</span> + name + <span class="string">&quot;.Next year, you&#x27;ll be &quot;</span> + (age + <span class="number">1</span>));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="372-格式化输出"><a class="markdownIt-Anchor" href="#372-格式化输出"></a> 3.7.2 格式化输出</h2>
+<ul>
+<li><code>System.out.print(x);</code>将以x的类型所允许的最大非0数位个数打印输出x。</li>
+<li><code>System.out.print(&quot;%8.2f&quot;, x);</code>字段宽度为8，包括8个字符，另外精度为小数点后2个字符，注意这里前导的空格也算一个字符。</li>
+<li>每一个以%字符开始的格式说明符都用相应的参数替换。如：<code>System.out.printf(&quot;Hello, %s. Next year, you'll be %d.&quot;,name, age + 1);</code>,f表示浮点数，s表示字符串，d表示十进制整数。</li>
+<li>还可以指定控制格式化输出外观的各种标志，如：<code>System.out.printf(&quot;%,.2f&quot;, 10000.0 / 3.0); //prints 3,333.33</code></li>
+<li>使用静态的String.format方法创建一个格式化的字符串，而不打印输出：<code>String message = String.format(&quot;Hello, %s. Next year, you'll be %d.&quot;, name, age + 1);</code></li>
+<li>printf方法中有日期与时间格式化选项，如<code>System.out.printf(&quot;%tc&quot;, new Date()); // prints 周六 5月 08 20:44:49 CST 2021</code></li>
+</ul>
+<h2 id="373-文件输入与输出"><a class="markdownIt-Anchor" href="#373-文件输入与输出"></a> 3.7.3 文件输入与输出</h2>
+<ul>
+<li>读取文件：<code>Scanner in = new Scanner(Path.of(&quot;myfile.txt&quot;), StandardCharsets.UTF-8);</code></li>
+<li>写入文件：<code>PrintWriter out = new PrintWriter(&quot;myfile.txt&quot;, StandardCharsets.UTF_8);</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>《Java核心技术卷I 基础知识》</category>
+      </categories>
+      <tags>
+        <tag>《Java核心技术卷I 基础知识》</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>3.8 控制流程-3.9 大数</title>
     <url>/2021/05/09/coreJava1/3.8%20%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B-3.9%20%E5%A4%A7%E6%95%B0/</url>
     <content><![CDATA[<h1 id="38-控制流程"><a class="markdownIt-Anchor" href="#38-控制流程"></a> 3.8 控制流程</h1>
@@ -451,78 +451,6 @@
 <h2 id="程序清单-2"><a class="markdownIt-Anchor" href="#程序清单-2"></a> 程序清单</h2>
 <p>BigIntegerTest.java</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This program uses big numbers to compute the odds of winning the grand prize in a lottery.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.20 2021-05-09</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jinjin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BigIntegerTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        System.out.print(<span class="string">&quot;How many numbers do you need to draw? &quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> k = in.nextInt();</span><br><span class="line"></span><br><span class="line">        System.out.print(<span class="string">&quot;What is the highest number you can draw? &quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> n = in.nextInt();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        * compute binomial coefficient n*(n-1)*(n-2)*..*(n-k+1)/(1*2*3*...*k)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">        BigInteger lotteryOdds = BigInteger.valueOf(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++)</span><br><span class="line">            lotteryOdds = lotteryOdds.multiply(BigInteger.valueOf(n - i + <span class="number">1</span>)).divide(BigInteger.valueOf(i));</span><br><span class="line"></span><br><span class="line">        System.out.printf(<span class="string">&quot;You odds are 1 in %,d. Good luck!&quot;</span>, lotteryOdds);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>《Java核心技术卷I 基础知识》</category>
-      </categories>
-      <tags>
-        <tag>《Java核心技术卷I 基础知识》</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>4.1 面向对象程序设计概述-4.2 使用预定义类</title>
-    <url>/2021/05/10/coreJava1/4.1%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0-4.2%20%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB/</url>
-    <content><![CDATA[<h1 id="41-面向对象程序设计概述"><a class="markdownIt-Anchor" href="#41-面向对象程序设计概述"></a> 4.1 面向对象程序设计概述</h1>
-<ul>
-<li>面向对象程序设计：object-oriented programming, OOP</li>
-<li>面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。</li>
-<li>OOP将数据放在第一位，然后再考虑操作数据的算法。</li>
-<li>面向对象更加适合解决规模较大的问题。<a id="more"></a></li>
-</ul>
-<h2 id="411-类"><a class="markdownIt-Anchor" href="#411-类"></a> 4.1.1 类</h2>
-<ul>
-<li><strong>类</strong>是构造对象的模板和蓝图。</li>
-<li>由类构造对象的过程称为创建类的<strong>实例</strong>。</li>
-<li><strong>封装</strong>就是将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。</li>
-<li>对象中的数据称为<strong>实例字段</strong>，操作数据的过程称为<strong>方法</strong>。</li>
-<li>作为一个类的实例，特定对象都有一组特定的实例字段值。这些值的集合就是这个对象的<strong>当前状态</strong>。</li>
-<li>在Java中，所有类都源自一个“神通广大的超类”，就是Object。</li>
-<li>通过扩展一个类来建立另外一个类的过程为<strong>继承</strong>。</li>
-</ul>
-<h2 id="412-对象"><a class="markdownIt-Anchor" href="#412-对象"></a> 4.1.2 对象</h2>
-<ul>
-<li>对象的三个主要特性：行为、状态、标识。</li>
-<li>对象的行为是用可调用的方法来定义的。</li>
-<li>每个对象都保存着描述当前状况的信息，这就是对象的<strong>状态</strong>。</li>
-<li>对象状态的改变必须通过调用方法实现，否则破坏了封装性。</li>
-<li>每个对象都有一个唯一的标识。</li>
-<li>作为同一个类的实例，每个对象的标识总是不同的，状态也往往存在着差异。</li>
-</ul>
-<h2 id="413-识别类"><a class="markdownIt-Anchor" href="#413-识别类"></a> 4.1.3 识别类</h2>
-<ul>
-<li>OOP学习中，首先从识别类开始，然后再为各个类添加方法。</li>
-<li>经验：类——名词，方法——动词。</li>
-</ul>
-<h2 id="414-类之间的关系"><a class="markdownIt-Anchor" href="#414-类之间的关系"></a> 4.1.4 类之间的关系</h2>
-<ul>
-<li>在类之间，常见的关系：依赖、聚合、继承。</li>
-<li>如果一个类的方法使用或操纵另一个类的对象，我们就说一个类<strong>依赖</strong>于另一个类。</li>
-<li>应该尽可能地将相互依赖的类减至最少，减少类之间的耦合。</li>
-<li><strong>包容</strong>关系意味着类A的对象包含类B的对象。</li>
-</ul>
-<h1 id="42-使用预定义类"><a class="markdownIt-Anchor" href="#42-使用预定义类"></a> 4.2 使用预定义类</h1>
-<h2 id="421-对象与对象变量"><a class="markdownIt-Anchor" href="#421-对象与对象变量"></a> 4.2.1 对象与对象变量</h2>
-<ul>
-<li>要想使用对象，首先必须构造对象，并制定其初始状态。然后对对象应用方法。</li>
-<li>构造器的名字应该与类名相同。</li>
-<li>对象变量并没有实际包含一个对象，它只是<strong>引用</strong>一个对象。</li>
-<li>在Java中，任何对象变量的值都是对存储在另外一个地方的某个对象的应用。new操作符的返回值也是一个引用。</li>
-<li>可以显示地将对象变量设置为null，指示这个对象变量目前没有引用任何对象。</li>
-</ul>
-<h2 id="422-java类库中的localdate类"><a class="markdownIt-Anchor" href="#422-java类库中的localdate类"></a> 4.2.2 Java类库中的LocalDate类</h2>
-<ul>
-<li>用来表示时间点：Data类。</li>
-<li>用大家熟悉的日历表示日期：LocalDate类。</li>
-<li>不要使用构造器来构造LocalDate类的对象，实际上，应当使用静态工厂方法，它会代表你调用构造器。<code>LocalDate.now()</code>会构造一个新对象。</li>
-<li>LocalDate类封装了实例字段来维护所设置的日期。</li>
-</ul>
-<h2 id="423-更改器方法与访问器方法"><a class="markdownIt-Anchor" href="#423-更改器方法与访问器方法"></a> 4.2.3 更改器方法与访问器方法</h2>
-<ul>
-<li>只访问对象而不修改对象的方法有时称为<strong>访问器方法</strong>。</li>
-</ul>
-<p><strong>CalendarTest.java</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.DayOfWeek;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.5 2021-05-09</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jinjin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalendarTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        LocalDate date = LocalDate.now();</span><br><span class="line">        <span class="keyword">int</span> month = date.getMonthValue();</span><br><span class="line">        <span class="keyword">int</span> today = date.getDayOfMonth();</span><br><span class="line"></span><br><span class="line">        date = date.minusDays(today - <span class="number">1</span>); <span class="comment">// set to start of month</span></span><br><span class="line">        DayOfWeek weekday = date.getDayOfWeek();</span><br><span class="line">        <span class="keyword">int</span> value = weekday.getValue(); <span class="comment">// 1 = Monday, . . . , 7 = Sunday</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Mon Tue Wed Thu Fir Sat Sun&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; value; i++)</span><br><span class="line">            System.out.print(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (date.getMonthValue() == month)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%3d&quot;</span>, date.getDayOfMonth());</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfMonth() == today)</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                System.out.print(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            date = date.plusDays(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfWeek().getValue() == <span class="number">1</span>) System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (date.getDayOfWeek().getValue() !=  <span class="number">1</span>) System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
       <categories>
         <category>《Java核心技术卷I 基础知识》</category>
       </categories>
@@ -701,6 +629,183 @@
       </tags>
   </entry>
   <entry>
+    <title>4.1 面向对象程序设计概述-4.2 使用预定义类</title>
+    <url>/2021/05/10/coreJava1/4.1%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0-4.2%20%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB/</url>
+    <content><![CDATA[<h1 id="41-面向对象程序设计概述"><a class="markdownIt-Anchor" href="#41-面向对象程序设计概述"></a> 4.1 面向对象程序设计概述</h1>
+<ul>
+<li>面向对象程序设计：object-oriented programming, OOP</li>
+<li>面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。</li>
+<li>OOP将数据放在第一位，然后再考虑操作数据的算法。</li>
+<li>面向对象更加适合解决规模较大的问题。<a id="more"></a></li>
+</ul>
+<h2 id="411-类"><a class="markdownIt-Anchor" href="#411-类"></a> 4.1.1 类</h2>
+<ul>
+<li><strong>类</strong>是构造对象的模板和蓝图。</li>
+<li>由类构造对象的过程称为创建类的<strong>实例</strong>。</li>
+<li><strong>封装</strong>就是将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。</li>
+<li>对象中的数据称为<strong>实例字段</strong>，操作数据的过程称为<strong>方法</strong>。</li>
+<li>作为一个类的实例，特定对象都有一组特定的实例字段值。这些值的集合就是这个对象的<strong>当前状态</strong>。</li>
+<li>在Java中，所有类都源自一个“神通广大的超类”，就是Object。</li>
+<li>通过扩展一个类来建立另外一个类的过程为<strong>继承</strong>。</li>
+</ul>
+<h2 id="412-对象"><a class="markdownIt-Anchor" href="#412-对象"></a> 4.1.2 对象</h2>
+<ul>
+<li>对象的三个主要特性：行为、状态、标识。</li>
+<li>对象的行为是用可调用的方法来定义的。</li>
+<li>每个对象都保存着描述当前状况的信息，这就是对象的<strong>状态</strong>。</li>
+<li>对象状态的改变必须通过调用方法实现，否则破坏了封装性。</li>
+<li>每个对象都有一个唯一的标识。</li>
+<li>作为同一个类的实例，每个对象的标识总是不同的，状态也往往存在着差异。</li>
+</ul>
+<h2 id="413-识别类"><a class="markdownIt-Anchor" href="#413-识别类"></a> 4.1.3 识别类</h2>
+<ul>
+<li>OOP学习中，首先从识别类开始，然后再为各个类添加方法。</li>
+<li>经验：类——名词，方法——动词。</li>
+</ul>
+<h2 id="414-类之间的关系"><a class="markdownIt-Anchor" href="#414-类之间的关系"></a> 4.1.4 类之间的关系</h2>
+<ul>
+<li>在类之间，常见的关系：依赖、聚合、继承。</li>
+<li>如果一个类的方法使用或操纵另一个类的对象，我们就说一个类<strong>依赖</strong>于另一个类。</li>
+<li>应该尽可能地将相互依赖的类减至最少，减少类之间的耦合。</li>
+<li><strong>包容</strong>关系意味着类A的对象包含类B的对象。</li>
+</ul>
+<h1 id="42-使用预定义类"><a class="markdownIt-Anchor" href="#42-使用预定义类"></a> 4.2 使用预定义类</h1>
+<h2 id="421-对象与对象变量"><a class="markdownIt-Anchor" href="#421-对象与对象变量"></a> 4.2.1 对象与对象变量</h2>
+<ul>
+<li>要想使用对象，首先必须构造对象，并制定其初始状态。然后对对象应用方法。</li>
+<li>构造器的名字应该与类名相同。</li>
+<li>对象变量并没有实际包含一个对象，它只是<strong>引用</strong>一个对象。</li>
+<li>在Java中，任何对象变量的值都是对存储在另外一个地方的某个对象的应用。new操作符的返回值也是一个引用。</li>
+<li>可以显示地将对象变量设置为null，指示这个对象变量目前没有引用任何对象。</li>
+</ul>
+<h2 id="422-java类库中的localdate类"><a class="markdownIt-Anchor" href="#422-java类库中的localdate类"></a> 4.2.2 Java类库中的LocalDate类</h2>
+<ul>
+<li>用来表示时间点：Data类。</li>
+<li>用大家熟悉的日历表示日期：LocalDate类。</li>
+<li>不要使用构造器来构造LocalDate类的对象，实际上，应当使用静态工厂方法，它会代表你调用构造器。<code>LocalDate.now()</code>会构造一个新对象。</li>
+<li>LocalDate类封装了实例字段来维护所设置的日期。</li>
+</ul>
+<h2 id="423-更改器方法与访问器方法"><a class="markdownIt-Anchor" href="#423-更改器方法与访问器方法"></a> 4.2.3 更改器方法与访问器方法</h2>
+<ul>
+<li>只访问对象而不修改对象的方法有时称为<strong>访问器方法</strong>。</li>
+</ul>
+<p><strong>CalendarTest.java</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.DayOfWeek;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.5 2021-05-09</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jinjin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalendarTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        LocalDate date = LocalDate.now();</span><br><span class="line">        <span class="keyword">int</span> month = date.getMonthValue();</span><br><span class="line">        <span class="keyword">int</span> today = date.getDayOfMonth();</span><br><span class="line"></span><br><span class="line">        date = date.minusDays(today - <span class="number">1</span>); <span class="comment">// set to start of month</span></span><br><span class="line">        DayOfWeek weekday = date.getDayOfWeek();</span><br><span class="line">        <span class="keyword">int</span> value = weekday.getValue(); <span class="comment">// 1 = Monday, . . . , 7 = Sunday</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Mon Tue Wed Thu Fir Sat Sun&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; value; i++)</span><br><span class="line">            System.out.print(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (date.getMonthValue() == month)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%3d&quot;</span>, date.getDayOfMonth());</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfMonth() == today)</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                System.out.print(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            date = date.plusDays(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfWeek().getValue() == <span class="number">1</span>) System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (date.getDayOfWeek().getValue() !=  <span class="number">1</span>) System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>《Java核心技术卷I 基础知识》</category>
+      </categories>
+      <tags>
+        <tag>《Java核心技术卷I 基础知识》</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>118.杨辉三角</title>
+    <url>/2021/05/08/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/</url>
+    <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
+<p><a href="https://leetcode-cn.com/problems/pascals-triangle/">题目描述</a><br />
+<a href="https://leetcode-cn.com/problems/pascals-triangle/solution/yang-hui-san-jiao-by-leetcode-solution-lew9/">官方解答</a></p>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。<br />
+在杨辉三角中，每个数是它左上方和右上方的数的和。<a id="more"></a><br />
+示例:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
+<p>在杨辉三角中，每个数是它左上方和右上方的数的和，根据这一点，可以先生成第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>行的元素，再生成第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>行的元素。</p>
+<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; ret = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++)&#123;</span><br><span class="line">            List&lt;Integer&gt; row = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j == <span class="number">0</span> || j == i)&#123;</span><br><span class="line">                    row.add(<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    row.add(ret.get(i - <span class="number">1</span>).get(j - <span class="number">1</span>) + ret.get(i - <span class="number">1</span>).get(j));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ret.add(row);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>LeetCode简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1720.解码异或后的数组</title>
+    <url>/2021/05/06/LeetCode/1720.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
+<p><a href="https://leetcode-cn.com/problems/decode-xored-array/">1720.解码异或后的数组</a></p>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>未知 整数数组 arr 由 n 个非负整数组成。</p>
+<p>经编码后变为长度为 n - 1 的另一个整数数组 encoded ，其中 encoded[i] = arr[i] XOR arr[i + 1] 。例如，arr = [1,0,2,1] 经编码后得到 encoded = [1,2,3] 。</p>
+<p>给你编码后的数组 encoded 和原数组 arr 的第一个元素 first（arr[0]）。</p>
+<p>请解码返回原数组 arr 。可以证明答案存在并且是唯一的。<a id="more"></a></p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：encoded &#x3D; [1,2,3], first &#x3D; 1</span><br><span class="line">输出：[1,0,2,1]</span><br><span class="line">解释：若 arr &#x3D; [1,0,2,1] ，那么 first &#x3D; 1 且 encoded &#x3D; [1 XOR 0, 0 XOR 2, 2 XOR 1] &#x3D; [1,2,3]</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：encoded &#x3D; [6,2,7,3], first &#x3D; 4</span><br><span class="line">输出：[4,2,0,7,4]</span><br></pre></td></tr></table></figure>
+<p>提示：</p>
+<p>2 &lt;= n &lt;= 104<br />
+encoded.length == n - 1<br />
+0 &lt;= encoded[i] &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span><br />
+0 &lt;= first &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></p>
+<h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
+<p>在异或运算中，相同为0，相异为1，即</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mo>⊕</mo><mn>0</mn><mo>=</mo><mn>0</mn><mspace linebreak="newline"></mspace><mn>1</mn><mo>⊕</mo><mn>0</mn><mo>=</mo><mn>1</mn><mspace linebreak="newline"></mspace><mn>1</mn><mo>⊕</mo><mn>1</mn><mo>=</mo><mn>0</mn><mspace linebreak="newline"></mspace><mn>0</mn><mo>⊕</mo><mn>1</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \oplus 0 = 0 \\
+1 \oplus 0 = 1 \\
+1 \oplus 1 = 0 \\
+0 \oplus 1 = 1
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></p>
+<p>根据题意，我们现在得到的是异或后的结果，也就是上面异或运算法则等号后的数，即第三列。由于知道原来数组中的第一个元素，可以理解为知道上述异或运算法则的第一列，现在看如何知道第二列。设这个运算为新异或运算，标记为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">\oplus&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.835222em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>，则有规则如下：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup><mn>0</mn><mo>=</mo><mn>0</mn><mspace linebreak="newline"></mspace><mn>1</mn><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup><mn>1</mn><mo>=</mo><mn>0</mn><mspace linebreak="newline"></mspace><mn>0</mn><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup><mn>1</mn><mo>=</mo><mn>1</mn><mspace linebreak="newline"></mspace><mn>1</mn><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup><mn>0</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \oplus&#x27; 0 = 0\\
+1 \oplus&#x27; 1 = 0\\
+0 \oplus&#x27; 1 = 1\\
+1 \oplus&#x27; 0 = 1
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></p>
+<p>在上述法则中，可以发现规律，相同为0，不同为1，从而得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">\oplus&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.835222em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>为异或运算。因此解码过程为逐个进行异或运算。<br />
+在Java中，a与b的异或为a^b。</p>
+<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] decode(<span class="keyword">int</span>[] encoded, <span class="keyword">int</span> first) &#123;</span><br><span class="line">    	<span class="keyword">int</span> n = encoded.length;</span><br><span class="line">    	<span class="keyword">int</span>[] ans = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">    	ans[<span class="number">0</span>] = first;</span><br><span class="line">    	</span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    	&#123;</span><br><span class="line">    		ans[i+<span class="number">1</span>] = ans[i] ^ encoded[i];</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>LeetCode简单</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1468.数组异或操作</title>
+    <url>/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
+<p><a href="https://leetcode-cn.com/problems/xor-operation-in-an-array/">1468.数组异或操作</a></p>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>给你两个整数，n 和 start 。</p>
+<p>数组 nums 定义为：nums[i] = start + 2*i（下标从 0 开始）且 n == nums.length 。</p>
+<p>请返回 nums 中所有元素按位异或（XOR）后得到的结果。<a id="more"></a></p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 5, start &#x3D; 0</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [0, 2, 4, 6, 8]，其中 (0 ^ 2 ^ 4 ^ 6 ^ 8) &#x3D; 8 。</span><br><span class="line">     &quot;^&quot; 为按位异或 XOR 运算符。</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 4, start &#x3D; 3</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [3, 5, 7, 9]，其中 (3 ^ 5 ^ 7 ^ 9) &#x3D; 8.</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 1, start &#x3D; 7</span><br><span class="line">输出：7</span><br></pre></td></tr></table></figure>
+<p>示例 4：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 10, start &#x3D; 5</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+<p>提示：</p>
+<p>1 &lt;= n &lt;= 1000<br />
+0 &lt;= start &lt;= 1000<br />
+n == nums.length</p>
+<h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
+<p>异或运算规则为相同为0，相异为1.<br />
+可以遍历每一个元素，依次做异或运算。</p>
+<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">xorOperation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = start;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result = result ^ (start + <span class="number">2</span> * i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>LeetCode简单</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>12.整数转罗马数字</title>
     <url>/2021/05/14/LeetCode/12.%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/</url>
     <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
@@ -757,87 +862,6 @@
         <tag>LeetCode中等</tag>
         <tag>数学</tag>
         <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>1468.数组异或操作</title>
-    <url>/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
-<p><a href="https://leetcode-cn.com/problems/xor-operation-in-an-array/">1468.数组异或操作</a></p>
-<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>给你两个整数，n 和 start 。</p>
-<p>数组 nums 定义为：nums[i] = start + 2*i（下标从 0 开始）且 n == nums.length 。</p>
-<p>请返回 nums 中所有元素按位异或（XOR）后得到的结果。<a id="more"></a></p>
-<p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 5, start &#x3D; 0</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [0, 2, 4, 6, 8]，其中 (0 ^ 2 ^ 4 ^ 6 ^ 8) &#x3D; 8 。</span><br><span class="line">     &quot;^&quot; 为按位异或 XOR 运算符。</span><br></pre></td></tr></table></figure>
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 4, start &#x3D; 3</span><br><span class="line">输出：8</span><br><span class="line">解释：数组 nums 为 [3, 5, 7, 9]，其中 (3 ^ 5 ^ 7 ^ 9) &#x3D; 8.</span><br></pre></td></tr></table></figure>
-<p>示例 3：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 1, start &#x3D; 7</span><br><span class="line">输出：7</span><br></pre></td></tr></table></figure>
-<p>示例 4：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 10, start &#x3D; 5</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
-<p>提示：</p>
-<p>1 &lt;= n &lt;= 1000<br />
-0 &lt;= start &lt;= 1000<br />
-n == nums.length</p>
-<h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
-<p>异或运算规则为相同为0，相异为1.<br />
-可以遍历每一个元素，依次做异或运算。</p>
-<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">xorOperation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = start;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result = result ^ (start + <span class="number">2</span> * i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>LeetCode</tag>
-        <tag>LeetCode简单</tag>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>1720.解码异或后的数组</title>
-    <url>/2021/05/06/LeetCode/1720.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
-<p><a href="https://leetcode-cn.com/problems/decode-xored-array/">1720.解码异或后的数组</a></p>
-<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>未知 整数数组 arr 由 n 个非负整数组成。</p>
-<p>经编码后变为长度为 n - 1 的另一个整数数组 encoded ，其中 encoded[i] = arr[i] XOR arr[i + 1] 。例如，arr = [1,0,2,1] 经编码后得到 encoded = [1,2,3] 。</p>
-<p>给你编码后的数组 encoded 和原数组 arr 的第一个元素 first（arr[0]）。</p>
-<p>请解码返回原数组 arr 。可以证明答案存在并且是唯一的。<a id="more"></a></p>
-<p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：encoded &#x3D; [1,2,3], first &#x3D; 1</span><br><span class="line">输出：[1,0,2,1]</span><br><span class="line">解释：若 arr &#x3D; [1,0,2,1] ，那么 first &#x3D; 1 且 encoded &#x3D; [1 XOR 0, 0 XOR 2, 2 XOR 1] &#x3D; [1,2,3]</span><br></pre></td></tr></table></figure>
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：encoded &#x3D; [6,2,7,3], first &#x3D; 4</span><br><span class="line">输出：[4,2,0,7,4]</span><br></pre></td></tr></table></figure>
-<p>提示：</p>
-<p>2 &lt;= n &lt;= 104<br />
-encoded.length == n - 1<br />
-0 &lt;= encoded[i] &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span><br />
-0 &lt;= first &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></p>
-<h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
-<p>在异或运算中，相同为0，相异为1，即</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mo>⊕</mo><mn>0</mn><mo>=</mo><mn>0</mn><mspace linebreak="newline"></mspace><mn>1</mn><mo>⊕</mo><mn>0</mn><mo>=</mo><mn>1</mn><mspace linebreak="newline"></mspace><mn>1</mn><mo>⊕</mo><mn>1</mn><mo>=</mo><mn>0</mn><mspace linebreak="newline"></mspace><mn>0</mn><mo>⊕</mo><mn>1</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \oplus 0 = 0 \\
-1 \oplus 0 = 1 \\
-1 \oplus 1 = 0 \\
-0 \oplus 1 = 1
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></p>
-<p>根据题意，我们现在得到的是异或后的结果，也就是上面异或运算法则等号后的数，即第三列。由于知道原来数组中的第一个元素，可以理解为知道上述异或运算法则的第一列，现在看如何知道第二列。设这个运算为新异或运算，标记为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">\oplus&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.835222em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>，则有规则如下：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup><mn>0</mn><mo>=</mo><mn>0</mn><mspace linebreak="newline"></mspace><mn>1</mn><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup><mn>1</mn><mo>=</mo><mn>0</mn><mspace linebreak="newline"></mspace><mn>0</mn><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup><mn>1</mn><mo>=</mo><mn>1</mn><mspace linebreak="newline"></mspace><mn>1</mn><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup><mn>0</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \oplus&#x27; 0 = 0\\
-1 \oplus&#x27; 1 = 0\\
-0 \oplus&#x27; 1 = 1\\
-1 \oplus&#x27; 0 = 1
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8852220000000001em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></p>
-<p>在上述法则中，可以发现规律，相同为0，不同为1，从而得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mo>⊕</mo><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">\oplus&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.835222em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mbin">⊕</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>为异或运算。因此解码过程为逐个进行异或运算。<br />
-在Java中，a与b的异或为a^b。</p>
-<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] decode(<span class="keyword">int</span>[] encoded, <span class="keyword">int</span> first) &#123;</span><br><span class="line">    	<span class="keyword">int</span> n = encoded.length;</span><br><span class="line">    	<span class="keyword">int</span>[] ans = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">    	ans[<span class="number">0</span>] = first;</span><br><span class="line">    	</span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    	&#123;</span><br><span class="line">    		ans[i+<span class="number">1</span>] = ans[i] ^ encoded[i];</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>LeetCode简单</tag>
-        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -976,6 +1000,64 @@ encoded.length == n - 1</p>
       </tags>
   </entry>
   <entry>
+    <title>53.最大子序和</title>
+    <url>/2021/05/17/LeetCode/53.%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/</url>
+    <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
+<p><a href="https://leetcode-cn.com/problems/maximum-subarray">题目</a></p>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。<br />
+示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [-2,1,-3,4,-1,2,1,-5,4]</span><br><span class="line">输出：6</span><br><span class="line">解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [0]</span><br><span class="line">输出：0</span><br><span class="line">示例 4：</span><br><span class="line"></span><br><span class="line">输入：nums &#x3D; [-1]</span><br><span class="line">输出：-1</span><br></pre></td></tr></table></figure>
+<p>示例 5：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [-100000]</span><br><span class="line">输出：-100000</span><br></pre></td></tr></table></figure>
+<p>提示：<br />
+1 &lt;= nums.length &lt;= 3 * <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">10^4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span></span><br />
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">-10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span> &lt;= nums[i] &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span><br />
+进阶：如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。</p>
+<h2 id="方法一暴力求解"><a class="markdownIt-Anchor" href="#方法一暴力求解"></a> 方法一：暴力求解</h2>
+<p>既然要找到的最大的子序和，可以逐个遍历求出所有可能的子序列的和。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> leetcode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaximumSubarray1</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = in.nextInt();</span><br><span class="line">		<span class="keyword">int</span>[] nums = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">0</span>; l &lt; n; l++)</span><br><span class="line">		&#123;</span><br><span class="line">			nums[l] = in.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> thisSum = <span class="number">0</span>, maxSum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="comment">// 子列的左端</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; n; j++) <span class="comment">// 子列的右端</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> k = i; k &lt;= j; k++)</span><br><span class="line">				&#123;</span><br><span class="line">					thisSum += nums[k];</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(thisSum &gt;= maxSum)</span><br><span class="line">				&#123;</span><br><span class="line">					maxSum = thisSum;</span><br><span class="line">				&#125;</span><br><span class="line">				thisSum = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(maxSum);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>i 表示的是子列的左端，j表示的是子列的右端，再有一个指标k是从i~j，遍历可得该子序列的和，如果比maxSum大就更新最大子序和。</li>
+<li>该方法有三层循环嵌套，如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>是该数组的长度，那么时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo><mo>=</mo><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(N)=O(N^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</li>
+</ul>
+<h2 id="方法二方法一的改进"><a class="markdownIt-Anchor" href="#方法二方法一的改进"></a> 方法二：方法一的改进</h2>
+<ul>
+<li>对于方法一中，相同的i，不同的j，可以逐步计算子序和，然后和maxSum比较，可以少一重循环。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package leetcode;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class MaximumSubarray2 &#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		Scanner in &#x3D; new Scanner(System.in);</span><br><span class="line">		int n &#x3D; in.nextInt();</span><br><span class="line">		int[] nums &#x3D; new int[n];</span><br><span class="line">		for(int l &#x3D; 0; l &lt; n; l++)</span><br><span class="line">		&#123;</span><br><span class="line">			nums[l] &#x3D; in.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		int thisSum &#x3D; 0, maxSum &#x3D; nums[0];</span><br><span class="line">		for(int i &#x3D; 0; i &lt; n; i++) &#x2F;&#x2F; 子列的左端</span><br><span class="line">		&#123;</span><br><span class="line">			thisSum &#x3D; 0;</span><br><span class="line">			for(int j &#x3D; i; j &lt; n; j++) &#x2F;&#x2F; 子列的右端</span><br><span class="line">			&#123;</span><br><span class="line">				thisSum +&#x3D; nums[j];</span><br><span class="line">				if(thisSum &gt;&#x3D; maxSum)</span><br><span class="line">				&#123;</span><br><span class="line">					maxSum &#x3D; thisSum;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(maxSum);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>由于该方法相比于方法一少一重循环，因此时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo><mo>=</mo><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(N)=O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</li>
+</ul>
+<h2 id="方法三在线处理"><a class="markdownIt-Anchor" href="#方法三在线处理"></a> 方法三：在线处理</h2>
+<ul>
+<li>“在线”的意思是指每输入一个数据就进行即时处理，在算法任何一个地方中止输入，算法都能正确给出当前的解。</li>
+<li>在线处理的方法是不断向右累加，如果算出更大的和就更新最大子序和。需要注意的是由于我们计算的是最大子序和，因此一旦当前的子序和为负，肯定不能使得后面的部分增加，就需要将之抛弃。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package leetcode;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class MaximumSubarray3 &#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		Scanner in &#x3D; new Scanner(System.in);</span><br><span class="line">		int n &#x3D; in.nextInt();</span><br><span class="line">		int[] nums &#x3D; new int[n];</span><br><span class="line">		for(int l &#x3D; 0; l &lt; n; l++)</span><br><span class="line">		&#123;</span><br><span class="line">			nums[l] &#x3D; in.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		int thisSum &#x3D; 0, maxSum &#x3D; nums[0];</span><br><span class="line">		for(int i &#x3D; 0; i &lt; n; i++) &#x2F;&#x2F; 在线处理的方式</span><br><span class="line">		&#123;</span><br><span class="line">			thisSum +&#x3D; nums[i];</span><br><span class="line">			System.out.println(&quot;i:&quot; + i + &quot;this sum:&quot; + thisSum);</span><br><span class="line">			if(thisSum &gt; maxSum)</span><br><span class="line">			&#123;</span><br><span class="line">				maxSum &#x3D; thisSum;</span><br><span class="line">			&#125;</span><br><span class="line">			if(thisSum &lt; 0)</span><br><span class="line">			&#123;</span><br><span class="line">				thisSum &#x3D; 0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(maxSum);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在线处理的方法的时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo><mo>=</mo><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(N)=O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</li>
+</ul>
+<h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2>
+<p>最大子序和的几种方法参考了中国大学MOOC课程<a href="https://www.icourse163.org/course/ZJU-93001">数据结构</a>1.3应用实例：最大子列和问题。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>LeetCode</tag>
+        <tag>LeetCode简单</tag>
+        <tag>动态规划</tag>
+        <tag>分治算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>28.实现strStr()</title>
     <url>/2021/05/16/LeetCode/28.%E5%AE%9E%E7%8E%B0strStr()/</url>
     <content><![CDATA[<h2 id="官网链接"><a class="markdownIt-Anchor" href="#官网链接"></a> 官网链接</h2>
@@ -997,7 +1079,7 @@ encoded.length == n - 1</p>
 haystack 和 needle 仅由小写英文字符组成</p>
 <h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
 <p>先确定needle字符串的长度为n，然后遍历haystack字符串，在haystack取长度为n的子串，检查是否相等。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package leetcode;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class ImplementStr &#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		Scanner in &#x3D; new Scanner(System.in);</span><br><span class="line">		String haystack &#x3D; in.next();</span><br><span class="line">		String needle &#x3D; in.next();</span><br><span class="line">		int n &#x3D; needle.length();</span><br><span class="line">		if(needle.equals(&quot;&quot;))</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(0);</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i &#x3D; 0; i &lt; haystack.length() - n + 1; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(haystack.substring(i, i + n).equals(needle))</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(-1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> leetcode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImplementStr</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		String haystack = in.next();</span><br><span class="line">		String needle = in.next();</span><br><span class="line">		<span class="keyword">int</span> n = needle.length();</span><br><span class="line">		<span class="keyword">if</span>(needle.equals(<span class="string">&quot;&quot;</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; haystack.length() - n + <span class="number">1</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(haystack.substring(i, i + n).equals(needle))</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(-<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>注意在Java中判断两个字符串是否相等应该有<code>stra.equals(strb)</code>，而<code>stra == strb</code>是判断这两个字符串所在的位置是否相同。</li>
 </ul>
@@ -1106,30 +1188,6 @@ F_1 = 1, \quad F_2 = 2.
         <tag>LeetCode</tag>
         <tag>LeetCode简单</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode题目汇总</title>
-    <url>/2021/04/28/LeetCode/LeetCode%E9%A2%98%E7%9B%AE%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<p><a href="https://wenjin1997.github.io/2021/05/11/LeetCode/1.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">1.两数之和</a> #简单 #数组 #哈希表<br />
-<a href="https://wenjin1997.github.io/2021/05/14/LeetCode/12.%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/">12.整数转罗马数字</a> #中等 #数学 #字符串<a id="more"></a><br />
-<a href="https://wenjin1997.github.io/2021/05/15/LeetCode/27.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">27.移除元素</a> #简单 #数组 #双指针<br />
-<a href="">28.实现strStr()</a> #简单 #双指针 #字符串<br />
-<a href="https://wenjin1997.github.io/2021/05/09/LeetCode/70.%E7%88%AC%E6%A5%BC%E6%A2%AF/">70.爬楼梯</a> #简单 #动态规划<br />
-<a href="https://wenjin1997.github.io/2021/05/08/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/">118.杨辉三角</a> #简单 #数组<br />
-<a href="https://wenjin1997.github.io/2021/05/10/LeetCode/198.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/">198.打家劫舍</a> #中等 #动态规划<br />
-<a href="https://wenjin1997.github.io/2021/04/28/LeetCode/633.%E5%B9%B3%E6%96%B9%E6%95%B0%E4%B9%8B%E5%92%8C/">633.平方数之和</a> #中等 #数学<br />
-<a href="https://wenjin1997.github.io/2021/04/28/LeetCode/1101.%E5%9C%A8D%E5%A4%A9%E5%86%85%E9%80%81%E8%BE%BE%E5%8C%85%E8%A3%B9%E7%9A%84%E8%83%BD%E5%8A%9B/">1101.在D天内送达包裹的能力</a> #中等 #二分查找<br />
-<a href="https://wenjin1997.github.io/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/">1468.数组异或操作</a> #简单 #位运算 #数组<br />
-<a href="https://wenjin1997.github.io/2021/05/06/LeetCode/1720.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%95%B0%E7%BB%84/">1720.解码异或后的数组</a> #简单 #位运算<br />
-<a href="https://wenjin1997.github.io/2021/05/11/LeetCode/1734.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%8E%92%E5%88%97/">1734.解码异或后的排列</a> #中等 #位运算</p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>目录</tag>
       </tags>
   </entry>
   <entry>
@@ -1810,27 +1868,28 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
       </tags>
   </entry>
   <entry>
-    <title>118.杨辉三角</title>
-    <url>/2021/05/08/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/</url>
-    <content><![CDATA[<h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
-<p><a href="https://leetcode-cn.com/problems/pascals-triangle/">题目描述</a><br />
-<a href="https://leetcode-cn.com/problems/pascals-triangle/solution/yang-hui-san-jiao-by-leetcode-solution-lew9/">官方解答</a></p>
-<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。<br />
-在杨辉三角中，每个数是它左上方和右上方的数的和。<a id="more"></a><br />
-示例:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h2 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h2>
-<p>在杨辉三角中，每个数是它左上方和右上方的数的和，根据这一点，可以先生成第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>行的元素，再生成第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>行的元素。</p>
-<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; ret = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++)&#123;</span><br><span class="line">            List&lt;Integer&gt; row = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j == <span class="number">0</span> || j == i)&#123;</span><br><span class="line">                    row.add(<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    row.add(ret.get(i - <span class="number">1</span>).get(j - <span class="number">1</span>) + ret.get(i - <span class="number">1</span>).get(j));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ret.add(row);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>LeetCode题目汇总</title>
+    <url>/2021/04/28/LeetCode/LeetCode%E9%A2%98%E7%9B%AE%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<p><a href="https://wenjin1997.github.io/2021/05/11/LeetCode/1.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">1.两数之和</a> #简单 #数组 #哈希表<br />
+<a href="https://wenjin1997.github.io/2021/05/14/LeetCode/12.%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/">12.整数转罗马数字</a> #中等 #数学 #字符串<a id="more"></a><br />
+<a href="https://wenjin1997.github.io/2021/05/15/LeetCode/27.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">27.移除元素</a> #简单 #数组 #双指针<br />
+<a href="https://wenjin1997.github.io/2021/05/16/LeetCode/28.%E5%AE%9E%E7%8E%B0strStr()/">28.实现strStr()</a> #简单 #双指针 #字符串<br />
+<a href="">53.最大子序和</a> #简单 #数组 #分治算法 #动态规划<br />
+<a href="https://wenjin1997.github.io/2021/05/09/LeetCode/70.%E7%88%AC%E6%A5%BC%E6%A2%AF/">70.爬楼梯</a> #简单 #动态规划<br />
+<a href="https://wenjin1997.github.io/2021/05/08/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/">118.杨辉三角</a> #简单 #数组<br />
+<a href="https://wenjin1997.github.io/2021/05/10/LeetCode/198.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/">198.打家劫舍</a> #中等 #动态规划<br />
+<a href="https://wenjin1997.github.io/2021/04/28/LeetCode/633.%E5%B9%B3%E6%96%B9%E6%95%B0%E4%B9%8B%E5%92%8C/">633.平方数之和</a> #中等 #数学<br />
+<a href="https://wenjin1997.github.io/2021/04/28/LeetCode/1101.%E5%9C%A8D%E5%A4%A9%E5%86%85%E9%80%81%E8%BE%BE%E5%8C%85%E8%A3%B9%E7%9A%84%E8%83%BD%E5%8A%9B/">1101.在D天内送达包裹的能力</a> #中等 #二分查找<br />
+<a href="https://wenjin1997.github.io/2021/05/07/LeetCode/1468.%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C/">1468.数组异或操作</a> #简单 #位运算 #数组<br />
+<a href="https://wenjin1997.github.io/2021/05/06/LeetCode/1720.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%95%B0%E7%BB%84/">1720.解码异或后的数组</a> #简单 #位运算<br />
+<a href="https://wenjin1997.github.io/2021/05/11/LeetCode/1734.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%8E%92%E5%88%97/">1734.解码异或后的排列</a> #中等 #位运算</p>
+]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>LeetCode</tag>
-        <tag>LeetCode简单</tag>
+        <tag>目录</tag>
       </tags>
   </entry>
 </search>

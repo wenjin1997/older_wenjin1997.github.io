@@ -262,15 +262,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="官网链接"><a class="markdownIt-Anchor" href="#官网链接"></a> 官网链接</h1>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element">题目</a><br />
-<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/solution/yi-chu-yuan-su-by-leetcode-solution-svxi/">官方解答</a></p>
-<h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1>
-<p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。<br />
-不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并<strong>原地</strong>修改输入数组。<br />
-元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。<br />
-说明:<br />
-为什么返回数值是整数，但输出的答案是数组呢?
+          <h1 id="官网链接"><a href="#官网链接" class="headerlink" title="官网链接"></a>官网链接</h1><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element">题目</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/solution/yi-chu-yuan-su-by-leetcode-solution-svxi/">官方解答</a></p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并<strong>原地</strong>修改输入数组。<br>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。<br>说明:<br>为什么返回数值是整数，但输出的答案是数组呢?
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/15/LeetCode/27.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/#more" rel="contents">
@@ -360,8 +353,7 @@
           <ul>
 <li>要想构建一个完整的程序，会结合使用多个类，其中只有一个类有main方法。</li>
 </ul>
-<h1 id="431-employee类"><a class="markdownIt-Anchor" href="#431-employee类"></a> 4.3.1 Employee类</h1>
-<p>程序清单 EmployeeTest.java</p>
+<h1 id="4-3-1-Employee类"><a href="#4-3-1-Employee类" class="headerlink" title="4.3.1 Employee类"></a>4.3.1 Employee类</h1><p>程序清单 EmployeeTest.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This program tests the Employee class</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.13 2021-05-10</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jinjin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// fill the staff array with three Employee objects</span></span><br><span class="line">        Employee[] staff = <span class="keyword">new</span> Employee[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">        staff[<span class="number">0</span>] = <span class="keyword">new</span> Employee(<span class="string">&quot;Carl Cracker&quot;</span>, <span class="number">75000</span>, <span class="number">1987</span>, <span class="number">12</span>, <span class="number">15</span>);</span><br><span class="line">        staff[<span class="number">1</span>] = <span class="keyword">new</span> Employee(<span class="string">&quot;Harry Hacker&quot;</span>, <span class="number">50000</span>, <span class="number">1989</span>, <span class="number">10</span>, <span class="number">1</span>);</span><br><span class="line">        staff[<span class="number">2</span>] = <span class="keyword">new</span> Employee(<span class="string">&quot;Tony Tester&quot;</span>, <span class="number">40000</span>,<span class="number">1990</span>, <span class="number">3</span>, <span class="number">15</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// raise everyone&#x27;s salary by 5%</span></span><br><span class="line">        <span class="keyword">for</span> (Employee e : staff)</span><br><span class="line">            e.raiseSalary(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// print out information about all Employee objects</span></span><br><span class="line">        <span class="keyword">for</span> (Employee e : staff)</span><br><span class="line">            System.out.println(<span class="string">&quot;name=&quot;</span> + e.getName() + <span class="string">&quot;,salary=&quot;</span> + e.getSalary() + <span class="string">&quot;,&quot;</span> +</span><br><span class="line">                    <span class="string">&quot;hireDay=&quot;</span> + e.getHireDay());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -443,13 +435,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/integer-to-roman/">题目</a><br />
-<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/integer-to-roman/solution/zheng-shu-zhuan-luo-ma-shu-zi-by-leetcod-75rs/">官方解答</a></p>
-<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。</p>
+          <h2 id="官方链接"><a href="#官方链接" class="headerlink" title="官方链接"></a>官方链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/integer-to-roman/">题目</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/integer-to-roman/solution/zheng-shu-zhuan-luo-ma-shu-zi-by-leetcod-75rs/">官方解答</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">字符          数值</span><br><span class="line">I             1</span><br><span class="line">V             5</span><br><span class="line">X             10</span><br><span class="line">L             50</span><br><span class="line">C             100</span><br><span class="line">D             500</span><br><span class="line">M             1000</span><br></pre></td></tr></table></figure>
-<p>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27写做  XXVII, 即为 XX + V + II 。
+<p>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27写做  XXVII, 即为 XX + V + II 。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/14/LeetCode/12.%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/#more" rel="contents">
@@ -530,13 +519,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/two-sum">题目</a><br />
-<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/two-sum/solution/liang-shu-zhi-he-by-leetcode-solution/">官方解答</a></p>
-<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。<br />
-你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。<br />
-你可以按任意顺序返回答案。
+          <h2 id="官方链接"><a href="#官方链接" class="headerlink" title="官方链接"></a>官方链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/two-sum">题目</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/two-sum/solution/liang-shu-zhi-he-by-leetcode-solution/">官方解答</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。<br>你可以按任意顺序返回答案。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/11/LeetCode/1.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/#more" rel="contents">
@@ -617,13 +601,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/decode-xored-permutation/">题目</a><br />
-<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/decode-xored-permutation/solution/jie-ma-yi-huo-hou-de-pai-lie-by-leetcode-9gw4/">官方解答</a></p>
-<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>给你一个整数数组perm ，它是前n个正整数的排列，且n是个<strong>奇数</strong>。<br />
-它被加密成另一个长度为 n - 1 的整数数组 encoded ，满足 encoded[i] = perm[i] XOR perm[i + 1] 。比方说，如果 perm = [1,3,2] ，那么 encoded = [2,1] 。<br />
-给你 encoded 数组，请你返回原始数组 perm 。题目保证答案存在且唯一。
+          <h2 id="官方链接"><a href="#官方链接" class="headerlink" title="官方链接"></a>官方链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/decode-xored-permutation/">题目</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/decode-xored-permutation/solution/jie-ma-yi-huo-hou-de-pai-lie-by-leetcode-9gw4/">官方解答</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个整数数组perm ，它是前n个正整数的排列，且n是个<strong>奇数</strong>。<br>它被加密成另一个长度为 n - 1 的整数数组 encoded ，满足 encoded[i] = perm[i] XOR perm[i + 1] 。比方说，如果 perm = [1,3,2] ，那么 encoded = [2,1] 。<br>给你 encoded 数组，请你返回原始数组 perm 。题目保证答案存在且唯一。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/11/LeetCode/1734.%E8%A7%A3%E7%A0%81%E5%BC%82%E6%88%96%E5%90%8E%E7%9A%84%E6%8E%92%E5%88%97/#more" rel="contents">
@@ -704,8 +683,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="41-面向对象程序设计概述"><a class="markdownIt-Anchor" href="#41-面向对象程序设计概述"></a> 4.1 面向对象程序设计概述</h1>
-<ul>
+          <h1 id="4-1-面向对象程序设计概述"><a href="#4-1-面向对象程序设计概述" class="headerlink" title="4.1 面向对象程序设计概述"></a>4.1 面向对象程序设计概述</h1><ul>
 <li>面向对象程序设计：object-oriented programming, OOP</li>
 <li>面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。</li>
 <li>OOP将数据放在第一位，然后再考虑操作数据的算法。</li>
@@ -790,12 +768,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h1>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber/">题目</a><br />
-<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber/solution/da-jia-jie-she-by-leetcode-solution/">官方解答</a></p>
-<h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1>
-<p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，<strong>如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警</strong>。<br />
-给定一个代表每个房屋存放金额的非负整数数组，计算你<strong>不触动警报装置的情况下</strong>，一夜之内能够偷窃到的最高金额。
+          <h1 id="官方链接"><a href="#官方链接" class="headerlink" title="官方链接"></a>官方链接</h1><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber/">题目</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber/solution/da-jia-jie-she-by-leetcode-solution/">官方解答</a></p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，<strong>如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警</strong>。<br>给定一个代表每个房屋存放金额的非负整数数组，计算你<strong>不触动警报装置的情况下</strong>，一夜之内能够偷窃到的最高金额。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/10/LeetCode/198.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/#more" rel="contents">
@@ -876,15 +850,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="3101-声明数组"><a class="markdownIt-Anchor" href="#3101-声明数组"></a> 3.10.1 声明数组</h2>
-<ul>
+          <h2 id="3-10-1-声明数组"><a href="#3-10-1-声明数组" class="headerlink" title="3.10.1 声明数组"></a>3.10.1 声明数组</h2><ul>
 <li>数组是一种数据结构，用来存储同一类型值得集合。</li>
 <li>一旦创建了数组，就不能再改变它的长度。如果程序运行中需要经常扩展数组的大小，就应该使用另一种数据结构——数组列表（array list）。</li>
 <li>创建数组对象并同时提供初始值的简写形式：<code>int[] smallPrimes = &#123; 2, 3, 5, 7, 11, 13, &#125;;</code></li>
 <li>在Java中，允许有长度为0的数组。长度为0的数组与null并不相同。</li>
 </ul>
-<h2 id="3102-访问数组元素"><a class="markdownIt-Anchor" href="#3102-访问数组元素"></a> 3.10.2 访问数组元素</h2>
-<ul>
+<h2 id="3-10-2-访问数组元素"><a href="#3-10-2-访问数组元素" class="headerlink" title="3.10.2 访问数组元素"></a>3.10.2 访问数组元素</h2><ul>
 <li>创建一个数字数组时，所有元素都初始化为0.</li>
 <li>boolean数组的元素初始化为false。</li>
 <li>对象数组的元素初始化为一个特殊值null，表示这些元素（还）为存放任何对象。
@@ -968,9 +940,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="38-控制流程"><a class="markdownIt-Anchor" href="#38-控制流程"></a> 3.8 控制流程</h1>
-<h2 id="remark"><a class="markdownIt-Anchor" href="#remark"></a> Remark</h2>
-<ul>
+          <h1 id="3-8-控制流程"><a href="#3-8-控制流程" class="headerlink" title="3.8 控制流程"></a>3.8 控制流程</h1><h2 id="Remark"><a href="#Remark" class="headerlink" title="Remark"></a>Remark</h2><ul>
 <li>块确定了变量的作用域。</li>
 <li>不能在嵌套的两个块中声明相同名的变量。</li>
 <li>for语句的第1部分通常是对计数器初始化；第2部分给出每次新一轮循环执行前要检测的循环条件；第3部分指定如何更新计数器。</li>
@@ -1057,11 +1027,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/">题目</a><br />
-<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/">官方解答</a></p>
-<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</p>
+          <h2 id="官方链接"><a href="#官方链接" class="headerlink" title="官方链接"></a>官方链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/">题目</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/">官方解答</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</p>
 <p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
 <p>注意：给定 n 是一个正整数。
           <!--noindex-->

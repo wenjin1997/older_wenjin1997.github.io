@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-05-23T01:43:20.211Z</updated>
+  <updated>2021-05-24T05:34:57.983Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>121.买卖股票的最佳时机</title>
+    <link href="http://example.com/2021/05/24/LeetCode/121.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/"/>
+    <id>http://example.com/2021/05/24/LeetCode/121.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/</id>
+    <published>2021-05-24T05:24:00.000Z</published>
+    <updated>2021-05-24T05:34:57.983Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h1><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/">题目</a><br /><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/121-mai-mai-gu-piao-de-zui-jia-shi-ji-by-leetcode-/">官方解答</a></p><h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1><p>给定一个数组<code>prices</code>，它的第<code>i</code>个元素<code>prices[i]</code>表示一支给定股票第<code>i</code>天的价格。</p><p>你只能选择<strong>某一天</strong>买入这只股票，并选择在<strong>未来的某一个不同的日子</strong>卖出该股票。设计一个算法来计算你所能获取的最大利润。</p><p>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回<code>0</code>。<a id="more"></a></p><p>示例 1：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[7,1,5,3,6,4]</span><br><span class="line">输出：5</span><br><span class="line">解释：在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出，最大利润 &#x3D; 6-1 &#x3D; 5 。</span><br><span class="line">注意利润不能是 7-1 &#x3D; 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</span><br></pre></td></tr></table></figure><p>示例 2：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：prices &#x3D; [7,6,4,3,1]</span><br><span class="line">输出：0</span><br><span class="line">解释：在这种情况下, 没有交易完成, 所以最大利润为 0。</span><br></pre></td></tr></table></figure><p>提示：</p><ul><li>1 &lt;= prices.length &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></li><li>0 &lt;= prices[i] &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">10^4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span></span></li></ul><h1 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h1><ul><li>最初的解答这道题的想法是找到数组中下标最小的最小值，再用每一天的价格减去这个最小值，最终得到的最大数是最大利润，在测试用例时，这种思路是不对的，如数组[2,4,1,1,1]，最小值为1，但算出来的利润其实为0，实际最大利润应为2。</li><li>上述思路出错的原因是：不应该考虑整个数组的最小值，而应该考虑历史最小值。假设是自己在买股票，那么当天可以决定是否卖出股票，应该在历史最低处买入，再决定当天是否卖出股票。</li><li>Java代码如下：</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> min = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> maxprofit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (prices[i] &lt; min) &#123;</span><br><span class="line">                min = prices[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (prices[i] - min &gt; maxprofit) &#123;</span><br><span class="line">                maxprofit = prices[i] - min;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxprofit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</li></ul><h1 id="remark"><a class="markdownIt-Anchor" href="#remark"></a> Remark</h1><ul><li>可以将最小值初始化为<code>prices[0]</code>，也可以初始化为<code>Integer.MAX_VALUE</code>。</li><li>Java中数组按升序排列：<code>Arrays.sort(dp);</code></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;官方链接&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#官方链接&quot;&gt;&lt;/a&gt; 官方链接&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/&quot;&gt;题目&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/121-mai-mai-gu-piao-de-zui-jia-shi-ji-by-leetcode-/&quot;&gt;官方解答&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;题目描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#题目描述&quot;&gt;&lt;/a&gt; 题目描述&lt;/h1&gt;
+&lt;p&gt;给定一个数组&lt;code&gt;prices&lt;/code&gt;，它的第&lt;code&gt;i&lt;/code&gt;个元素&lt;code&gt;prices[i]&lt;/code&gt;表示一支给定股票第&lt;code&gt;i&lt;/code&gt;天的价格。&lt;/p&gt;
+&lt;p&gt;你只能选择&lt;strong&gt;某一天&lt;/strong&gt;买入这只股票，并选择在&lt;strong&gt;未来的某一个不同的日子&lt;/strong&gt;卖出该股票。设计一个算法来计算你所能获取的最大利润。&lt;/p&gt;
+&lt;p&gt;返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回&lt;code&gt;0&lt;/code&gt;。</summary>
+    
+    
+    
+    <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
+    
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
+    
+    <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
   
   <entry>
     <title>22.括号生成</title>
@@ -644,42 +675,6 @@ a 和 b 定义如下：&lt;/p&gt;
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
     
     <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>3.7 输入与输出</title>
-    <link href="http://example.com/2021/05/08/coreJava1/3.7.1%20%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5/"/>
-    <id>http://example.com/2021/05/08/coreJava1/3.7.1%20%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5/</id>
-    <published>2021-05-08T14:00:00.000Z</published>
-    <updated>2021-05-08T14:00:09.189Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="371-读取输入"><a class="markdownIt-Anchor" href="#371-读取输入"></a> 3.7.1 读取输入</h2><p>通过控制台进行输入的步骤：</p><ul><li>首先构造一个与“标准输入流”System.in关联的Scanner对象：<br /><code>Scanner in = new Scanner();</code></li><li>使用Scanner类的各种方法读取输入：<br /><code>String name = in.nextLine();</code></li><li>Scanner类定义在java.util包中，使用时要用import导入。</li></ul><h3 id="scanner类的常用方法"><a class="markdownIt-Anchor" href="#scanner类的常用方法"></a> <strong>Scanner类的常用方法</strong></h3><ul><li>String nextLine():将读取一行输入 。</li><li>String next():读取输入的下一个单词（以空格作为分隔符）。</li><li>int nextInt() <a id="more"></a></li></ul><h3 id="consle类"><a class="markdownIt-Anchor" href="#consle类"></a> <strong>Consle类</strong></h3><ul><li>Scanner类不适用于从控制台读取密码，此时可以用Consle类。</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Consle cons = System.console();</span><br><span class="line">String username = cons.readLine(<span class="string">&quot;User name: &quot;</span>);</span><br><span class="line"><span class="keyword">char</span>[] passwd = cons.readPassword(<span class="string">&quot;Password: &quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> <strong>代码</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This program demonstrates console input</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.10 2021-05-08 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 文进</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InputTest</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line"><span class="comment">// get first input</span></span><br><span class="line">System.out.print(<span class="string">&quot;What is your name? &quot;</span>);</span><br><span class="line">String name = in.nextLine();</span><br><span class="line"></span><br><span class="line"><span class="comment">// get second input</span></span><br><span class="line">System.out.print(<span class="string">&quot;How old are you? &quot;</span>);</span><br><span class="line"><span class="keyword">int</span> age = in.nextInt();</span><br><span class="line"></span><br><span class="line"><span class="comment">// display output on console</span></span><br><span class="line">System.out.println(<span class="string">&quot;Hello, &quot;</span> + name + <span class="string">&quot;.Next year, you&#x27;ll be &quot;</span> + (age + <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="372-格式化输出"><a class="markdownIt-Anchor" href="#372-格式化输出"></a> 3.7.2 格式化输出</h2><ul><li><code>System.out.print(x);</code>将以x的类型所允许的最大非0数位个数打印输出x。</li><li><code>System.out.print(&quot;%8.2f&quot;, x);</code>字段宽度为8，包括8个字符，另外精度为小数点后2个字符，注意这里前导的空格也算一个字符。</li><li>每一个以%字符开始的格式说明符都用相应的参数替换。如：<code>System.out.printf(&quot;Hello, %s. Next year, you'll be %d.&quot;,name, age + 1);</code>,f表示浮点数，s表示字符串，d表示十进制整数。</li><li>还可以指定控制格式化输出外观的各种标志，如：<code>System.out.printf(&quot;%,.2f&quot;, 10000.0 / 3.0); //prints 3,333.33</code></li><li>使用静态的String.format方法创建一个格式化的字符串，而不打印输出：<code>String message = String.format(&quot;Hello, %s. Next year, you'll be %d.&quot;, name, age + 1);</code></li><li>printf方法中有日期与时间格式化选项，如<code>System.out.printf(&quot;%tc&quot;, new Date()); // prints 周六 5月 08 20:44:49 CST 2021</code></li></ul><h2 id="373-文件输入与输出"><a class="markdownIt-Anchor" href="#373-文件输入与输出"></a> 3.7.3 文件输入与输出</h2><ul><li>读取文件：<code>Scanner in = new Scanner(Path.of(&quot;myfile.txt&quot;), StandardCharsets.UTF-8);</code></li><li>写入文件：<code>PrintWriter out = new PrintWriter(&quot;myfile.txt&quot;, StandardCharsets.UTF_8);</code></li></ul>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;371-读取输入&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#371-读取输入&quot;&gt;&lt;/a&gt; 3.7.1 读取输入&lt;/h2&gt;
-&lt;p&gt;通过控制台进行输入的步骤：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;首先构造一个与“标准输入流”System.in关联的Scanner对象：&lt;br /&gt;
-&lt;code&gt;Scanner in = new Scanner();&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;使用Scanner类的各种方法读取输入：&lt;br /&gt;
-&lt;code&gt;String name = in.nextLine();&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Scanner类定义在java.util包中，使用时要用import导入。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;scanner类的常用方法&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#scanner类的常用方法&quot;&gt;&lt;/a&gt; &lt;strong&gt;Scanner类的常用方法&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;String nextLine():将读取一行输入 。&lt;/li&gt;
-&lt;li&gt;String next():读取输入的下一个单词（以空格作为分隔符）。&lt;/li&gt;
-&lt;li&gt;int nextInt()</summary>
-    
-    
-    
-    <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
-    
-    
-    <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
-    
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

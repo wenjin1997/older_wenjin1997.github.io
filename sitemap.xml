@@ -263,21 +263,7 @@
 
   
   <url>
-    <loc>http://example.com/tags/Algorithms/</loc>
-    <lastmod>2021-05-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-05-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/</loc>
+    <loc>http://example.com/tags/LeetCode/</loc>
     <lastmod>2021-05-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -285,13 +271,6 @@
   
   <url>
     <loc>http://example.com/tags/%E6%95%B0%E7%BB%84/</loc>
-    <lastmod>2021-05-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/LeetCode/</loc>
     <lastmod>2021-05-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -354,13 +333,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2021-05-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</loc>
     <lastmod>2021-05-24</lastmod>
     <changefreq>daily</changefreq>
@@ -375,6 +347,27 @@
   </url>
   
   <url>
+    <loc>http://example.com/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2021-05-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/Algorithms/</loc>
+    <lastmod>2021-05-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-05-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/%E7%9B%AE%E5%BD%95/</loc>
     <lastmod>2021-05-24</lastmod>
     <changefreq>daily</changefreq>
@@ -382,14 +375,21 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E7%83%AD%E4%BC%A0%E5%AF%BC%E6%96%B9%E7%A8%8B/</loc>
+    <loc>http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/</loc>
     <lastmod>2021-05-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%9C%80%E7%AE%80%E6%98%BE%E6%A0%BC%E5%BC%8F/</loc>
+    <loc>http://example.com/tags/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2021-05-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2021-05-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -410,20 +410,27 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/</loc>
+    <loc>http://example.com/tags/%E7%83%AD%E4%BC%A0%E5%AF%BC%E6%96%B9%E7%A8%8B/</loc>
     <lastmod>2021-05-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E9%9A%90%E5%BC%8F%E6%AC%A7%E6%8B%89%E6%96%B9%E6%B3%95/</loc>
+    <loc>http://example.com/tags/%E6%9C%80%E7%AE%80%E6%98%BE%E6%A0%BC%E5%BC%8F/</loc>
     <lastmod>2021-05-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
 
+  
+  <url>
+    <loc>http://example.com/categories/LeetCode/</loc>
+    <lastmod>2021-05-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>http://example.com/categories/%E3%80%8A%E7%AE%97%E6%B3%95%E3%80%8B/</loc>
@@ -434,13 +441,6 @@
   
   <url>
     <loc>http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/</loc>
-    <lastmod>2021-05-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/LeetCode/</loc>
     <lastmod>2021-05-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

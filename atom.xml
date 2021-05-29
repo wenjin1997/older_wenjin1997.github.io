@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-05-28T15:43:24.862Z</updated>
+  <updated>2021-05-29T08:05:00.301Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>78.子集</title>
+    <link href="http://example.com/2021/05/29/LeetCode/78.%E5%AD%90%E9%9B%86/"/>
+    <id>http://example.com/2021/05/29/LeetCode/78.%E5%AD%90%E9%9B%86/</id>
+    <published>2021-05-29T08:02:00.000Z</published>
+    <updated>2021-05-29T08:05:00.301Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h1><ul><li><a href="https://leetcode-cn.com/problems/subsets/">题目</a></li><li><a href="https://leetcode-cn.com/problems/subsets/solution/zi-ji-by-leetcode-solution/">官方解答</a></li></ul><h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1><p>给你一个整数数组<code>nums</code>，数组中的元素<strong>互不相同</strong>。返回该数组所有可能的子集（幂集）。</p><p>解集<strong>不能</strong>包含重复的子集。你可以按<strong>任意顺序</strong>返回解集。<a id="more"></a></p><p>示例 1：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]</span><br></pre></td></tr></table></figure><p>示例 2：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [0]</span><br><span class="line">输出：[[],[0]]</span><br></pre></td></tr></table></figure><p>提示：</p><ul><li><code>1 &lt;= nums.length &lt;= 10</code></li><li><code>-10 &lt;= nums[i] &lt;= 10</code></li><li><code>nums</code>中的所有元素<strong>互不相同</strong></li></ul><h1 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h1><ul><li>如果<code>nums</code>的长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>，则它的幂集共有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.747722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>个。如果要求数组<code>nums = [1,2,3]</code>的所有幂集，可以用一个三位的二进制来表示，每一个二进制位表示第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>位数是否在幂集中，如011，表示的幂集就是<code>[2,3]</code>，当枚举出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>位二进制后，就求出了所有的幂集。</li><li>Java代码</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; tempt = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(); <span class="comment">// 每次增加的子集</span></span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; ans = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;(); <span class="comment">// 结果返回子集</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsets(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length; <span class="comment">// 数组的长度</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> mask = <span class="number">0</span>; mask &lt; Math.pow(<span class="number">2</span>, n); mask++) &#123;</span><br><span class="line">            tempt.clear();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((mask &amp; (<span class="number">1</span> &lt;&lt; i)) != <span class="number">0</span>) tempt.add(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            ans.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(tempt));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>复杂度分析<ul><li>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>×</mo><msup><mn>2</mn><mi>n</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \times 2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li><li>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></li></ul></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;官方链接&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#官方链接&quot;&gt;&lt;/a&gt; 官方链接&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/subsets/&quot;&gt;题目&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/subsets/solution/zi-ji-by-leetcode-solution/&quot;&gt;官方解答&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;题目描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#题目描述&quot;&gt;&lt;/a&gt; 题目描述&lt;/h1&gt;
+&lt;p&gt;给你一个整数数组&lt;code&gt;nums&lt;/code&gt;，数组中的元素&lt;strong&gt;互不相同&lt;/strong&gt;。返回该数组所有可能的子集（幂集）。&lt;/p&gt;
+&lt;p&gt;解集&lt;strong&gt;不能&lt;/strong&gt;包含重复的子集。你可以按&lt;strong&gt;任意顺序&lt;/strong&gt;返回解集。</summary>
+    
+    
+    
+    <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
+    
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
+    
+    <category term="位运算" scheme="http://example.com/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+    <category term="回溯算法" scheme="http://example.com/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>477. 汉明距离总和</title>
@@ -458,9 +492,9 @@ a 和 b 定义如下：&lt;/p&gt;
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
     
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
     
@@ -529,9 +563,9 @@ a 和 b 定义如下：&lt;/p&gt;
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
     
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
     
@@ -561,9 +595,9 @@ a 和 b 定义如下：&lt;/p&gt;
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
-    <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
-    
     <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
   </entry>
   
@@ -623,9 +657,9 @@ a 和 b 定义如下：&lt;/p&gt;
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
     
     <category term="哈希表" scheme="http://example.com/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
     
@@ -661,34 +695,6 @@ a 和 b 定义如下：&lt;/p&gt;
     <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
     
     <category term="位运算" scheme="http://example.com/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>4.1 面向对象程序设计概述-4.2 使用预定义类</title>
-    <link href="http://example.com/2021/05/10/coreJava1/4.1%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0-4.2%20%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB/"/>
-    <id>http://example.com/2021/05/10/coreJava1/4.1%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0-4.2%20%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB/</id>
-    <published>2021-05-10T06:16:00.000Z</published>
-    <updated>2021-05-10T06:17:03.352Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="41-面向对象程序设计概述"><a class="markdownIt-Anchor" href="#41-面向对象程序设计概述"></a> 4.1 面向对象程序设计概述</h1><ul><li>面向对象程序设计：object-oriented programming, OOP</li><li>面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。</li><li>OOP将数据放在第一位，然后再考虑操作数据的算法。</li><li>面向对象更加适合解决规模较大的问题。<a id="more"></a></li></ul><h2 id="411-类"><a class="markdownIt-Anchor" href="#411-类"></a> 4.1.1 类</h2><ul><li><strong>类</strong>是构造对象的模板和蓝图。</li><li>由类构造对象的过程称为创建类的<strong>实例</strong>。</li><li><strong>封装</strong>就是将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。</li><li>对象中的数据称为<strong>实例字段</strong>，操作数据的过程称为<strong>方法</strong>。</li><li>作为一个类的实例，特定对象都有一组特定的实例字段值。这些值的集合就是这个对象的<strong>当前状态</strong>。</li><li>在Java中，所有类都源自一个“神通广大的超类”，就是Object。</li><li>通过扩展一个类来建立另外一个类的过程为<strong>继承</strong>。</li></ul><h2 id="412-对象"><a class="markdownIt-Anchor" href="#412-对象"></a> 4.1.2 对象</h2><ul><li>对象的三个主要特性：行为、状态、标识。</li><li>对象的行为是用可调用的方法来定义的。</li><li>每个对象都保存着描述当前状况的信息，这就是对象的<strong>状态</strong>。</li><li>对象状态的改变必须通过调用方法实现，否则破坏了封装性。</li><li>每个对象都有一个唯一的标识。</li><li>作为同一个类的实例，每个对象的标识总是不同的，状态也往往存在着差异。</li></ul><h2 id="413-识别类"><a class="markdownIt-Anchor" href="#413-识别类"></a> 4.1.3 识别类</h2><ul><li>OOP学习中，首先从识别类开始，然后再为各个类添加方法。</li><li>经验：类——名词，方法——动词。</li></ul><h2 id="414-类之间的关系"><a class="markdownIt-Anchor" href="#414-类之间的关系"></a> 4.1.4 类之间的关系</h2><ul><li>在类之间，常见的关系：依赖、聚合、继承。</li><li>如果一个类的方法使用或操纵另一个类的对象，我们就说一个类<strong>依赖</strong>于另一个类。</li><li>应该尽可能地将相互依赖的类减至最少，减少类之间的耦合。</li><li><strong>包容</strong>关系意味着类A的对象包含类B的对象。</li></ul><h1 id="42-使用预定义类"><a class="markdownIt-Anchor" href="#42-使用预定义类"></a> 4.2 使用预定义类</h1><h2 id="421-对象与对象变量"><a class="markdownIt-Anchor" href="#421-对象与对象变量"></a> 4.2.1 对象与对象变量</h2><ul><li>要想使用对象，首先必须构造对象，并制定其初始状态。然后对对象应用方法。</li><li>构造器的名字应该与类名相同。</li><li>对象变量并没有实际包含一个对象，它只是<strong>引用</strong>一个对象。</li><li>在Java中，任何对象变量的值都是对存储在另外一个地方的某个对象的应用。new操作符的返回值也是一个引用。</li><li>可以显示地将对象变量设置为null，指示这个对象变量目前没有引用任何对象。</li></ul><h2 id="422-java类库中的localdate类"><a class="markdownIt-Anchor" href="#422-java类库中的localdate类"></a> 4.2.2 Java类库中的LocalDate类</h2><ul><li>用来表示时间点：Data类。</li><li>用大家熟悉的日历表示日期：LocalDate类。</li><li>不要使用构造器来构造LocalDate类的对象，实际上，应当使用静态工厂方法，它会代表你调用构造器。<code>LocalDate.now()</code>会构造一个新对象。</li><li>LocalDate类封装了实例字段来维护所设置的日期。</li></ul><h2 id="423-更改器方法与访问器方法"><a class="markdownIt-Anchor" href="#423-更改器方法与访问器方法"></a> 4.2.3 更改器方法与访问器方法</h2><ul><li>只访问对象而不修改对象的方法有时称为<strong>访问器方法</strong>。</li></ul><p><strong>CalendarTest.java</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.DayOfWeek;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.5 2021-05-09</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jinjin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalendarTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        LocalDate date = LocalDate.now();</span><br><span class="line">        <span class="keyword">int</span> month = date.getMonthValue();</span><br><span class="line">        <span class="keyword">int</span> today = date.getDayOfMonth();</span><br><span class="line"></span><br><span class="line">        date = date.minusDays(today - <span class="number">1</span>); <span class="comment">// set to start of month</span></span><br><span class="line">        DayOfWeek weekday = date.getDayOfWeek();</span><br><span class="line">        <span class="keyword">int</span> value = weekday.getValue(); <span class="comment">// 1 = Monday, . . . , 7 = Sunday</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Mon Tue Wed Thu Fir Sat Sun&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; value; i++)</span><br><span class="line">            System.out.print(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (date.getMonthValue() == month)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%3d&quot;</span>, date.getDayOfMonth());</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfMonth() == today)</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                System.out.print(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            date = date.plusDays(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfWeek().getValue() == <span class="number">1</span>) System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (date.getDayOfWeek().getValue() !=  <span class="number">1</span>) System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;41-面向对象程序设计概述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#41-面向对象程序设计概述&quot;&gt;&lt;/a&gt; 4.1 面向对象程序设计概述&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;面向对象程序设计：object-oriented programming, OOP&lt;/li&gt;
-&lt;li&gt;面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。&lt;/li&gt;
-&lt;li&gt;OOP将数据放在第一位，然后再考虑操作数据的算法。&lt;/li&gt;
-&lt;li&gt;面向对象更加适合解决规模较大的问题。</summary>
-    
-    
-    
-    <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
-    
-    
-    <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
-    
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

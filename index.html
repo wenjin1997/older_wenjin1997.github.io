@@ -158,7 +158,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -209,6 +209,101 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/01/LeetCode/1744.%E4%BD%A0%E8%83%BD%E5%9C%A8%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E9%82%A3%E5%A4%A9%E5%90%83%E5%88%B0%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E7%B3%96%E6%9E%9C%E5%90%97%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="谢文进">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="文进的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/01/LeetCode/1744.%E4%BD%A0%E8%83%BD%E5%9C%A8%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E9%82%A3%E5%A4%A9%E5%90%83%E5%88%B0%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E7%B3%96%E6%9E%9C%E5%90%97%EF%BC%9F/" class="post-title-link" itemprop="url">1744.你能在你最喜欢的那天吃到你最喜欢的糖果吗？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-01 13:53:00 / 修改时间：13:55:35" itemprop="dateCreated datePublished" datetime="2021-06-01T13:53:00+08:00">2021-06-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/can-you-eat-your-favorite-candy-on-your-favorite-day">题目</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/can-you-eat-your-favorite-candy-on-your-favorite-day/solution/ni-neng-zai-ni-zui-xi-huan-de-na-tian-ch-boa0/">官方题解</a></li>
+</ul>
+<h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1>
+<p>给你一个下标从<code>0</code>开始的正整数数组<code>candiesCount</code>，其中<code>candiesCount[i]</code>表示你拥有的第<code>i</code>类糖果的数目。同时给你一个二维数组<code>queries</code>，其中<code>queries[i] = [favoriteTypei, favoriteDayi, dailyCapi]</code>。</p>
+<p>你按照如下规则进行一场游戏：</p>
+<ul>
+<li>你从第<code>0</code>天开始吃糖果。</li>
+<li>你在吃完<strong>所有</strong>第<code>i - 1</code>类糖果之前，<strong>不能</strong>吃任何一颗第<code>i</code>类糖果。</li>
+<li>在吃完所有糖果之前，你必须每天<strong>至少</strong>吃 **一颗 **糖果。</li>
+</ul>
+<p>请你构建一个布尔型数组 <code>answer</code> ，满足 <code>answer.length == queries.length</code>。<code>answer[i]</code>为 true 的条件是：在每天吃 <strong>不超过</strong> <code>dailyCapi</code> 颗糖果的前提下，你可以在第 <code>favoriteDayi</code> 天吃到第 <code>favoriteTypei</code> 类糖果；否则 <code>answer[i]</code> 为 <code>false</code> 。注意，只要满足上面 3 条规则中的第二条规则，你就可以在同一天吃不同类型的糖果。</p>
+<p>请你返回得到的数组 <code>answer</code> 。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/06/01/LeetCode/1744.%E4%BD%A0%E8%83%BD%E5%9C%A8%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E9%82%A3%E5%A4%A9%E5%90%83%E5%88%B0%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E7%B3%96%E6%9E%9C%E5%90%97%EF%BC%9F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/31/LeetCode/201.%20%E6%95%B0%E5%AD%97%E8%8C%83%E5%9B%B4%E6%8C%89%E4%BD%8D%E4%B8%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -232,10 +327,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-05-31 18:55:00 / 修改时间：18:56:41" itemprop="dateCreated datePublished" datetime="2021-05-31T18:55:00+08:00">2021-05-31</time>
+      <time title="创建时间：2021-05-31 18:55:00" itemprop="dateCreated datePublished" datetime="2021-05-31T18:55:00+08:00">2021-05-31</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-06-01 13:55:41" itemprop="dateModified" datetime="2021-06-01T13:55:41+08:00">2021-06-01</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -980,92 +1081,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/23/LeetCode/22.%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/22/LeetCode/368.%20%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="谢文进">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="文进的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/22/LeetCode/368.%20%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" class="post-title-link" itemprop="url">368. 最大整除子集</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-05-22 21:53:09 / 修改时间：21:53:41" itemprop="dateCreated datePublished" datetime="2021-05-22T21:53:09+08:00">2021-05-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/largest-divisible-subset">最大整除子集</a><br />
-给你一个由 无重复 正整数组成的集合 nums ，请你找出并返回其中最大的整除子集 answer ，子集中每一元素对 (answer[i], answer[j]) 都应当满足：<br />
-answer[i] % answer[j] == 0 ，或<br />
-answer[j] % answer[i] == 0<br />
-如果存在多个有效解子集，返回其中任何一个均可。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/05/22/LeetCode/368.%20%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

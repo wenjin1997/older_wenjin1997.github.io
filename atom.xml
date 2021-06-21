@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-06-21T12:40:05.837Z</updated>
+  <updated>2021-06-21T12:45:00.667Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,26 +21,25 @@
     <link href="http://example.com/2021/06/21/coreJava1/4.4%20%E9%9D%99%E6%80%81%E5%AD%97%E6%AE%B5%E4%B8%8E%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/"/>
     <id>http://example.com/2021/06/21/coreJava1/4.4%20%E9%9D%99%E6%80%81%E5%AD%97%E6%AE%B5%E4%B8%8E%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</id>
     <published>2021-06-21T11:44:00.000Z</published>
-    <updated>2021-06-21T12:40:05.837Z</updated>
+    <updated>2021-06-21T12:45:00.667Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="441-静态字段"><a class="markdownIt-Anchor" href="#441-静态字段"></a> 4.4.1 静态字段</h1><ul><li>如果将一个字段定义为static，每个类只有一个这样的字段。而对于非静态的实例字段，每个对象都有自己的一个副本。</li><li>即时没有Employee对象，静态字段nextId也存在。它属于类，而不属于任何单个的对象。</li><li>可以理解为<strong>类字段</strong>。</li></ul><h1 id="442-静态常量"><a class="markdownIt-Anchor" href="#442-静态常量"></a> 4.4.2 静态常量</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Math</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.14159265358979323846</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>可以用<code>Math.PI</code>来访问这个常量。</li><li>如果省略关键字<code>static</code>，<code>PI</code>就变成了<code>Math</code>类的一个实例字段，需要通过<code>Math</code>类的一个对象来访问<code>PI</code>，并且每一个<code>Math</code>类对象都有它自己的一个<code>PI</code>副本。</li><li>一个常见的静态常量：<code>System.out</code>。</li></ul><h1 id="443-静态方法"><a class="markdownIt-Anchor" href="#443-静态方法"></a> 4.4.3 静态方法</h1><ul><li>静态方法是不在对象上执行的方法。</li><li>可以认为静态方法是没有<code>this</code>参数的方法。</li><li>静态方法可以访问静态字段。</li><li><strong>建议使用类名而不是对象来调用静态方法。</strong></li><li>在下面两种情况<strong>可以使用静态方法</strong>：<ul><li>方法不需要访问对象状态，因为它需要的所有参数都通过显式参数提供（例如：<code>Math.pow</code>）。</li><li>方法只需要访问类的静态字段（例如：<code>Employee.getNextId</code>）。</li></ul></li></ul><h1 id="444-工厂方法"><a class="markdownIt-Anchor" href="#444-工厂方法"></a> 4.4.4 工厂方法</h1><ul><li><strong>有待理解</strong></li></ul><h1 id="445-main方法"><a class="markdownIt-Anchor" href="#445-main方法"></a> 4.4.5 main方法</h1><ul><li><code>main</code>方法也是一个静态方法。</li><li><code>main</code>方法不对任何对象进行操作。静态的<code>main</code>方法将执行并构造程序所需要的对象。</li><li><strong>每一个类可以有一个<code>main</code>方法</strong>，这是常用于对类进行单元测试的一个技巧。</li></ul><h2 id="程序清单4-3-staticteststatictestjava"><a class="markdownIt-Anchor" href="#程序清单4-3-staticteststatictestjava"></a> 程序清单4-3 StaticTest/StaticTest.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This program demonstrates static methods.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.02 2021-06-21</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jinjin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> ch4.StaticTest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// fill the staff array with three Employee objects</span></span><br><span class="line">        <span class="keyword">var</span> staff = <span class="keyword">new</span> Employee[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">        staff[<span class="number">0</span>] = <span class="keyword">new</span> Employee(<span class="string">&quot;Tom&quot;</span>, <span class="number">40000</span>);</span><br><span class="line">        staff[<span class="number">1</span>] = <span class="keyword">new</span> Employee(<span class="string">&quot;Dick&quot;</span>, <span class="number">60000</span>);</span><br><span class="line">        staff[<span class="number">2</span>] = <span class="keyword">new</span> Employee(<span class="string">&quot;Harry&quot;</span>, <span class="number">65000</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// print out information about all Employee objects</span></span><br><span class="line">        <span class="keyword">for</span> (Employee e : staff) &#123;</span><br><span class="line">            e.setId();</span><br><span class="line">            System.out.println(<span class="string">&quot;name=&quot;</span> + e.getName() + <span class="string">&quot;,id=&quot;</span> + e.getId() + <span class="string">&quot;,salary=&quot;</span></span><br><span class="line">            + e.getSalary());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> n = Employee.getNextId(); <span class="comment">// calls static method</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Next available id=&quot;</span> + n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> nextId = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> salary;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(String n, <span class="keyword">double</span> s)</span> </span>&#123;</span><br><span class="line">        name = n;</span><br><span class="line">        salary = s;</span><br><span class="line">        id = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getSalary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> salary;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        id = nextId; <span class="comment">// set id to next available id</span></span><br><span class="line">        nextId++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNextId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> nextId; <span class="comment">// return static field</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; <span class="comment">// unit test</span></span><br><span class="line">        <span class="keyword">var</span> e = <span class="keyword">new</span> Employee(<span class="string">&quot;Harry&quot;</span>, <span class="number">50000</span>);</span><br><span class="line">        System.out.println(e.getName() + <span class="string">&quot; &quot;</span> + e.getSalary());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><ul><li>可以用<code>Employee</code>类的静态<code>main</code>方法进行单元测试，运行<code>java Employee</code>。</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="441-静态字段"><a class="markdownIt-Anchor" href="#441-静态字段"></a> 4.4.1 静态字段</h1><ul><li>如果将一个字段定义为<code>static</code>，每个类只有一个这样的字段。而对于非静态的实例字段，每个对象都有自己的一个副本。</li><li>即使没有<code>Employee</code>对象，静态字段<code>nextId</code>也存在。它属于类，而不属于任何单个的对象。</li><li>静态字段可以理解为<strong>类字段</strong>。<a id="more"></a></li></ul><h1 id="442-静态常量"><a class="markdownIt-Anchor" href="#442-静态常量"></a> 4.4.2 静态常量</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Math</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.14159265358979323846</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>可以用<code>Math.PI</code>来访问这个常量。</li><li>如果省略关键字<code>static</code>，<code>PI</code>就变成了<code>Math</code>类的一个实例字段，需要通过<code>Math</code>类的一个对象来访问<code>PI</code>，并且每一个<code>Math</code>类对象都有它自己的一个<code>PI</code>副本。</li><li>一个常见的静态常量：<code>System.out</code>。</li></ul><h1 id="443-静态方法"><a class="markdownIt-Anchor" href="#443-静态方法"></a> 4.4.3 静态方法</h1><ul><li>静态方法是不在对象上执行的方法。</li><li>可以认为静态方法是没有<code>this</code>参数的方法。</li><li>静态方法可以访问静态字段。</li><li><strong>建议使用类名而不是对象来调用静态方法。</strong></li><li>在下面两种情况<strong>可以使用静态方法</strong>：<ul><li>方法不需要访问对象状态，因为它需要的所有参数都通过显式参数提供（例如：<code>Math.pow</code>）。</li><li>方法只需要访问类的静态字段（例如：<code>Employee.getNextId</code>）。</li></ul></li></ul><h1 id="444-工厂方法"><a class="markdownIt-Anchor" href="#444-工厂方法"></a> 4.4.4 工厂方法</h1><ul><li><strong>有待理解</strong></li></ul><h1 id="445-main方法"><a class="markdownIt-Anchor" href="#445-main方法"></a> 4.4.5 main方法</h1><ul><li><code>main</code>方法也是一个静态方法。</li><li><code>main</code>方法不对任何对象进行操作。静态的<code>main</code>方法将执行并构造程序所需要的对象。</li><li><strong>每一个类可以有一个<code>main</code>方法</strong>，这是常用于对类进行单元测试的一个技巧。</li></ul><h1 id="程序清单4-3-staticteststatictestjava"><a class="markdownIt-Anchor" href="#程序清单4-3-staticteststatictestjava"></a> 程序清单4-3 StaticTest/StaticTest.java</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This program demonstrates static methods.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.02 2021-06-21</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jinjin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> ch4.StaticTest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// fill the staff array with three Employee objects</span></span><br><span class="line">        <span class="keyword">var</span> staff = <span class="keyword">new</span> Employee[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">        staff[<span class="number">0</span>] = <span class="keyword">new</span> Employee(<span class="string">&quot;Tom&quot;</span>, <span class="number">40000</span>);</span><br><span class="line">        staff[<span class="number">1</span>] = <span class="keyword">new</span> Employee(<span class="string">&quot;Dick&quot;</span>, <span class="number">60000</span>);</span><br><span class="line">        staff[<span class="number">2</span>] = <span class="keyword">new</span> Employee(<span class="string">&quot;Harry&quot;</span>, <span class="number">65000</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// print out information about all Employee objects</span></span><br><span class="line">        <span class="keyword">for</span> (Employee e : staff) &#123;</span><br><span class="line">            e.setId();</span><br><span class="line">            System.out.println(<span class="string">&quot;name=&quot;</span> + e.getName() + <span class="string">&quot;,id=&quot;</span> + e.getId() + <span class="string">&quot;,salary=&quot;</span></span><br><span class="line">            + e.getSalary());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> n = Employee.getNextId(); <span class="comment">// calls static method</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Next available id=&quot;</span> + n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> nextId = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> salary;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(String n, <span class="keyword">double</span> s)</span> </span>&#123;</span><br><span class="line">        name = n;</span><br><span class="line">        salary = s;</span><br><span class="line">        id = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getSalary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> salary;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        id = nextId; <span class="comment">// set id to next available id</span></span><br><span class="line">        nextId++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNextId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> nextId; <span class="comment">// return static field</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; <span class="comment">// unit test</span></span><br><span class="line">        <span class="keyword">var</span> e = <span class="keyword">new</span> Employee(<span class="string">&quot;Harry&quot;</span>, <span class="number">50000</span>);</span><br><span class="line">        System.out.println(e.getName() + <span class="string">&quot; &quot;</span> + e.getSalary());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><ul><li>可以用<code>Employee</code>类的静态<code>main</code>方法进行单元测试，运行<code>java Employee</code>。</li></ul>]]></content>
     
     
-      
-      
     <summary type="html">&lt;h1 id=&quot;441-静态字段&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#441-静态字段&quot;&gt;&lt;/a&gt; 4.4.1 静态字段&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;如果将一个字段定义为static，每个类只有一个这样的字段。而对于非静态的实例字段，每个对象</summary>
-      
+&lt;li&gt;如果将一个字段定义为&lt;code&gt;static&lt;/code&gt;，每个类只有一个这样的字段。而对于非静态的实例字段，每个对象都有自己的一个副本。&lt;/li&gt;
+&lt;li&gt;即使没有&lt;code&gt;Employee&lt;/code&gt;对象，静态字段&lt;code&gt;nextId&lt;/code&gt;也存在。它属于类，而不属于任何单个的对象。&lt;/li&gt;
+&lt;li&gt;静态字段可以理解为&lt;strong&gt;类字段&lt;/strong&gt;。</summary>
     
     
     
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -70,9 +69,9 @@
     
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
     
-    <category term="二分查找" scheme="http://example.com/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
-    
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
+    
+    <category term="二分查找" scheme="http://example.com/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
     <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -105,9 +104,9 @@
     
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
     
-    <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
-    
     <category term="哈希表" scheme="http://example.com/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
+    
+    <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
     
     <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -224,9 +223,9 @@
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
-    
     <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
     
     <category term="位运算" scheme="http://example.com/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
@@ -327,9 +326,9 @@
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
-    
     <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
     
     <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -366,13 +365,13 @@
     <category term="微分方程数值解" scheme="http://example.com/categories/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/"/>
     
     
-    <category term="热传导方程" scheme="http://example.com/tags/%E7%83%AD%E4%BC%A0%E5%AF%BC%E6%96%B9%E7%A8%8B/"/>
-    
-    <category term="最简显格式" scheme="http://example.com/tags/%E6%9C%80%E7%AE%80%E6%98%BE%E6%A0%BC%E5%BC%8F/"/>
-    
     <category term="数值分析" scheme="http://example.com/tags/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
     
     <category term="微分方程数值解" scheme="http://example.com/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/"/>
+    
+    <category term="热传导方程" scheme="http://example.com/tags/%E7%83%AD%E4%BC%A0%E5%AF%BC%E6%96%B9%E7%A8%8B/"/>
+    
+    <category term="最简显格式" scheme="http://example.com/tags/%E6%9C%80%E7%AE%80%E6%98%BE%E6%A0%BC%E5%BC%8F/"/>
     
   </entry>
   
@@ -466,9 +465,9 @@ answer[j] % answer[i] == 0&lt;br /&gt;
     
     <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
     
-    <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
     <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
@@ -499,9 +498,9 @@ answer[j] % answer[i] == 0&lt;br /&gt;
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
-    
     <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
     
   </entry>
   
@@ -534,9 +533,9 @@ answer[j] % answer[i] == 0&lt;br /&gt;
     
     <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
     
-    <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
     <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+    <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
@@ -567,9 +566,9 @@ answer[j] % answer[i] == 0&lt;br /&gt;
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="二分查找" scheme="http://example.com/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
-    
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
+    
+    <category term="二分查找" scheme="http://example.com/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
     <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -604,9 +603,9 @@ a 和 b 定义如下：&lt;/p&gt;
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
-    
     <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
     
     <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -676,9 +675,9 @@ a 和 b 定义如下：&lt;/p&gt;
     <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
     
     
-    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
-    
     <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
     
     <category term="LeetCode简单" scheme="http://example.com/tags/LeetCode%E7%AE%80%E5%8D%95/"/>
     

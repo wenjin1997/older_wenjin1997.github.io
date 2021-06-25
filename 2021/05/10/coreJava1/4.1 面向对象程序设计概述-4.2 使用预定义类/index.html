@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <meta name="hexo-config" content="{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}">
-<meta name="description" content="4.1 面向对象程序设计概述 面向对象程序设计：object-oriented programming, OOP 面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。 OOP将数据放在第一位，然后再考虑操作数据的算法。 面向对象更加适合解决规模较大的问题。">
+<meta name="description" content="4.1 面向对象程序设计概述  面向对象程序设计：object-oriented programming, OOP 面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。 OOP将数据放在第一位，然后再考虑操作数据的算法。 面向对象更加适合解决规模较大的问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="4.1 面向对象程序设计概述-4.2 使用预定义类">
 <meta property="og:url" content="http://example.com/2021/05/10/coreJava1/4.1%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0-4.2%20%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB/index.html">
 <meta property="og:site_name" content="文进的博客">
-<meta property="og:description" content="4.1 面向对象程序设计概述 面向对象程序设计：object-oriented programming, OOP 面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。 OOP将数据放在第一位，然后再考虑操作数据的算法。 面向对象更加适合解决规模较大的问题。">
+<meta property="og:description" content="4.1 面向对象程序设计概述  面向对象程序设计：object-oriented programming, OOP 面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。 OOP将数据放在第一位，然后再考虑操作数据的算法。 面向对象更加适合解决规模较大的问题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-10T06:16:00.000Z">
 <meta property="article:modified_time" content="2021-05-10T06:17:03.352Z">
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">4.1 面向对象程序设计概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-1-%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">4.1.1 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-2-%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">4.1.2 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-3-%E8%AF%86%E5%88%AB%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">4.1.3 识别类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-4-%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.4.</span> <span class="nav-text">4.1.4 类之间的关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-2-%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">4.2 使用预定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-1-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%AF%B9%E8%B1%A1%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">4.2.1 对象与对象变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-2-Java%E7%B1%BB%E5%BA%93%E4%B8%AD%E7%9A%84LocalDate%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">4.2.2 Java类库中的LocalDate类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-3-%E6%9B%B4%E6%94%B9%E5%99%A8%E6%96%B9%E6%B3%95%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%99%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">4.2.3 更改器方法与访问器方法</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#41-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text"> 4.1 面向对象程序设计概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#411-%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text"> 4.1.1 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#412-%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text"> 4.1.2 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#413-%E8%AF%86%E5%88%AB%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text"> 4.1.3 识别类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#414-%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.4.</span> <span class="nav-text"> 4.1.4 类之间的关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#42-%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text"> 4.2 使用预定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#421-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%AF%B9%E8%B1%A1%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text"> 4.2.1 对象与对象变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#422-java%E7%B1%BB%E5%BA%93%E4%B8%AD%E7%9A%84localdate%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text"> 4.2.2 Java类库中的LocalDate类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#423-%E6%9B%B4%E6%94%B9%E5%99%A8%E6%96%B9%E6%B3%95%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%99%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text"> 4.2.3 更改器方法与访问器方法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -264,13 +264,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="4-1-面向对象程序设计概述"><a href="#4-1-面向对象程序设计概述" class="headerlink" title="4.1 面向对象程序设计概述"></a>4.1 面向对象程序设计概述</h1><ul>
+        <h1 id="41-面向对象程序设计概述"><a class="markdownIt-Anchor" href="#41-面向对象程序设计概述"></a> 4.1 面向对象程序设计概述</h1>
+<ul>
 <li>面向对象程序设计：object-oriented programming, OOP</li>
 <li>面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。</li>
 <li>OOP将数据放在第一位，然后再考虑操作数据的算法。</li>
 <li>面向对象更加适合解决规模较大的问题。<a id="more"></a></li>
 </ul>
-<h2 id="4-1-1-类"><a href="#4-1-1-类" class="headerlink" title="4.1.1 类"></a>4.1.1 类</h2><ul>
+<h2 id="411-类"><a class="markdownIt-Anchor" href="#411-类"></a> 4.1.1 类</h2>
+<ul>
 <li><strong>类</strong>是构造对象的模板和蓝图。</li>
 <li>由类构造对象的过程称为创建类的<strong>实例</strong>。</li>
 <li><strong>封装</strong>就是将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。</li>
@@ -279,7 +281,8 @@
 <li>在Java中，所有类都源自一个“神通广大的超类”，就是Object。</li>
 <li>通过扩展一个类来建立另外一个类的过程为<strong>继承</strong>。</li>
 </ul>
-<h2 id="4-1-2-对象"><a href="#4-1-2-对象" class="headerlink" title="4.1.2 对象"></a>4.1.2 对象</h2><ul>
+<h2 id="412-对象"><a class="markdownIt-Anchor" href="#412-对象"></a> 4.1.2 对象</h2>
+<ul>
 <li>对象的三个主要特性：行为、状态、标识。</li>
 <li>对象的行为是用可调用的方法来定义的。</li>
 <li>每个对象都保存着描述当前状况的信息，这就是对象的<strong>状态</strong>。</li>
@@ -287,30 +290,36 @@
 <li>每个对象都有一个唯一的标识。</li>
 <li>作为同一个类的实例，每个对象的标识总是不同的，状态也往往存在着差异。</li>
 </ul>
-<h2 id="4-1-3-识别类"><a href="#4-1-3-识别类" class="headerlink" title="4.1.3 识别类"></a>4.1.3 识别类</h2><ul>
+<h2 id="413-识别类"><a class="markdownIt-Anchor" href="#413-识别类"></a> 4.1.3 识别类</h2>
+<ul>
 <li>OOP学习中，首先从识别类开始，然后再为各个类添加方法。</li>
 <li>经验：类——名词，方法——动词。</li>
 </ul>
-<h2 id="4-1-4-类之间的关系"><a href="#4-1-4-类之间的关系" class="headerlink" title="4.1.4 类之间的关系"></a>4.1.4 类之间的关系</h2><ul>
+<h2 id="414-类之间的关系"><a class="markdownIt-Anchor" href="#414-类之间的关系"></a> 4.1.4 类之间的关系</h2>
+<ul>
 <li>在类之间，常见的关系：依赖、聚合、继承。</li>
 <li>如果一个类的方法使用或操纵另一个类的对象，我们就说一个类<strong>依赖</strong>于另一个类。</li>
 <li>应该尽可能地将相互依赖的类减至最少，减少类之间的耦合。</li>
 <li><strong>包容</strong>关系意味着类A的对象包含类B的对象。</li>
 </ul>
-<h1 id="4-2-使用预定义类"><a href="#4-2-使用预定义类" class="headerlink" title="4.2 使用预定义类"></a>4.2 使用预定义类</h1><h2 id="4-2-1-对象与对象变量"><a href="#4-2-1-对象与对象变量" class="headerlink" title="4.2.1 对象与对象变量"></a>4.2.1 对象与对象变量</h2><ul>
+<h1 id="42-使用预定义类"><a class="markdownIt-Anchor" href="#42-使用预定义类"></a> 4.2 使用预定义类</h1>
+<h2 id="421-对象与对象变量"><a class="markdownIt-Anchor" href="#421-对象与对象变量"></a> 4.2.1 对象与对象变量</h2>
+<ul>
 <li>要想使用对象，首先必须构造对象，并制定其初始状态。然后对对象应用方法。</li>
 <li>构造器的名字应该与类名相同。</li>
 <li>对象变量并没有实际包含一个对象，它只是<strong>引用</strong>一个对象。</li>
 <li>在Java中，任何对象变量的值都是对存储在另外一个地方的某个对象的应用。new操作符的返回值也是一个引用。</li>
 <li>可以显示地将对象变量设置为null，指示这个对象变量目前没有引用任何对象。</li>
 </ul>
-<h2 id="4-2-2-Java类库中的LocalDate类"><a href="#4-2-2-Java类库中的LocalDate类" class="headerlink" title="4.2.2 Java类库中的LocalDate类"></a>4.2.2 Java类库中的LocalDate类</h2><ul>
+<h2 id="422-java类库中的localdate类"><a class="markdownIt-Anchor" href="#422-java类库中的localdate类"></a> 4.2.2 Java类库中的LocalDate类</h2>
+<ul>
 <li>用来表示时间点：Data类。</li>
 <li>用大家熟悉的日历表示日期：LocalDate类。</li>
 <li>不要使用构造器来构造LocalDate类的对象，实际上，应当使用静态工厂方法，它会代表你调用构造器。<code>LocalDate.now()</code>会构造一个新对象。</li>
 <li>LocalDate类封装了实例字段来维护所设置的日期。</li>
 </ul>
-<h2 id="4-2-3-更改器方法与访问器方法"><a href="#4-2-3-更改器方法与访问器方法" class="headerlink" title="4.2.3 更改器方法与访问器方法"></a>4.2.3 更改器方法与访问器方法</h2><ul>
+<h2 id="423-更改器方法与访问器方法"><a class="markdownIt-Anchor" href="#423-更改器方法与访问器方法"></a> 4.2.3 更改器方法与访问器方法</h2>
+<ul>
 <li>只访问对象而不修改对象的方法有时称为<strong>访问器方法</strong>。</li>
 </ul>
 <p><strong>CalendarTest.java</strong></p>

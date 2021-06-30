@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <meta name="hexo-config" content="{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}">
-<meta name="description" content="官方链接  题目 官方题解   题目描述 给你一个下标从0开始的正整数数组candiesCount，其中candiesCount[i]表示你拥有的第i类糖果的数目。同时给你一个二维数组queries，其中queries[i] &#x3D; [favoriteTypei, favoriteDayi, dailyCapi]。 你按照如下规则进行一场游戏：  你从第0天开始吃糖果。 你在吃完所有第i - 1类糖">
+<meta name="description" content="官方链接 题目 官方题解  题目描述给你一个下标从0开始的正整数数组candiesCount，其中candiesCount[i]表示你拥有的第i类糖果的数目。同时给你一个二维数组queries，其中queries[i] &#x3D; [favoriteTypei, favoriteDayi, dailyCapi]。 你按照如下规则进行一场游戏：  你从第0天开始吃糖果。 你在吃完所有第i - 1类糖果之前，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1744.你能在你最喜欢的那天吃到你最喜欢的糖果吗？">
 <meta property="og:url" content="http://example.com/2021/06/01/LeetCode/1744.%E4%BD%A0%E8%83%BD%E5%9C%A8%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E9%82%A3%E5%A4%A9%E5%90%83%E5%88%B0%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E7%B3%96%E6%9E%9C%E5%90%97%EF%BC%9F/index.html">
 <meta property="og:site_name" content="文进的博客">
-<meta property="og:description" content="官方链接  题目 官方题解   题目描述 给你一个下标从0开始的正整数数组candiesCount，其中candiesCount[i]表示你拥有的第i类糖果的数目。同时给你一个二维数组queries，其中queries[i] &#x3D; [favoriteTypei, favoriteDayi, dailyCapi]。 你按照如下规则进行一场游戏：  你从第0天开始吃糖果。 你在吃完所有第i - 1类糖">
+<meta property="og:description" content="官方链接 题目 官方题解  题目描述给你一个下标从0开始的正整数数组candiesCount，其中candiesCount[i]表示你拥有的第i类糖果的数目。同时给你一个二维数组queries，其中queries[i] &#x3D; [favoriteTypei, favoriteDayi, dailyCapi]。 你按照如下规则进行一场游戏：  你从第0天开始吃糖果。 你在吃完所有第i - 1类糖果之前，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-01T05:53:00.000Z">
 <meta property="article:modified_time" content="2021-06-01T05:58:14.069Z">
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text"> 官方链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text"> 题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text"> 题解思路</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">官方链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text">题解思路</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,7 +165,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -264,37 +264,34 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="官方链接"><a class="markdownIt-Anchor" href="#官方链接"></a> 官方链接</h1>
-<ul>
+        <h1 id="官方链接"><a href="#官方链接" class="headerlink" title="官方链接"></a>官方链接</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/can-you-eat-your-favorite-candy-on-your-favorite-day">题目</a></li>
 <li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/can-you-eat-your-favorite-candy-on-your-favorite-day/solution/ni-neng-zai-ni-zui-xi-huan-de-na-tian-ch-boa0/">官方题解</a></li>
 </ul>
-<h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1>
-<p>给你一个下标从<code>0</code>开始的正整数数组<code>candiesCount</code>，其中<code>candiesCount[i]</code>表示你拥有的第<code>i</code>类糖果的数目。同时给你一个二维数组<code>queries</code>，其中<code>queries[i] = [favoriteTypei, favoriteDayi, dailyCapi]</code>。</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给你一个下标从<code>0</code>开始的正整数数组<code>candiesCount</code>，其中<code>candiesCount[i]</code>表示你拥有的第<code>i</code>类糖果的数目。同时给你一个二维数组<code>queries</code>，其中<code>queries[i] = [favoriteTypei, favoriteDayi, dailyCapi]</code>。</p>
 <p>你按照如下规则进行一场游戏：</p>
 <ul>
 <li>你从第<code>0</code>天开始吃糖果。</li>
-<li>你在吃完<strong>所有</strong>第<code>i - 1</code>类糖果之前，<strong>不能</strong>吃任何一颗第<code>i</code>类糖果。</li>
-<li>在吃完所有糖果之前，你必须每天<strong>至少</strong>吃<strong>一颗</strong>糖果。<a id="more"></a></li>
+<li>你在吃完<strong>所有</strong>第<code>i - 1</code>类糖果之前，<strong>不能</strong>吃任何一颗第<code>i</code>类糖果。  </li>
+<li>在吃完所有糖果之前，你必须每天<strong>至少</strong>吃<strong>一颗</strong>糖果。<a id="more"></a> </li>
 </ul>
-<p>请你构建一个布尔型数组 <code>answer</code> ，满足 <code>answer.length == queries.length</code>。<code>answer[i]</code>为 true 的条件是：在每天吃 <strong>不超过</strong> <code>dailyCapi</code> 颗糖果的前提下，你可以在第 <code>favoriteDayi</code> 天吃到第 <code>favoriteTypei</code> 类糖果；否则 <code>answer[i]</code> 为 <code>false</code> 。注意，只要满足上面 3 条规则中的第二条规则，你就可以在同一天吃不同类型的糖果。</p>
-<p>请你返回得到的数组 <code>answer</code> 。</p>
+<p>请你构建一个布尔型数组 <code>answer</code> ，满足 <code>answer.length == queries.length</code>。<code>answer[i]</code>为 true 的条件是：在每天吃 <strong>不超过</strong> <code>dailyCapi</code> 颗糖果的前提下，你可以在第 <code>favoriteDayi</code> 天吃到第 <code>favoriteTypei</code> 类糖果；否则 <code>answer[i]</code> 为 <code>false</code> 。注意，只要满足上面 3 条规则中的第二条规则，你就可以在同一天吃不同类型的糖果。</p>
+<p>请你返回得到的数组 <code>answer</code> 。</p>
 <p><strong>示例 1：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：candiesCount &#x3D; [7,4,5,3,8], queries &#x3D; [[0,2,2],[4,2,4],[2,13,1000000000]]</span><br><span class="line">输出：[true,false,true]</span><br><span class="line">提示：</span><br><span class="line">1- 在第 0 天吃 2 颗糖果(类型 0），第 1 天吃 2 颗糖果（类型 0），第 2 天你可以吃到类型 0 的糖果。</span><br><span class="line">2- 每天你最多吃 4 颗糖果。即使第 0 天吃 4 颗糖果（类型 0），第 1 天吃 4 颗糖果（类型 0 和类型 1），你也没办法在第 2 天吃到类型 4 的糖果。换言之，你没法在每天吃 4 颗糖果的限制下在第 2 天吃到第 4 类糖果。</span><br><span class="line">3- 如果你每天吃 1 颗糖果，你可以在第 13 天吃到类型 2 的糖果。</span><br></pre></td></tr></table></figure>
 <p><strong>示例 2：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：candiesCount &#x3D; [5,2,6,4,1], queries &#x3D; [[3,1,2],[4,10,3],[3,10,100],[4,100,30],[1,3,1]]</span><br><span class="line">输出：[false,true,true,false,false]</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ul>
-<li>1 &lt;= candiesCount.length &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></li>
-<li>1 &lt;= candiesCount[i] &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></li>
-<li>1 &lt;= queries.length &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></li>
+<li>1 &lt;= candiesCount.length &lt;= $10^5$</li>
+<li>1 &lt;= candiesCount[i] &lt;= $10^5$</li>
+<li>1 &lt;= queries.length &lt;= $10^5$</li>
 <li>queries[i].length == 3</li>
 <li>0 &lt;= favoriteTypei &lt; candiesCount.length</li>
-<li>0 &lt;= favoriteDayi &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></li>
-<li>1 &lt;= dailyCapi &lt;= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></li>
+<li>0 &lt;= favoriteDayi &lt;= $10^9$</li>
+<li>1 &lt;= dailyCapi &lt;= $10^9$</li>
 </ul>
-<h1 id="题解思路"><a class="markdownIt-Anchor" href="#题解思路"></a> 题解思路</h1>
-<ul>
+<h1 id="题解思路"><a href="#题解思路" class="headerlink" title="题解思路"></a>题解思路</h1><ul>
 <li>可以参考<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/can-you-eat-your-favorite-candy-on-your-favorite-day/solution/ni-neng-zai-ni-zui-xi-huan-de-na-tian-ch-boa0/">官方题解</a>，重要的是如何推导出交集。</li>
 <li>Java代码</li>
 </ul>

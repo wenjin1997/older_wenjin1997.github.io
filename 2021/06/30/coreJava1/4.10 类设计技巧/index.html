@@ -20,22 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <meta name="hexo-config" content="{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;/search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}">
-<meta property="og:type" content="website">
-<meta property="og:title" content="文进的博客">
-<meta property="og:url" content="http://example.com/tags/%E6%95%B0%E5%AD%A6/index.html">
+<meta name="description" content="1.一定要保证数据私有。  这是最重要的；绝对不要破坏封装性。 最好还是保持实例字段的私有性。  2.一定要对数据进行初始化。  最好不要依赖于系统的默认值，而是应该显式地初始化所有数据，可以提供默认值，也可以在所有构造器中设置默认值。  3.不要在类中使用过多的数据类型 4.不是所有字段都需要单独的字段访问器和字段更改器。 5.分解过多职责的类。 6.类名和方法名要能够体现它们的职责。  对此有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4.10 类设计技巧">
+<meta property="og:url" content="http://example.com/2021/06/30/coreJava1/4.10%20%E7%B1%BB%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="文进的博客">
+<meta property="og:description" content="1.一定要保证数据私有。  这是最重要的；绝对不要破坏封装性。 最好还是保持实例字段的私有性。  2.一定要对数据进行初始化。  最好不要依赖于系统的默认值，而是应该显式地初始化所有数据，可以提供默认值，也可以在所有构造器中设置默认值。  3.不要在类中使用过多的数据类型 4.不是所有字段都需要单独的字段访问器和字段更改器。 5.分解过多职责的类。 6.类名和方法名要能够体现它们的职责。  对此有">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-30T01:33:00.000Z">
+<meta property="article:modified_time" content="2021-06-30T01:34:12.204Z">
 <meta property="article:author" content="谢文进">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="《Java核心技术卷I 基础知识》">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/tags/%E6%95%B0%E5%AD%A6/">
+<link rel="canonical" href="http://example.com/2021/06/30/coreJava1/4.10%20%E7%B1%BB%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7/">
 
 
 
-<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;}">
+<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;}">
 <meta name="hexo-config-calendar" content="">
-<title>标签: 数学 | 文进的博客</title><script data-pjax src="/js/load-config.js"></script>
+<title>4.10 类设计技巧 | 文进的博客</title><script data-pjax src="/js/load-config.js"></script>
   
 
 
@@ -199,230 +205,118 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">数学
-          <small>标签</small>
-        </h2>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/30/coreJava1/4.10%20%E7%B1%BB%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="谢文进">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="文进的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          4.10 类设计技巧
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="创建时间：2021-06-30 09:33:00 / 修改时间：09:34:12" itemprop="dateCreated datePublished" datetime="2021-06-30T09:33:00+08:00">2021-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/" itemprop="url" rel="index"><span itemprop="name">《Java核心技术卷I 基础知识》</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>1.<strong>一定要保证数据私有。</strong></p>
+<ul>
+<li>这是最重要的；绝对不要破坏封装性。</li>
+<li>最好还是保持实例字段的私有性。</li>
+</ul>
+<p>2.<strong>一定要对数据进行初始化。</strong></p>
+<ul>
+<li>最好不要依赖于系统的默认值，而是应该显式地初始化所有数据，可以提供默认值，也可以在所有构造器中设置默认值。</li>
+</ul>
+<p>3.<strong>不要在类中使用过多的数据类型</strong></p>
+<p>4.<strong>不是所有字段都需要单独的字段访问器和字段更改器。</strong></p>
+<p>5.<strong>分解过多职责的类。</strong></p>
+<p>6.<strong>类名和方法名要能够体现它们的职责。</strong></p>
+<ul>
+<li>对此有一个很好地惯例：类名应当是一个名词，或者是前面有形容词修饰的名词，或者是动名词（有”-ing”后缀）修饰的名词。</li>
+<li>对于方法来说，要遵循标准惯例：访问器方法用小写get开头（getSalary），更改器方法用小写set开头（setSalary）。</li>
+</ul>
+<p>7.<strong>优先使用不可变类。</strong></p>
+<ul>
+<li>如果类是不可变的，就可以安全地在多个线程时间共享其对象。</li>
+<li>要尽可能让类是不可变的。</li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-04T08:47:00+08:00"
-              content="2021-06-04">
-          06-04
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/04/LeetCode/441.%20%E6%8E%92%E5%88%97%E7%A1%AC%E5%B8%81/" itemprop="url">
-            <span itemprop="name">441. 排列硬币</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/" rel="tag"># 《Java核心技术卷I 基础知识》</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/30/coreJava1/4.9%20%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A/" rel="prev" title="4.9 文档注释">
+                  <i class="fa fa-chevron-left"></i> 4.9 文档注释
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-03T20:45:00+08:00"
-              content="2021-06-03">
-          06-03
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/03/LeetCode/645.%20%E9%94%99%E8%AF%AF%E7%9A%84%E9%9B%86%E5%90%88/" itemprop="url">
-            <span itemprop="name">645. 错误的集合</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-01T13:53:00+08:00"
-              content="2021-06-01">
-          06-01
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/01/LeetCode/1744.%E4%BD%A0%E8%83%BD%E5%9C%A8%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E9%82%A3%E5%A4%A9%E5%90%83%E5%88%B0%E4%BD%A0%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E7%B3%96%E6%9E%9C%E5%90%97%EF%BC%9F/" itemprop="url">
-            <span itemprop="name">1744.你能在你最喜欢的那天吃到你最喜欢的糖果吗？</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-05-30T22:24:00+08:00"
-              content="2021-05-30">
-          05-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/30/LeetCode/231.2%E7%9A%84%E5%B9%82/" itemprop="url">
-            <span itemprop="name">231.2的幂</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-05-22T21:53:09+08:00"
-              content="2021-05-22">
-          05-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/22/LeetCode/368.%20%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" itemprop="url">
-            <span itemprop="name">368. 最大整除子集</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-05-19T21:40:09+08:00"
-              content="2021-05-19">
-          05-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/19/LeetCode/69.x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/" itemprop="url">
-            <span itemprop="name">69.x的平方根</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-05-18T20:12:09+08:00"
-              content="2021-05-18">
-          05-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/18/LeetCode/1442.%E5%BD%A2%E6%88%90%E4%B8%A4%E4%B8%AA%E5%BC%82%E6%88%96%E7%9B%B8%E7%AD%89%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%89%E5%85%83%E6%95%B0%E7%BB%84/" itemprop="url">
-            <span itemprop="name">1442.形成两个异或相等数组的三元数组</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-05-18T11:25:00+08:00"
-              content="2021-05-18">
-          05-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/18/LeetCode/67.%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/" itemprop="url">
-            <span itemprop="name">67.二进制求和</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-05-14T17:15:00+08:00"
-              content="2021-05-14">
-          05-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/14/LeetCode/12.%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/" itemprop="url">
-            <span itemprop="name">12.整数转罗马数字</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-04-28T19:56:09+08:00"
-              content="2021-04-28">
-          04-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/04/28/LeetCode/633.%E5%B9%B3%E6%96%B9%E6%95%B0%E4%B9%8B%E5%92%8C/" itemprop="url">
-            <span itemprop="name">633.平方数之和</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
 <script src="/js/comments.js"></script>
 </div>
   </main>

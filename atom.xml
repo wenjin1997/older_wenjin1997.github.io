@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-06-30T01:34:12.204Z</updated>
+  <updated>2021-07-06T07:04:21.761Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,34 +17,53 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第1章 算法在计算中的作用</title>
+    <link href="http://example.com/2021/07/06/%E3%80%8A%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E3%80%8B/1%20%E7%AE%97%E6%B3%95%E5%9C%A8%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
+    <id>http://example.com/2021/07/06/%E3%80%8A%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E3%80%8B/1%20%E7%AE%97%E6%B3%95%E5%9C%A8%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/</id>
+    <published>2021-07-06T07:02:00.000Z</published>
+    <updated>2021-07-06T07:04:21.761Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-1-算法"><a href="#1-1-算法" class="headerlink" title="1.1 算法"></a>1.1 算法</h1><ul><li><strong>算法</strong>就是任何良定义的计算过程，该过程取某个值或值得集合作为<strong>输入</strong>并产生某个值或值的集合作为<strong>输出</strong>。</li><li>若对每个输入实例，算法都以正确的输出停机，则称该算法是<strong>正确的</strong>，并称正确的算法<strong>解决了</strong>给定的计算问题。<a id="more"></a></li><li>与人们期望的相反，不正确的算法只要其错误率可控有时可能是有用的。</li><li>算法说明时，唯一的要求是这个说明必须精确描述索要遵循的计算过程。</li><li>数据结构是一种存储和组织数据的方式，旨在便于访问和修改。</li><li>如果你能证明一个问题时NP完全的，那么你可以把时间花在开发一个有效的算法，该算法给出一个好的解，但不一定是最好的可能解。</li></ul><h1 id="1-2-作为一种技术的算法"><a href="#1-2-作为一种技术的算法" class="headerlink" title="1.2 作为一种技术的算法"></a>1.2 作为一种技术的算法</h1><ul><li>是否具有算法知识与技术的坚实基础是区分真正熟练的程序员与初学者的一个特征。</li></ul><h1 id="书籍信息"><a href="#书籍信息" class="headerlink" title="书籍信息"></a>书籍信息</h1><p><a href="https://book.douban.com/subject/20432061/">算法导论</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;1-1-算法&quot;&gt;&lt;a href=&quot;#1-1-算法&quot; class=&quot;headerlink&quot; title=&quot;1.1 算法&quot;&gt;&lt;/a&gt;1.1 算法&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;算法&lt;/strong&gt;就是任何良定义的计算过程，该过程取某个值或值得集合作为&lt;strong&gt;输入&lt;/strong&gt;并产生某个值或值的集合作为&lt;strong&gt;输出&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;若对每个输入实例，算法都以正确的输出停机，则称该算法是&lt;strong&gt;正确的&lt;/strong&gt;，并称正确的算法&lt;strong&gt;解决了&lt;/strong&gt;给定的计算问题。</summary>
+    
+    
+    
+    <category term="《算法导论》" scheme="http://example.com/categories/%E3%80%8A%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E3%80%8B/"/>
+    
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="《算法导论》" scheme="http://example.com/tags/%E3%80%8A%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E3%80%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>4.10 类设计技巧</title>
     <link href="http://example.com/2021/06/30/coreJava1/4.10%20%E7%B1%BB%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7/"/>
     <id>http://example.com/2021/06/30/coreJava1/4.10%20%E7%B1%BB%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7/</id>
     <published>2021-06-30T01:33:00.000Z</published>
-    <updated>2021-06-30T01:34:12.204Z</updated>
+    <updated>2021-06-30T01:38:36.494Z</updated>
     
-    <content type="html"><![CDATA[<p>1.<strong>一定要保证数据私有。</strong></p><ul><li>这是最重要的；绝对不要破坏封装性。</li><li>最好还是保持实例字段的私有性。</li></ul><p>2.<strong>一定要对数据进行初始化。</strong></p><ul><li>最好不要依赖于系统的默认值，而是应该显式地初始化所有数据，可以提供默认值，也可以在所有构造器中设置默认值。</li></ul><p>3.<strong>不要在类中使用过多的数据类型</strong></p><p>4.<strong>不是所有字段都需要单独的字段访问器和字段更改器。</strong></p><p>5.<strong>分解过多职责的类。</strong></p><p>6.<strong>类名和方法名要能够体现它们的职责。</strong></p><ul><li>对此有一个很好地惯例：类名应当是一个名词，或者是前面有形容词修饰的名词，或者是动名词（有”-ing”后缀）修饰的名词。</li><li>对于方法来说，要遵循标准惯例：访问器方法用小写get开头（getSalary），更改器方法用小写set开头（setSalary）。</li></ul><p>7.<strong>优先使用不可变类。</strong></p><ul><li>如果类是不可变的，就可以安全地在多个线程时间共享其对象。</li><li>要尽可能让类是不可变的。</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>1.<strong>一定要保证数据私有。</strong></p><ul><li>这是最重要的；绝对不要破坏封装性。</li><li>最好还是保持实例字段的私有性。<a id="more"></a></li></ul><p>2.<strong>一定要对数据进行初始化。</strong></p><ul><li>最好不要依赖于系统的默认值，而是应该显式地初始化所有数据，可以提供默认值，也可以在所有构造器中设置默认值。</li></ul><p>3.<strong>不要在类中使用过多的数据类型。</strong></p><p>4.<strong>不是所有字段都需要单独的字段访问器和字段更改器。</strong></p><p>5.<strong>分解过多职责的类。</strong></p><p>6.<strong>类名和方法名要能够体现它们的职责。</strong></p><ul><li>对此有一个很好的惯例：类名应当是一个名词，或者是前面有形容词修饰的名词，或者是动名词（有”-ing”后缀）修饰的名词。</li><li>对于方法来说，要遵循标准惯例：访问器方法用小写get开头（getSalary），更改器方法用小写set开头（setSalary）。</li></ul><p>7.<strong>优先使用不可变类。</strong></p><ul><li>如果类是不可变的，就可以安全地在多个线程时间共享其对象。</li><li>要尽可能让类是不可变的。</li></ul>]]></content>
     
     
-      
-      
     <summary type="html">&lt;p&gt;1.&lt;strong&gt;一定要保证数据私有。&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;这是最重要的；绝对不要破坏封装性。&lt;/li&gt;
-&lt;li&gt;最好还是保持实例字段的私有性。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;2.&lt;strong&gt;一定要对数据进行初始化。&lt;/strong&gt;&lt;/p&gt;
-&lt;</summary>
-      
+&lt;li&gt;最好还是保持实例字段的私有性。</summary>
     
     
     
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -53,9 +72,9 @@
     <link href="http://example.com/2021/06/30/coreJava1/4.9%20%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A/"/>
     <id>http://example.com/2021/06/30/coreJava1/4.9%20%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A/</id>
     <published>2021-06-30T01:19:00.000Z</published>
-    <updated>2021-06-30T01:20:47.220Z</updated>
+    <updated>2021-06-30T01:38:50.948Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>JDK包含一个很有用的工具，叫做javadoc，它可以由源文件生成一个HTML文档。</li></ul><h2 id="4-9-1-注释的插入"><a href="#4-9-1-注释的插入" class="headerlink" title="4.9.1 注释的插入"></a>4.9.1 注释的插入</h2><ul><li>javadoc实用工具从下面几项抽取信息：<ul><li>模块；</li><li>包；</li><li>公共类与接口；</li><li>公共的和受保护的字段；</li><li>公共的和受保护的构造器及方法。<a id="more"></a></li></ul></li><li>每个/<em>* … </em>/文档注释包含标记以及之后紧跟着的自由格式文本。标记以@开始，如@since或@param。</li><li>自由格式文本的第一句应该是一个<em>概要性</em>的句子。</li><li>在自由格式文本中，可以使用HTML修饰符。</li></ul><h2 id="4-9-2-类注释"><a href="#4-9-2-类注释" class="headerlink" title="4.9.2 类注释"></a>4.9.2 类注释</h2><ul><li>类注释必须放在<code>import</code>语句之后，类定义之前。</li></ul><h2 id="4-9-3-方法注释"><a href="#4-9-3-方法注释" class="headerlink" title="4.9.3 方法注释"></a>4.9.3 方法注释</h2><p>每一个方法注释必须在所描述的方法之前。</p><h2 id="4-9-4-字段注释"><a href="#4-9-4-字段注释" class="headerlink" title="4.9.4 字段注释"></a>4.9.4 字段注释</h2><ul><li>只需要对公共字段（通常是静态常量）建立文档。</li></ul><h2 id="4-9-6-通用注释"><a href="#4-9-6-通用注释" class="headerlink" title="4.9.6 通用注释"></a>4.9.6 通用注释</h2><ul><li>标记@since text会建立一个“since”（始于）条目。<em>text</em>（文本）可以是引入这个特性的版本的任何描述。</li><li>通过@see和@link标记，可以使用超链接，连接到javadoc文档的相关部分或外部文档。</li><li>如果@see标记后面有一个&lt;字符，就需要指定一个超链接。可以超连接到任何URL。</li><li>如果@see标机后面有一个双引号（”）字符，文本就会显示在”see also”部分。</li><li>可以为一个特性添加多个@see标记，但必须将它们放在一起。</li><li>要想产生<em>包注释</em>，就需要在每一个包目录中添加一个单独的文件。</li></ul><h2 id="4-9-7-注释抽取"><a href="#4-9-7-注释抽取" class="headerlink" title="4.9.7 注释抽取"></a>4.9.7 注释抽取</h2><p>略。</p>]]></content>
+    <content type="html"><![CDATA[<ul><li>JDK包含一个很有用的工具，叫做javadoc，它可以由源文件生成一个HTML文档。</li></ul><h2 id="4-9-1-注释的插入"><a href="#4-9-1-注释的插入" class="headerlink" title="4.9.1 注释的插入"></a>4.9.1 注释的插入</h2><ul><li>javadoc实用工具从下面几项抽取信息：<ul><li>模块；</li><li>包；</li><li>公共类与接口；</li><li>公共的和受保护的字段；</li><li>公共的和受保护的构造器及方法。<a id="more"></a></li></ul></li><li>每个/<em>* … </em>/文档注释包含标记以及之后紧跟着的自由格式文本。标记以@开始，如@since或@param。</li><li>自由格式文本的第一句应该是一个<em>概要性</em>的句子。</li><li>在自由格式文本中，可以使用HTML修饰符。</li></ul><h2 id="4-9-2-类注释"><a href="#4-9-2-类注释" class="headerlink" title="4.9.2 类注释"></a>4.9.2 类注释</h2><ul><li>类注释必须放在<code>import</code>语句之后，类定义之前。</li></ul><h2 id="4-9-3-方法注释"><a href="#4-9-3-方法注释" class="headerlink" title="4.9.3 方法注释"></a>4.9.3 方法注释</h2><p>每一个方法注释必须在所描述的方法之前。</p><h2 id="4-9-4-字段注释"><a href="#4-9-4-字段注释" class="headerlink" title="4.9.4 字段注释"></a>4.9.4 字段注释</h2><ul><li>只需要对公共字段（通常是静态常量）建立文档。</li></ul><h2 id="4-9-6-通用注释"><a href="#4-9-6-通用注释" class="headerlink" title="4.9.6 通用注释"></a>4.9.6 通用注释</h2><ul><li>标记@since text会建立一个“since”（始于）条目。<em>text</em>（文本）可以是引入这个特性的版本的任何描述。</li><li>通过@see和@link标记，可以使用超链接，连接到javadoc文档的相关部分或外部文档。</li><li>如果@see标记后面有一个&lt;字符，就需要指定一个超链接。可以超链接到任何URL。</li><li>如果@see标机后面有一个双引号（”）字符，文本就会显示在”see also”部分。</li><li>可以为一个特性添加多个@see标记，但必须将它们放在一起。</li><li>要想产生<em>包注释</em>，就需要在每一个包目录中添加一个单独的文件。</li></ul><h2 id="4-9-7-注释抽取"><a href="#4-9-7-注释抽取" class="headerlink" title="4.9.7 注释抽取"></a>4.9.7 注释抽取</h2><p>略。</p>]]></content>
     
     
     <summary type="html">&lt;ul&gt;
@@ -74,9 +93,9 @@
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -105,9 +124,9 @@
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -131,9 +150,9 @@
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -159,9 +178,9 @@
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -189,9 +208,9 @@
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -215,9 +234,9 @@
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/categories/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
     
     
-    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="《Java核心技术卷I 基础知识》" scheme="http://example.com/tags/%E3%80%8AJava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B7I-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E3%80%8B/"/>
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -585,31 +604,6 @@
     <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
     <category term="回溯算法" scheme="http://example.com/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>368. 最大整除子集</title>
-    <link href="http://example.com/2021/05/22/LeetCode/368.%20%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/"/>
-    <id>http://example.com/2021/05/22/LeetCode/368.%20%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/</id>
-    <published>2021-05-22T13:53:09.000Z</published>
-    <updated>2021-05-22T13:53:41.814Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode-cn.com/problems/largest-divisible-subset">最大整除子集</a><br>给你一个由 无重复 正整数组成的集合 nums ，请你找出并返回其中最大的整除子集 answer ，子集中每一元素对 (answer[i], answer[j]) 都应当满足：<br>answer[i] % answer[j] == 0 ，或<br>answer[j] % answer[i] == 0<br>如果存在多个有效解子集，返回其中任何一个均可。<a id="more"></a><br>示例 1：  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[1,2]</span><br><span class="line">解释：[1,3] 也会被视为正确答案。</span><br></pre></td></tr></table></figure><p>示例 2：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,4,8]</span><br><span class="line">输出：[1,2,4,8]</span><br></pre></td></tr></table></figure><p>提示：<br>1 &lt;= nums.length &lt;= 1000<br>1 &lt;= nums[i] &lt;= 2 * 109<br>nums 中的所有整数 互不相同  </p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>参看了<a href="https://leetcode-cn.com/problems/largest-divisible-subset/solution/zui-da-zheng-chu-zi-ji-by-leetcode-solut-t4pz/">官方解答</a>，动态规划的思想来求解这道题。  </p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> leetcode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LargestDivisibleSubset</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"><span class="keyword">int</span> n = in.nextInt();</span><br><span class="line"><span class="keyword">int</span>[] nums = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">0</span>; l &lt; n; l++)</span><br><span class="line">&#123;</span><br><span class="line">nums[l] = in.nextInt();</span><br><span class="line">&#125;</span><br><span class="line">Arrays.sort(nums);</span><br><span class="line"><span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">Arrays.fill(dp, <span class="number">1</span>);</span><br><span class="line">dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> maxVal = nums[<span class="number">0</span>], maxSize = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 第一步 动态规划找到最大子集的个数，最大子集中的最大整数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(nums[i] % nums[j] == <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">dp[i] = Math.max(dp[i], dp[j] + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(dp[i] &gt; maxSize)</span><br><span class="line">&#123;</span><br><span class="line">maxSize = dp[i];</span><br><span class="line">maxVal = nums[i];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二步 倒推得到最大子集</span></span><br><span class="line">List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line"><span class="keyword">if</span>(maxSize == <span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">res.add(nums[<span class="number">0</span>]);</span><br><span class="line">System.out.println(res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; maxSize &gt; <span class="number">0</span>; i--)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(maxVal % nums[i] == <span class="number">0</span> &amp;&amp; dp[i] == maxSize)</span><br><span class="line">&#123;</span><br><span class="line">res.add(nums[i]);</span><br><span class="line">maxVal = nums[i];</span><br><span class="line">maxSize--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">System.out.println(res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/largest-divisible-subset&quot;&gt;最大整除子集&lt;/a&gt;&lt;br&gt;给你一个由 无重复 正整数组成的集合 nums ，请你找出并返回其中最大的整除子集 answer ，子集中每一元素对 (answer[i], answer[j]) 都应当满足：&lt;br&gt;answer[i] % answer[j] == 0 ，或&lt;br&gt;answer[j] % answer[i] == 0&lt;br&gt;如果存在多个有效解子集，返回其中任何一个均可。</summary>
-    
-    
-    
-    <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
-    
-    
-    <category term="LeetCode中等" scheme="http://example.com/tags/LeetCode%E4%B8%AD%E7%AD%89/"/>
-    
-    <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
